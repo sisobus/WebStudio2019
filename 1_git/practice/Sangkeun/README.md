@@ -18,9 +18,6 @@ lang: 'en'
 
 
 
-----: | ---------------------------- |
-| **Sogang University**<br>Master of Computer Science, Data Engineering | Seoul, Korea<br>Mar 2015 ~ Feb 2017 |
-| **Sogang University**<br>Bachelor of Computer Science | Seoul, Korea<br>Mar 2011 ~ Feb 2014 |
 
 
 ## Experience
