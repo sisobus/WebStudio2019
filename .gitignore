@@ -1,0 +1,8 @@
+.DS_Store
+venv/*
+node_modules/*
+*.swa
+*.swp
+__pycache__/*
+*.pyc
+data/*
