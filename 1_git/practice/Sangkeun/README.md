@@ -4,26 +4,20 @@ date: 2019-1-27 16:21:13
 lang: 'en'
 ---
 
-# Sangkeun Kim (sisobus)
+# Chankyu Baek (chankoo)
 
 <div align="center">
 
-I'm VUNO Inc Software Engineer, and I love problem solving, competitive programming.
-
-`C/C++` `Javascript` `React` `Typescript` `Graphql` `redux` `Prisma`
 
 </div>
 
 |            |                              |
 | :--------: | ---------------------------- |
 | **GitHub** | http://github.com/sisobus    |
-| **E-mail** | sisobus1@gmail.com           |
+| **E-mail** | ckbaek1125@gmail.com           |
 
-## Education
-|            |                              |
-| :--------: | ---------------------------- |
-| **Sogang University**<br>Master of Computer Science, Data Engineering | Seoul, Korea<br>Mar 2015 ~ Feb 2017 |
-| **Sogang University**<br>Bachelor of Computer Science | Seoul, Korea<br>Mar 2011 ~ Feb 2014 |
+
+
 
 
 ## Experience
