@@ -36,7 +36,20 @@ class UserList(Resource):
         return 'email: {}, pw: {}'.format(email, password)
 
     def put(self):
-        return 'put method'
+        r_json = request.get_json()
+        email = r_json['email']
+        updated_password = r_json['password']
+        if os.path.exists('users.json'):
+            with open('users.json', 'r') as fp:
+                r = json.loads(fp.read())
+        for d in r:
+            if d['email'] == email:
+                d['password'] == updated_password
+                with open('users.json', 'w') as fp:
+                    fp.write(json.dumps(r))
+                return 'Password(user{}) has been successfully updated'.format(email)
+            return 'There is no such shit'
+
 
     def delete(self):
         return 'delete method'
