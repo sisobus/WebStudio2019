@@ -82,3 +82,8 @@ class UserList(Resource):
                 return 'user {} is deleted'.format(email)
 
         return 'email unmatched!'
+
+
+
+
+
