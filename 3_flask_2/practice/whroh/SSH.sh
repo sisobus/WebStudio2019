@@ -1,0 +1,2 @@
+$ ssh <USERNAME>@54.180.96.144
+<USERNAME>@54.180.96.144's password:
