@@ -1,7 +1,6 @@
 from flask import Flask
-app = Flask(__name__)
-@app.route('/')
-def hello():
- return 'Hello, World!'
+@app.route('/variable/<input_string>')
+def variable(input_string):
+ return '<h1>{}</h1>'.format(input_string)
 if __name__ == '__main__':
- app.run()
+ app.run(debug=True)
