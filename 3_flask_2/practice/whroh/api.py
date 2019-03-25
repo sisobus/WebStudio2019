@@ -48,14 +48,27 @@ class UserList(Resource):
                 with open('users.json', 'w') as fp:
                     fp.write(json.dumps(r))
                 return 'Password(user{}) has been successfully updated'.format(email)
-            return 'There is no such shit'
-
+            return 'Not Found 404 {}'.format('email')
 
     def delete(self):
-        return 'delete method'
+        r_json = request.get_json()
+        email = r_json['email']
+        if os.path.exists('users.json'):
+            with open('users.json', 'r') as fp:
+                r = json.loads(fp.read())
+            found = False
+            for d in r:
+                if d['email'] == email:
+                    found = True
+                    with open('users.json', 'w') as fp:
+                        fp.write(json.dumps([d for d in r if d['email'] != email]))
+                        return 'Successfully deleted the account!({})'.format(email)
+            return 'Not Found 404'
+
+
 
 api.add_resource(UserList, '/api/users')
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5001, debug=True)
