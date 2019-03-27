@@ -21,10 +21,11 @@ class UserList(Resource) :
         for d in r:
             if email == d['email'] :
                 return '{} is aleady exists'.format(email)
-        r.append(r_json)
-        with open ('user.json','w') as fp :
-            fp.write(json.dumps([r_json]))
-        return 'email : {}, pw: {}'.format(email, password)
+        else :
+            r.append(r_json)
+            with open('user.json','w') as fp :
+                fp.write(json.dumps([r_json]))
+            return 'email : {}, password : {}, user: {}'.format(email, password, r)
 
     def put(self) :
         return 'put method'
