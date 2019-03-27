@@ -5,13 +5,6 @@ import json
 app = Flask(__name__)
 api = Api(app)
 
-class UserLisfrom flask import Flask, request
-from flask_restful import Api, Resource
-import json
-
-app = Flask(__name__)
-api = Api(app)
-
 class UserList(Resource) :
     def get(self) :
         return 'get method'
