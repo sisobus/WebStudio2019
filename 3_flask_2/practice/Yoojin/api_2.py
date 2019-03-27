@@ -23,9 +23,9 @@ class UserList(Resource) :
                 return '{} is aleady exists'.format(email)
         else :
             r.append(r_json)
-            with open('user.json','w') as fp :
+            with open('users.json','w') as fp :
                 fp.write(json.dumps([r_json]))
-            return 'email : {}, password : {}, user: {}'.format(email, password, r)
+            return 'email : {}, password : {}, users: {}'.format(email, password, r)
 
     def put(self) :
         return 'put method'
