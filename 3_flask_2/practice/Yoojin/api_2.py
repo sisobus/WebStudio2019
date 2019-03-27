@@ -1,6 +1,7 @@
 from flask import Flask, request
 from flask_restful import Api, Resource
 import json
+import os 
 
 app = Flask(__name__)
 api = Api(app)
@@ -13,6 +14,14 @@ class UserList(Resource) :
         r_json = request.get_json()
         email = r_json['email']
         password = r_json['password']
+        r = []
+        if os.path.exists('users.json'):
+            with open('users.json','r') as fp :
+                r=json.loads(fp.read())
+        for d in r:
+            if email == d['email'] :
+                return '{} is aleady exists'.format(email)
+        r.append(r_json)
         with open ('user.json','w') as fp :
             fp.write(json.dumps([r_json]))
         return 'email : {}, pw: {}'.format(email, password)
