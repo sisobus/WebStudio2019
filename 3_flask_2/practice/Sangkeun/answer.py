@@ -1,5 +1,6 @@
 from flask import Flask, request
 from flask_restful import Api, Resource
+import bcrypt
 import json
 import os
 
@@ -31,10 +32,13 @@ class UserList(Resource):
         r_json = request.get_json()
         email = r_json['email']
         password = r_json['password']
+        salt = bcrypt.gensalt()
+        password = bcrypt.hashpw(password.encode('utf-8'), salt).decode('utf-8')
         r = self.get_users()
         for d in r:
             if email == d['email']:
                 return '{} is aleady exists'.format(email)
+        r_json['password'] = password
         r.append(r_json)
         with open(self.filename, 'w') as fp:
             fp.write(json.dumps(r))
@@ -44,6 +48,8 @@ class UserList(Resource):
         r_json = request.get_json()
         email = r_json['email']
         password = r_json['password']
+        salt = bcrypt.gensalt()
+        password = bcrypt.hashpw(password.encode('utf-8'), salt).decode('utf-8')
         users = self.get_users()
         found = False
         for idx, _ in enumerate(users):

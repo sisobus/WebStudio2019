@@ -76,8 +76,53 @@ class UserList(Resource):
             fp.write(json.dumps(users))
         return '{} deleted successfully'.format(_id)
 
-api.add_resource(UserList, '/api/users')
 
+class ArticleList(Resource):
+    def get(self):
+        return ""
+
+    def post(self):
+        return ""
+
+    def put(self):
+        return ""
+
+    def delete(self):
+        return ""
+
+
+class CommentList(Resource):
+    def get(self):
+        return ""
+
+    def post(self):
+        return ""
+
+    def put(self):
+        return ""
+
+    def delete(self):
+        return ""
+
+
+class LikeList(Resource):
+    def get(self):
+        return ""
+
+    def post(self):
+        return ""
+
+    def put(self):
+        return ""
+
+    def delete(self):
+        return ""
+
+
+api.add_resource(UserList, '/api/users')
+api.add_resource(ArticleList, '/api/articles')
+api.add_resource(CommentList, '/api/comments')
+api.add_resource(LikeList, '/api/likes')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
