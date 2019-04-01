@@ -2,7 +2,7 @@ from flask import request
 from flask_restful import Resource
 import json, os
 import bcrypt
-
+import utils
 
 class UserList(Resource):
     def get(self):
@@ -15,7 +15,8 @@ class UserList(Resource):
         for user in users: # users 리스트를 순회하며 user 정보 가져와 스트링으로 쌓는다
             email = user['email']
             password = user['password']
-            repr_str += '[email: {}, pw: {}]'.format(email, password)
+            user_id = user['id']
+            repr_str += '[id: {}, email: {}, pw: {}]'.format(user_id, email, password)
 
         return repr_str
 
@@ -38,12 +39,11 @@ class UserList(Resource):
             if email == user['email']:
                 return '{} is aleady exists'.format(email)
 
-        id_cnt = len(users)
-        r_json['user_id'] = id_cnt + 1
+        r_json['id'] = utils.get_id(users)
         users.append(r_json) # 새로운 자원을 추가한다
         with open('users.json', 'w') as fp:
             json.dump(users,fp)
-        return 'user_id: {}, email: {}, pw: {}'.format(id_cnt+1,email, password.decode('utf-8'))
+        return 'id: {}, email: {}, pw: {}'.format(r_json['id'], email, password.decode('utf-8'))
 
 
     def put(self):
