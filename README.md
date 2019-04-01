@@ -64,7 +64,7 @@
 - json 에 대해 알기
 - flask_restful 라이브러리 설치해서 사용해보기
 - 수업시간에는 회원가입을 함께 구현해봄
-- RDB는 쓰지않고 오롯이 json형식으로 파일에 저장함
+- RDB는 쓰지않고 json형식으로 파일에 저장함
 
 ### 실습: flask_restful 라이브러리를 이용해 UserList 클래스를 구현하고 비번변경, 유저삭제 구현하기 ([answer](https://github.com/sisobus/WebStudio2019/blob/master/3_flask_2/practice/Sangkeun/answer.py))
 - git 써서 PR하기
