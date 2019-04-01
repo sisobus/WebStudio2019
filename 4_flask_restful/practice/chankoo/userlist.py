@@ -37,18 +37,18 @@ class UserList(Resource):
 
         for user in users: # 입력받은 자원이 기존 userlist에 존재하는지 검사한다
             if email == user['email']:
-                return '{} is aleady exists'.format(email)
+                return '{} is already exists'.format(email)
 
         r_json['id'] = utils.get_id(users)
         users.append(r_json) # 새로운 자원을 추가한다
         with open('users.json', 'w') as fp:
-            json.dump(users,fp)
+            json.dump(users, fp)
         return 'id: {}, email: {}, pw: {}'.format(r_json['id'], email, password.decode('utf-8'))
 
 
     def put(self):
         r_json = request.get_json()
-        email = r_json['email']
+        put_id = r_json['id']
         password = r_json['password'].encode('utf-8')
 
         if os.path.exists('users.json'):
@@ -58,7 +58,7 @@ class UserList(Resource):
             return "user list does not exist!"
 
         for user in users: # 기존의 유저정보를 순회하며
-            if user['email']==email: # 요청 데이터의 이메일과 같은 유저의
+            if user['id'] == put_id: # 요청 데이터의 이메일과 같은 유저의
                 hashed = bcrypt.hashpw(password, bcrypt.gensalt())
                 user['password'] = hashed.decode('utf-8') # 패스워드를 업데이트한다
                 with open('users.json','w') as fp:
@@ -70,19 +70,19 @@ class UserList(Resource):
 
     def delete(self):
         r_json = request.get_json()
-        email = r_json['email']
+        del_id = r_json['id']
         if os.path.exists('users.json'):
             with open('users.json', 'r') as fp:
                 users = json.loads(fp.read())
         else:
             return "user list does not exist!"
 
-        for i,user in enumerate(users):
-            if user['email'] == email:
+        for i, user in enumerate(users):
+            if user['id'] == del_id:
                 users.pop(i)
                 with open('users.json','w') as fp:
                     json.dump(users,fp)
-                return 'user {} is deleted'.format(email)
+                return 'user_id {} is deleted'.format(del_id)
 
         return 'email unmatched!'
 
