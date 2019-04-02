@@ -154,7 +154,7 @@ class CommentList(Resource):
 		return comments
 	
 	def get(self):
-		if not os.path.exists(filename):
+		if not os.path.exists(self.filename):
 			return 'File \'comments.json\' not exists.'
 		r = self.get_comments()
 		s = ''
@@ -215,7 +215,7 @@ api.add_resource(Article, '/api/articles')
 api.add_resource(CommentList, '/api/comments')
 
 if __name__ == '__main__':
-	app.run(host='0.0.0.0', port = 5012, debug=True)
+	app.run(host='0.0.0.0', port = 5000, debug=True)
 	
 
 
