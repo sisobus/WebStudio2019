@@ -39,23 +39,27 @@ class UserList(Resource) :
         email = r_json['email']
         password = r_json['password']
         r = []
+        efound = False
+        pfound = False
         if os.path.exists('users_2.json'):
             with open('users_2.json','r') as fp:
                 r = json.loads(fp.read())
         for d in r :
             if email == d['email'] :
+                efound = True
                 if password == d['password'] :
-                    return '{} is aleady exists'.format(email)
-                else :
-                   d['password'] = password
-                   with open('users_2.json','w') as fp:
-                       fp.write(json.dumps(r))
-                   return 'password is changed, password: {}'.format(password)
-            else :
-                r.append(r_json)
-                with open('users_2.json','w') as fp :
+                    pfound= True
+                d['password'] = str(password)
+                with open('users_2.json','w') as fp:
                     fp.write(json.dumps(r))
-                return 'new user, email: {}, password: {}'.format(email, password)
+        if not efound :
+            return '{} is not exist'.format(email)
+        if efound and pfound :
+            return '{} is already exist'.format(email)
+        if efound and not  pfound :
+            return '\'{}\' is your new password'.format(password)
+        with open('users_2.json', 'w') as fp:
+            fp.write(json.dumps(r))
 
     def delete(self):
         r_json = request.get_json()
