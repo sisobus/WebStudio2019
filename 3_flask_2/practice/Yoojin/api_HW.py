@@ -65,15 +65,20 @@ class UserList(Resource) :
         r_json = request.get_json()
         email = r_json['email']
         r = []
+        found = False
         if os.path.exists('users_2.json'):
             with open('users_2.json','r') as fp:
                 r = json.loads(fp.read())
         for d in r :
             if email == d['email'] :
-                r.enumerate(r_json)
+                found = True
+                del d
                 with open('users_2.json','w') as fp:
                     fp.write(json.dumps(r))
-                return 'User \'{}\'is deleted'.format(email)
+        if found :
+            return 'User \'{}\'is deleted'.format(email), r
+        if not found :
+            return '{} is not exist'.format(email)
 
 api.add_resource(UserList, '/api/users')
 
