@@ -2,9 +2,17 @@ from flask import Flask, request
 from flask_restful import Api, Resource
 import json
 import os
+from models import db, User, Article
 
+basedir = os.path.dirname(os.path.abspath(__file__))
+SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
 app = Flask(__name__)
+app.config.update({
+    'SQLALCHEMY_TRACK_MODIFICATIONS': True,
+    "SQLALCHEMY_DATABASE_URI": SQLALCHEMY_DATABASE_URI,
+})
 api = Api(app)
+db.init_app(app)
 
 def get_id(l):
     _id = 0
@@ -14,62 +22,48 @@ def get_id(l):
 
 
 class UserList(Resource):
-    filename = 'users.json'
-
     def get_users(self):
-        users = []
-        if os.path.exists(self.filename):
-            with open(self.filename, 'r') as fp:
-                users = json.loads(fp.read())
+        users = User.query.all()
         return users
 
     def get(self):
-        return json.dumps(self.get_users())
+        users = self.get_users()
+        ret = ''
+        for user in users:
+            ret += '[email: {}, password: {}]'.format(user.email, user.password)
+        return ret
 
     def post(self):
         r_json = request.get_json()
         email = r_json['email']
         password = r_json['password']
-        r = self.get_users()
-        for d in r:
-            if email == d['email']:
-                return '{} is aleady exists'.format(email)
-        _id = get_id(r)
-        r_json['id'] = _id
-        r.append(r_json)
-        with open(self.filename, 'w') as fp:
-            fp.write(json.dumps(r))
-        return 'email: {}, pw: {}'.format(email, password)
+        user = User.query.filter_by(email=email).first()
+        if user:
+            return '{} is aleady exists'.format(email)
+        new_user = User(email, password)
+        db.session.add(new_user)
+        db.session.commit()
+        return 'create email: {}, pw: {} successcully'.format(email, password)
 
     def put(self):
         r_json = request.get_json()
         _id = r_json['id']
         password = r_json['password']
-        users = self.get_users()
-        found = False
-        for idx, _ in enumerate(users):
-            if users[idx]['id'] == _id:
-                found = True
-                users[idx]['password'] = password
-        if not found:
+        user = User.query.filter_by(id=_id).first()
+        if not user:
             return '{} is not exists'.format(_id)
-        with open(self.filename, 'w') as fp:
-            fp.write(json.dumps(users))
+        user.password = password
+        db.session.commit()
         return 'update password successfully'
 
     def delete(self):
         r_json = request.get_json()
         _id = r_json['id']
-        users = self.get_users()
-        found = False
-        for idx, _ in enumerate(users):
-            if users[idx]['id'] == _id:
-                found = True
-                del users[idx]
-        if not found:
+        user = User.query.filter_by(id=_id).first()
+        if not user:
             return '{} is not exists'.format(_id)
-        with open(self.filename, 'w') as fp:
-            fp.write(json.dumps(users))
+        db.session.delete(user)
+        db.session.commit()
         return '{} deleted successfully'.format(_id)
 
 
@@ -227,4 +221,6 @@ api.add_resource(CommentList, '/api/comments')
 api.add_resource(LikeList, '/api/likes')
 
 if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()
     app.run(host='0.0.0.0', port=5000, debug=True)
