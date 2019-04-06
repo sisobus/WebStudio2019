@@ -32,3 +32,24 @@ class Article(db.Model):
         self.title = title
         self.content = content
 
+class Comment(db.Model):
+    __tablename__ = 'comment'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    article_id = db.Column(db.Integer, db.ForeignKey('article.id'))
+    content = db.Column(db.Text)
+
+    def __init__(self, user_id, article_id, content):
+        self.user_id = user_id
+        self.article_id = article_id
+        self.content = content
+
+class Like(db.Model):
+    __tablename__ = 'like'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    article_id = db.Column(db.Integer, db.ForeignKey('article.id'))
+
+    def __init__(self, user_id, article_id):
+        self.user_id = user_id
+        self.article_id = article_id
