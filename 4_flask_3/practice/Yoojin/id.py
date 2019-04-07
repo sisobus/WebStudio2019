@@ -22,17 +22,28 @@ class UserList(Resource) :
         r_json = request.get_json()
         email = r_json['email']
         password = r_json['password']
+        r_json['id']=0
+        idl=[]
+        found = False
         r = []
         if os.path.exists('users.json'):
             with open('users.json','r') as fp:
                 r = json.loads(fp.read())
+        usnum=len(r)
         for d in r :
             if email == d['email'] :
-                return '{} is aleady exists'.format(email)
-        r.append(r_json)
+                found = True
+            idl.append(d['id'])
+        if found : 
+            return '{} is aleady exists'.format(email)
+        else :
+            r_json['id'] = usnum
+            if usnum>1:
+                r_json['id']=max(idl)+1 
+            r.append(r_json)
         with open('users.json','w') as fp :
             fp.write(json.dumps(r))
-        return 'email: {}, password: {}'.format(email, password)
+        return 'email: {}, password: {}, id: {}'.format(email, password,r_json['id'])
 
     def put(self):
         r_json = request.get_json()
