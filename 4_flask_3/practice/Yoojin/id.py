@@ -6,6 +6,9 @@ import os
 app = Flask(__name__)
 api = Api(app)
 
+"""
+"""
+
 class UserList(Resource) :
     def get(self) :
         if not os.path.exists('users.json') :
@@ -98,8 +101,76 @@ class UserList(Resource) :
         if not found :
             return '{} is not exist'.format(email)
 
+"""
+"""
+
+class ArticleList(Resource) :
+    filename = 'articles.json'
+
+    def get_articles(self):
+        ret = []
+        if os.path.exists('articles.json'):
+            with open('articles.json','r') as fp:
+                ret = json.loads(fp.read())
+        return ret
+
+    def get_uid(self):
+        user = []
+        if os.path.exists('users.json'):
+            with open('users.json','r') as fp :
+                user = json.loads(fp.read())
+
+    
+    def get(self):
+        return json.dumps(self.get_articles())
+
+    def post(self):
+        r_json = request.get_json()
+        email = r_json['user_id']
+        title = r_json['title']
+        content = r_json['content']
+        r_json['arid'] = 0
+        r_json['uid'] = 0
+        uid = 0
+        users = self.get_uid()
+        articles = self.get_articles()
+        idl = []
+        arnum = len(articles)
+        found = False
+        
+        for d in articles :
+            idl.append(d['arid'])
+        
+        r_json['arid']=arnum
+        if arnum>1:
+            r_json['arid'] = max(idl)+1
+
+        for d in users :
+            if email == d['email'] :
+                found = True
+                uid = d['id']
+        r_json['uid']=uid
+
+        if not found :
+            return "Sorry, {} is not our user".format(email)
+        
+        articles.append(r_json)
+        with opein('articles.json','w') as fp :
+            fp.write(json.dumps(articles))
+        return "write successfully, title: {}, content: {}".format(title,content)
+
+    def put(self):
+        r_json = request.get_json()
+        arid = r_json['arid']
+        title = r_json['title']
+        content = r_json['content']
+        articles = self.get_articles()
+        
+
+
 
 api.add_resource(UserList, '/api/users')
+api.add_resource(ArticleList, '/api/articles')
 
 if __name__=='__main__':
     app.run(host='0.0.0.0', port=5012, debug=True)
