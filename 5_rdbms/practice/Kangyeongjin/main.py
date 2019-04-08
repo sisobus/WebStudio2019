@@ -7,7 +7,7 @@ from articlelist import ArticleList
 from commentlist import CommentList
 from articlehascommentlist import ArticleHasCommentList
 
-from models import db, User, Article, Comment
+from models import db
 
 
 basedir = os.path.dirname(os.path.abspath(__file__))
