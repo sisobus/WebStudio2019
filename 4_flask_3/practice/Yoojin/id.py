@@ -130,17 +130,12 @@ class ArticleList(Resource) :
         content = r_json['content']
         r_json['arid'] = 0
         r_json['uid'] = 0
-        r_json['arid']=0
-        r_json['uid']=0
         uid = 0
-        users = self.get_uid()
-        articles = self.get_articles()
         users = self.get_uid()
         """
         get user id & email
         """
         idl = []
-        arnum = len(articles)
         found = False
 
         """
@@ -201,7 +196,7 @@ class ArticleList(Resource) :
         for a in articles :
             if a['arid'] == arid :
                 afound = True
-                if a['uid'] == uid :
+                if a['user_id'] == uid :
                     ufound = True
                     a['title']=title
                     a['content']=content
