@@ -115,12 +115,11 @@ class ArticleList(Resource) :
         return ret
 
     def get_uid(self):
-        user = []
+        gid = []
         if os.path.exists('users.json'):
-            with open('users.json','r') as fp :
-                user = json.loads(fp.read())
+            with open('users.json', 'r') as fp:
+                gid = json.loads(fp.read())
 
-    
     def get(self):
         return json.dumps(self.get_articles())
 
@@ -129,43 +128,77 @@ class ArticleList(Resource) :
         email = r_json['user_id']
         title = r_json['title']
         content = r_json['content']
-        r_json['arid'] = 0
-        r_json['uid'] = 0
+        r_json['arid']=0
+        r_json['uid']=0
         uid = 0
-        users = self.get_uid()
-        articles = self.get_articles()
+        users = self.get_uid() 
+        """
+        get user id & email
+        """
         idl = []
-        arnum = len(articles)
         found = False
-        
+        """
+        to check if the email is user
+        """
+        articles = self.get_articles()
+        arnum = len(articles)
+        """
+        to start first id """
+
         for d in articles :
             idl.append(d['arid'])
-        
-        r_json['arid']=arnum
-        if arnum>1:
-            r_json['arid'] = max(idl)+1
+
+        r_json['arid'] = arnum
+
+        if arnum>1 :
+            r_json['arid'] = max(idl) + 1
 
         for d in users :
             if email == d['email'] :
                 found = True
                 uid = d['id']
+
         r_json['uid']=uid
 
         if not found :
             return "Sorry, {} is not our user".format(email)
         
         articles.append(r_json)
-        with opein('articles.json','w') as fp :
-            fp.write(json.dumps(articles))
-        return "write successfully, title: {}, content: {}".format(title,content)
+        with open('articles.json','w') as fp :
+            fp.write(json.dumps(r))
 
-    def put(self):
-        r_json = request.get_json()
-        arid = r_json['arid']
-        title = r_json['title']
-        content = r_json['content']
-        articles = self.get_articles()
-        
+def put(self):
+    r_json = request.get_json()
+    email = r_json['user id']
+    title = r_json['title']
+    content = r_json['eontent']
+    arid = r_json['arid']
+    uid = 0
+    ufound = False
+    afound = False
+
+    articles = self.get_articles()
+    users = self.get_uid()
+    
+    for d in users :
+        if email == d['email'] :
+            uid = d['id'] 
+
+    for a in articles :
+        if a['arid'] == arid :
+            afound = True
+            if a['uid'] == uid :
+                ufound = True
+                a['title']=title
+                a['content']=content
+    if not afound :
+        return "There is no article \"{}\"".format(arid)
+    elif not ufound :
+        return "User id is not same"
+    else :
+        "update successfully, title: {}, content: {}".format(title,contect)
+    with open('articles.json','w') as fp :
+        fp.write(json.dumps(articles))
 
 
 
