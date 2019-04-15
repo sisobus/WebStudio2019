@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+  </head>
+  <body>
+    <div class="navbar-wrapper">
+      <div class="navbar-container">
+        <p id="logo">LOGO</p>
+      </div>
+    </div>
+    <div class="main-wrapper">
+      <div class="main-container">
+        <div class="article-container" id="article-container">
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let requestOptions = {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    }
+    const handleResponse = response => {
+      return response.text().then(text => {
+        const data = text && JSON.parse(text)
+        if (!response.ok) {
+          if (response.status === 401) {
+            // auto logout if 401 response returned from api
+            return Promise.reject(response)
+          }
+          const error = (data && data.message) || response.statusText
+          return Promise.reject(error)
+        }
+
+        return data
+      })
+    }
+    fetch('http://0.0.0.0:5000/api/users', requestOptions)
+      .then(handleResponse)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+/*
+    requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: "mytest@test.com",
+        password: "mytest"
+      })
+    }
+    fetch('http://0.0.0.0:5000/api/users', requestOptions)
+      .then(handleResponse)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+*/
+    fetch('http://0.0.0.0:5000/api/articles', requestOptions)
+      .then(handleResponse)
+      .then(response => {
+        response = JSON.parse(response);
+        let html = "";
+        for (let i = 0; i < response.length; i++) {
+          html += `<div class="article" id="article-${response[i].id}">`;
+          html += `<h1 class="title">${response[i].title}</h1>`;
+          html += `<p class="author">${response[i].author}</p>`;
+          html += `<p class="content">${response[i].content}</p>`;
+          html += `</div>`;
+        }
+        const articleContainer = document.getElementById('article-container');
+        articleContainer.insertAdjacentHTML('beforeEnd', html);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
+  </script>
+</html>
+
