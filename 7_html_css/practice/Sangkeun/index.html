@@ -3,31 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>test</title>
-<style>
-  h1 {
-    font-size: 20pt;
-    color: gray;
-  }
-  p {
-    color: #123456;
-    font-size: 12pt;
-    margin: 0;
-  }
-  img {
-    width: 200px;
-    height: 200px;
-    margin: 10px;
-  }
-  input {
-    height: 20px;
-  }
-  #submit-button {
-    background: #f08080;
-  }
-  .description {
-    font-size: 11pt;
-  }
-</style>
+    <link rel="stylesheet" type="text/css" href="./style.css">
   </head>
   <body>
     <div class="my-information">
@@ -37,8 +13,9 @@
     </div>
     <img id="github-image" src="https://avatars3.githubusercontent.com/u/3329885">
     <form action="/api/login" type="post">
-      <input class="input-text" id="input-email" type="text" name="email">
-      <input class="input-text" id="input-password" type="password" name="password">
+      <p class="description">login form!!!!</p>
+      <input class="input-text email" id="input-email" type="text" name="email">
+      <input class="input-text password" id="input-password" type="password" name="password">
       <input id="submit-button" type="submit" value="login">
     </form>
   </body>
