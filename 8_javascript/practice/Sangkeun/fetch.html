@@ -38,7 +38,7 @@
         return data
       })
     }
-    fetch('http://0.0.0.0:5000/api/users', requestOptions)
+    fetch('http://0.0.0.0:5002/api/users', requestOptions)
       .then(handleResponse)
       .then(response => {
         console.log(response);
@@ -64,25 +64,54 @@
         console.log(error);
       });
 */
-    fetch('http://0.0.0.0:5000/api/articles', requestOptions)
+    fetch('http://0.0.0.0:5002/api/articles', requestOptions)
       .then(handleResponse)
       .then(response => {
         response = JSON.parse(response);
         let html = "";
         for (let i = 0; i < response.length; i++) {
           html += `<div class="article" id="article-${response[i].id}">`;
-          html += `<h1 class="title">${response[i].title}</h1>`;
+          html += `<h1 class="title" id="title-${response[i].id}">${response[i].title}</h1>`;
           html += `<p class="author">${response[i].author}</p>`;
           html += `<p class="content">${response[i].content}</p>`;
           html += `</div>`;
         }
         const articleContainer = document.getElementById('article-container');
         articleContainer.insertAdjacentHTML('beforeEnd', html);
+		const titleElement = document.getElementsByClassName('title');
+			for (let i = 0; i < titleElement.length; i++) {
+				console.log(titleElement[i]);
+				titleElement[i].addEventListener('click', (e) => {
+					const _id = e.target.id.split('-')[1];
+					requestOptions = {
+						method: 'DELETE',
+						headers: { 'Content-Type': 'application/json' },
+						body: JSON.stringify( {
+							id : _id
+						})
+					}
+						
+					fetch('http://0.0.0.0:5002/api/articles', requestOptions)
+					.then(handleResponse)
+					.then(response => {
+							console.log(response);
+							window.location.reload();
+							})
+					.catch(error => {
+							console.log(error);
+					})
+
+					alert(e.target.innerText + 'is deleted.');
+				});
+			}
+
       })
       .catch(error => {
         console.log(error);
       });
-
+	
+	
+			
   </script>
 </html>
 
