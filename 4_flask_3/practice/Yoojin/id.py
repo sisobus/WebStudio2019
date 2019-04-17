@@ -169,7 +169,7 @@ class ArticleList(Resource) :
             return "Sorry, {} is not our user".format(email)
 
         articles.append(r_json)
-        with opein('articles.json','w') as fp :
+        with open('articles.json','w') as fp :
             fp.write(json.dumps(articles))
         return "write successfully, title: {}, content: {}".format(title,content)
         with open('articles.json','w') as fp :
@@ -181,7 +181,6 @@ class ArticleList(Resource) :
         arid = r_json['arid']
         title = r_json['title']
         content = r_json['content']
-        articles = self.get_articles()  
         uid = 0
         ufound = False
         afound = False
@@ -205,7 +204,7 @@ class ArticleList(Resource) :
         elif not ufound :
             return "User id is not same"
         else :
-            "update successfully, title: {}, content: {}".format(title,contect)
+            return "update successfully, title: {}, content: {}".format(title,contect)
         with open('articles.json','w') as fp :
             fp.write(json.dumps(articles))
 

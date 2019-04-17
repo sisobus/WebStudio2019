@@ -80,8 +80,9 @@ class UserList(Resource) :
         if not found :
             return '{} is not exist'.format(email)
 
+
 api.add_resource(UserList, '/api/users')
 
-if __name__=='__main_ email = r_json['email']':
-    app.run(host='0.i0.0.0', port=5012, debug=True)
-                                                   
+if __name__=='__main__':
+    app.run(host='0.0.0.0', port=5012, debug=True)
+
