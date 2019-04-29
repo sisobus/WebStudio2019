@@ -10,3 +10,4 @@ __pycache__/*
 *.pyc
 data/*
 **/data/*
+app.db
