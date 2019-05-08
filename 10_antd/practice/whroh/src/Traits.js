@@ -1,14 +1,16 @@
 import React from 'react'
-import { Checkbox } from 'antd'
+import { Card, Checkbox, Typography } from 'antd'
+import { StyledSection } from './styles'
 
 const CheckboxGroup = Checkbox.Group
+const Text = Typography.Text
 
 function onChange(checkedValues) {
   console.log('checked = ', checkedValues)
 }
 
 const options = [
-  { label: 'Smart', value: 'Smart', disabled: true },
+  { label: 'Smart', value: 'Smart' },
   { label: 'Intelligent', value: 'Intelligent' },
   { label: 'Sexy', value: 'Sexy' },
   { label: 'Clever', value: 'Clever' },
@@ -22,12 +24,18 @@ const options = [
 
 export default () => {
   return (
-    <div>
-      <CheckboxGroup
-        options={options}
-        defaultValue={['Pear']}
-        onChange={onChange}
-      />
-    </div>
+    <StyledSection>
+      <Card
+        title="우현의 특성에 해당되는 항목은 모두 고르시오"
+        extra={<Text type="secondary">5점</Text>}
+        className="card"
+      >
+        <CheckboxGroup
+          options={options}
+          defaultValue={['Pear']}
+          onChange={onChange}
+        />
+      </Card>
+    </StyledSection>
   )
 }
