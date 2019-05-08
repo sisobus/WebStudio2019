@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card, Checkbox, Typography } from 'antd'
-import { StyledSection } from './styles'
+import { StyledTraitSection } from './styles'
 
 const CheckboxGroup = Checkbox.Group
 const Text = Typography.Text
@@ -24,11 +24,10 @@ const options = [
 
 export default () => {
   return (
-    <StyledSection>
+    <StyledTraitSection>
       <Card
         title="우현의 특성에 해당되는 항목은 모두 고르시오"
         extra={<Text type="secondary">5점</Text>}
-        className="card"
       >
         <CheckboxGroup
           options={options}
@@ -36,6 +35,6 @@ export default () => {
           onChange={onChange}
         />
       </Card>
-    </StyledSection>
+    </StyledTraitSection>
   )
 }
