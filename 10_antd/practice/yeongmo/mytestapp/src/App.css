@@ -1,12 +1,27 @@
 @import '~antd/dist/antd.css';
 
-.App {
-  text-align: center;
+.ant-steps-item-process .ant-steps-item-icon{
+    background: #52c41a;
+
 }
 
-.Card {
-    text-align: center;
 
+.ant-spin-dot-spin{
+    animation: antRotate 1.2s infinite ease-in-out;
+
+}
+
+.ant-rate{
+    color: #096dd9;
+}
+
+.ant-rate-star-first, .ant-rate-star-second{
+    color: rgba(24, 144, 255, 0.2);
+
+}
+
+.App {
+  text-align: center;
 }
 
 .App-logo {
