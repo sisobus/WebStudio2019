@@ -86,6 +86,11 @@ class ReviewList(Resource):
         new_review = Review(moview_id, user_id, content, star)
         #여기 해당하는 Movie에 날짜 업데이트 해주고,
         #별점, 총 인원 수 업데이트 해 줘야 함
+        movie = Movie.query.filter_by(id=movie_id).first()
+        movie.last_update = dateTime.now()
+        movie.total_star = movie.total_star + star
+        movie.people_num = movie.people_num + 1
+
         db.session.add(new_review)
         db.session.commit()
         return 'create {}+{} successfully'.format(movie_id, user_id)
@@ -98,10 +103,14 @@ class ReviewList(Resource):
         review = Review.query.filter_by(id=_id).first()
         if not review:
             return '{} is not exists'.format(_id)
-        review.content = content
-        review.star = star
         #여기 해당하는 Movie에 날짜 업데이트 해 주고
         #별점 업데이트 해 줘야 함
+        movie = Movie.query.filter_by(id=review.movie_id).first()
+        movie.last_update = dateTime.now()
+        movie.total_star = movie.total_star - review.star + star
+        
+        review.content = content
+        review.star = star
         db.session.commit()
         return 'update successfully'
 
@@ -113,6 +122,11 @@ class ReviewList(Resource):
             return '{} is not exists'.fomat(_id)
         #해당하는 Movie에 날짜 업데이트 해주고
         #별점 업데이트 해 줘야 함 
+        movie = Movie.query.filter_by(id=review.movie_id).first()
+        movie.last_update = dateTime.now()
+        movie.total_star = movie.total_star - review.star
+        movie.people_num = movie.people_num - 1
+
         db.session.delete(user)
         db.sesssion.commit()
         return '{} deleted successfully'.format(_id)
