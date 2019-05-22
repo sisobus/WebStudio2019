@@ -20,7 +20,7 @@ def serializer(l):
     ret = []
     for row in l:
         ret.append(json.loads(row.serialize()))
-    return json.dumps(ret)
+    return json.dumps(ret, ensure_ascii=False)
 
 class MovieList(Resource):
     def get_movies(self):
@@ -66,7 +66,7 @@ class MovieList(Resource):
 
 
 class ReviewList(Resource):
-    def get_revies(self):
+    def get_reviews(self):
         reviews = Review.query.all()
         return reviews
 
@@ -80,7 +80,8 @@ class ReviewList(Resource):
         user_id = r_json['user_id']
         content = r_json['content']
         star = r_json['star']
-        review = Review.query.filter_by(movie_id=movie_id & user_id=user_id).first() #여기 이렇게 2개 쓰는거 맞나
+        review = Review.query.filter_by(movie_id=movie_id, user_id=user_id).first() 
+        #여기 이렇게 2개 쓰는거 맞나
         if review : 
             return '{}+{} is already exists'.format(movie_id, user_id)
         new_review = Review(moview_id, user_id, content, star)
@@ -148,11 +149,11 @@ class UserList(Resource):
         password = r_json['password']
         user = User.query.filter_by(account=account).first()
         if user:
-            return '{} is aleady exists'.format(email)
+            return '{} is aleady exists'.format(account)
         new_user = User(account, password)
         db.session.add(new_user)
         db.session.commit()
-        return 'create account: {}, pw: {} successcully'.format(email, password)
+        return 'create account: {}, pw: {} successcully'.format(account, password)
 
     def put(self):
         r_json = request.get_json()
