@@ -1,0 +1,15 @@
+.article {
+  margin-top: 20px;
+  border: 1px solid #d1d5da;
+  padding: 10px;
+  width: 100%;
+}
+.article .title {
+}
+.article .author {
+  color: gray;
+  font-size: 10pt;
+}
+.article .content {
+  margin-top: 10px;
+}
