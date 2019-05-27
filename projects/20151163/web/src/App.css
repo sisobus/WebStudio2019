@@ -12,8 +12,32 @@
     flex-direction: column;
 }
 
+.ant-layout-header{
+    display: flex;
+    justify-content: center;
+    padding: 10px 40px 0px 40px;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+}
+
+.anticon-smile {
+    line-height: 64px;
+}
+
+.ant-menu-horizontal{ 
+    display: flex;
+    justify-content: center;
+    width:100%;
+}
+
+
+.logo{
+}
+
 .UpperMenu{
-    text-align: center;
+    widows: 100%;
+    display: flex;
     /*여기 div로 나눠줘서 flex로 조절하고 싶다
     justify-content: space-between;*/
 }
@@ -47,4 +71,14 @@ h1.introduction {
     color: rgb(51, 51, 51);
     font-weight: 600;
     font-style: normal;;
+}
+
+.picture-blocks{
+    display: inline-flex;
+    height:900px;
+}
+
+.item{
+    display:block;
+    width:100%;
 }
