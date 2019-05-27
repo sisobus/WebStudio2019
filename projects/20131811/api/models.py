@@ -6,6 +6,11 @@ import json
 
 db = SQLAlchemy()
 
+
+def myconverter(o):
+    if isinstance(o, datetime):
+        return o.__str__()
+
 class User(db.Model):
     __tablename__ = 'user'
     __table_args__ = {'mysql_collate': 'utf8_general_ci'}
@@ -45,9 +50,9 @@ class Movie(db.Model):
     def __init__(self, name, photo):
         self.name = name
         self.photo = photo
-        last_update = datetime.now() #현재시간
-        total_star = 0
-        people_num = 0
+        self.last_update = datetime.now() #현재시간
+        self.total_star = 0
+        self.people_num = 0
 
     def serialize(self):
         return json.dumps({
@@ -57,7 +62,7 @@ class Movie(db.Model):
             'total_star' : self.total_star,
             'people_num' : self.people_num,
             'last_update' : self.last_update
-        })
+        },default=myconverter)
     
 class Review(db.Model):
     __tablename__ = 'review'
@@ -69,10 +74,10 @@ class Review(db.Model):
     content = db.Column(db.Text)
     star = db.Column(db.Integer)
 
-    movie = relationship('Movie', backref=backref('reviews', order_by=id))
+    movie = relationship('Movie', backref=backref('movies', order_by=id))
     user = relationship('User', backref=backref('users', order_by=id))
 
-    def __init(self, movie_id, user_id, content, star):
+    def __init__(self, movie_id, user_id, content, star):
         self.movie_id = movie_id
         self.user_id = user_id
         self.content = content

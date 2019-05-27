@@ -1,6 +1,8 @@
 from flask import Flask, request
 from flask_restful import Api, Resource
 from flask_cors import CORS
+from datetime import datetime
+
 import json
 import os
 from models import db, User, Movie, Review
@@ -15,6 +17,7 @@ app.config.update({
 cors = CORS(app)
 api = Api(app)
 db.init_app(app)
+
 
 def serializer(l):
     ret = []
@@ -84,17 +87,20 @@ class ReviewList(Resource):
         #여기 이렇게 2개 쓰는거 맞나
         if review : 
             return '{}+{} is already exists'.format(movie_id, user_id)
-        new_review = Review(moview_id, user_id, content, star)
+        new_review = Review(movie_id, user_id, content, star)
         #여기 해당하는 Movie에 날짜 업데이트 해주고,
         #별점, 총 인원 수 업데이트 해 줘야 함
         movie = Movie.query.filter_by(id=movie_id).first()
-        movie.last_update = dateTime.now()
+        if movie is None :
+            return 'movie {} is not exist'.format(movie_id)
+        movie.last_update = datetime.now()
         movie.total_star = movie.total_star + star
         movie.people_num = movie.people_num + 1
 
         db.session.add(new_review)
         db.session.commit()
         return 'create {}+{} successfully'.format(movie_id, user_id)
+        
 
     def put(self):
         r_json = request.get_json()
@@ -103,11 +109,11 @@ class ReviewList(Resource):
         star = r_json['star']
         review = Review.query.filter_by(id=_id).first()
         if not review:
-            return '{} is not exists'.format(_id)
+            return 'review {} is not exists and failled put '.format(_id)
         #여기 해당하는 Movie에 날짜 업데이트 해 주고
         #별점 업데이트 해 줘야 함
         movie = Movie.query.filter_by(id=review.movie_id).first()
-        movie.last_update = dateTime.now()
+        movie.last_update = datetime.now()
         movie.total_star = movie.total_star - review.star + star
         
         review.content = content
@@ -120,16 +126,16 @@ class ReviewList(Resource):
         _id = r_json['id']
         review=  Review.query.filter_by(id=_id).first()
         if not review:
-            return '{} is not exists'.fomat(_id)
+            return 'review {} is not exists and failed delete'.format(_id)
         #해당하는 Movie에 날짜 업데이트 해주고
         #별점 업데이트 해 줘야 함 
         movie = Movie.query.filter_by(id=review.movie_id).first()
-        movie.last_update = dateTime.now()
+        movie.last_update = datetime.now()
         movie.total_star = movie.total_star - review.star
         movie.people_num = movie.people_num - 1
 
-        db.session.delete(user)
-        db.sesssion.commit()
+        db.session.delete(review)
+        db.session.commit()
         return '{} deleted successfully'.format(_id)
     
 
