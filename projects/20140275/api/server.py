@@ -73,15 +73,19 @@ class ArticleList(Resource):
 
     def get(self):
         articles = self.get_articles()
+        for article in articles:
+            print(article.comments)
+        print(articles[0].comments[0].content)
+        print(articles[0].comments[0].user.email)
         return serializer(articles)
 
     def post(self):
         r_json = request.get_json()
-        user_id = r_json['user_id']
         title = r_json['title']
         content = r_json['content']
+        image = r_j.son['image']
 
-        new_article = Article(user_id, title, content)
+        new_article = Article(title, content, image)
         db.session.add(new_article)
         db.session.commit()
         return "write successfully"
