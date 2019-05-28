@@ -3,9 +3,7 @@ import React, { Component } from 'react';
 import { Menu, Icon } from 'antd';
 
 const { SubMenu } = Menu;
-function handleClick(e) {
-  console.log('click', e);
-}
+
 
 class Sidebar extends Component {
   rootSubmenuKeys = ['sub1', 'sub2', 'sub4'];
@@ -13,6 +11,7 @@ class Sidebar extends Component {
   state = {
     openKeys: ['sub1'],
   };
+
   onOpenChange = openKeys => {
     const latestOpenKey = openKeys.find(key => this.state.openKeys.indexOf(key) === -1);
     if (this.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
@@ -30,7 +29,7 @@ class Sidebar extends Component {
         mode="inline"
         openKeys={this.state.openKeys}
         onOpenChange={this.onOpenChange}
-        style={{ width: 256 }}
+        //style={{ width: 256 }}
       >
         <SubMenu
           key="sub1"
