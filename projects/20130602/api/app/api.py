@@ -1,11 +1,10 @@
 from flask import request, make_response
 from flask_restful import Resource
-from models import db, User, Daily, Weather
-from utils import serializer
+from .models import db, User, Daily, Weather
+from .utils import serializer
 import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
-import requests
-
+from .weather import query_now, query_5day
 
 class Users(Resource):
     # method_decorators = {
@@ -46,18 +45,21 @@ class Users(Resource):
         return 'deleted successfully'
 
 
-def req_weather_by_city(city_name):
-    base = 'http://api.openweathermap.org/data/2.5/weather?q='
-    key = '60efa98fd883262c59309ae9e81183a4'
-    url = base + city_name + "&APPID=" + key
-    print(requests.get(url))
+class WeatherNow(Resource):
+    def get(self):
+        args = request.args
+        print(args)
+        city = args['city']
+        country = args['country']
+        ret = query_now(city, country)
+        return ret
 
 
-
-
-
-
-
+class Weather5day(Resource):
+    def get(self):
+        args = request.args
+        print(args)
+        return query_5day(args['city'], args['country'])
 
 
 
