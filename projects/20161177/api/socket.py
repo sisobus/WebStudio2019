@@ -2,9 +2,12 @@ import os
 from flask import Flask, render_template, session
 from flask_socketio import SocketIO, emit
 
-app = Flask(__name__)
-app.secret_key = "secret"
-socketio = SocketIO(app)
+class MySocketIO:
+	def __init__(self, app):
+		self.socketio = SocketIO(app)
+		self.app = app
+	def run(self):
+		self.socketio.run(self.app)
 
 user_no = 1
 
@@ -18,7 +21,7 @@ def before_request():
 		session['username'] = 'user'+str(user_no)
 		user_no += 1
 
-@app.route('/')
+@app.route('/main')
 def index():
 	return render_template('index.html')
 
@@ -38,5 +41,3 @@ def request(message):
 	print('request')
 	emit("response", {'data': message['data'], 'username': session['username']}, broadcast = True)
 
-if __name__ == '__main__':
-	socketio.run(app)
