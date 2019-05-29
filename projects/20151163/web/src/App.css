@@ -80,5 +80,14 @@ h1.introduction {
 
 .item{
     display:block;
-    width:100%;
+    max-width: 100%;
+
+}
+
+.ant-menu-horizontal {
+    border-bottom: 0;
+}
+
+.ant-layout-header {
+    border-bottom: 1px solid #e8e8e8;
 }

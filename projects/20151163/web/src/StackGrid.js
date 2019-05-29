@@ -21,6 +21,12 @@ class MyComponent extends Component {
 				<div className="item">
 					<img src="/images/IMG_4803.JPG" alt="A Smiling Kid" height="300px"></img>
 				</div>
+
+				<div className="item">
+					<img src="/images/IMG_4804.JPG" alt="A Smiling Kid" height="300px"></img>
+				</div>	
+				
+
 			</div>
 		</StackGrid>
 	  );
