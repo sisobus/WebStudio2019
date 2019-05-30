@@ -34,6 +34,10 @@ class MovieList(Resource):
     
     def get(self):
         order_option = request.args.get('order')
+        movie_id = request.args.get('movie_id')
+        if movie_id is not None:
+            movie = Movie.query.filter_by(id=movie_id).first()
+            return json.dumps(json.loads(movie.serialize()), ensure_ascii=False)
         if order_option == 'date':
             movies = Movie.query.order_by(desc(Movie.last_update)).all()
         elif order_option == 'star':
