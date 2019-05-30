@@ -3,6 +3,8 @@ from flask_restful import Api, Resource
 from flask_cors import CORS
 from datetime import datetime
 
+from sqlalchemy import desc
+
 import json
 import os
 from models import db, User, Movie, Review
@@ -31,7 +33,13 @@ class MovieList(Resource):
         return movies
     
     def get(self):
-        movies = self.get_movies()
+        order_option = request.args.get('order')
+        if order_option == 'date':
+            movies = Movie.query.order_by(desc(Movie.last_update)).all()
+        elif order_option == 'star':
+            movies = Movie.query.order_by(desc(Movie.total_star/Movie.people_num)).all()
+        else :
+            movies = self.get_movies()
         return serializer(movies)
 
     def post(self):
@@ -74,7 +82,11 @@ class ReviewList(Resource):
         return reviews
 
     def get(self):
-        reviews = self.get_reviews()
+        movie_id = request.args.get('movie_id')
+        if movie_id is not None:
+            reviews = Review.query.filter_by(movie_id=movie_id).order_by(desc(Review.id)).all()
+        else:
+            reviews = self.get_reviews()
         return serializer(reviews)
 
     def post(self):
