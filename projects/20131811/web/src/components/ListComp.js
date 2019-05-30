@@ -8,8 +8,6 @@ const IconText = ({ type, text }) => (
     </span>
 );
 
-
-
 class ListComp extends Component {
     //제일 처음 실행
     constructor(props) {
