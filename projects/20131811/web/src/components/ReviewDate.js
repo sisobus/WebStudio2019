@@ -12,7 +12,7 @@ class ReviewDate extends Component {
     }
     //일단 그냥 전체 리스트 불러옴.
     //다음에 날짜순으로 정렬하게 불러와야 함 
-    fetch('http://localhost:5000/api/movies')
+    fetch('http://localhost:5000/api/movies?order=date')
       .then(response => response.json())
       .then(rsp => this.setState({ movies: JSON.parse(rsp) }))
   }

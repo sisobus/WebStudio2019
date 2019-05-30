@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { List, Avatar, Icon } from 'antd';
+import { List, Avatar, Icon, Rate } from 'antd';
+
 
 const IconText = ({ type, text }) => (
     <span>
@@ -39,10 +40,10 @@ class ListComp extends Component {
                         <List.Item
                             key={item.name}
                             actions={[
-                                '이부분에 별점 넣기',
-                                <IconText type="star-o" text="156" />,
-                                <IconText type="like-o" text="156" />,
-                                <IconText type="message" text="2" />,
+                                //'이부분에 총 별점과 사람수 넣기',
+                                <IconText type="star-o" text={item.total_star} />,
+                                //<IconText type="like-o" text="156" />,
+                                <IconText type="message" text={item.people_num} />,
                             ]}
                             extra={
                                 <img
@@ -53,11 +54,11 @@ class ListComp extends Component {
                             }
                         >
                             <List.Item.Meta
-                                avatar={<Avatar src={item.avatar} />}
+                                //avatar={<Avatar src={item.avatar} />}
                                 title={<a href={item.href}>{item.title}</a>}
                                 description={item.name}
                             />
-                            별 넣기
+                            <Rate disabled defaultValue={item.total_star/item.people_num} />
                         </List.Item>
                     )}
                 />
