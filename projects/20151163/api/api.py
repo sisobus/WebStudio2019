@@ -1,6 +1,7 @@
-from flask import Flask, request
-from flask_restful import Api
-from models import db, User, Article
+from flask import Flask, request, jsonify
+from flask_restful import Api, Resource
+from flask_cors import CORS
+from models import db, User, Article, Comment, Like, ArticleSchema, UserSchema,CommentSchema, LikeSchema
 import os
 from UserList import UserList
 from ArticleList import ArticleList
@@ -14,9 +15,19 @@ app.config.update({
     'SQLALCHEMY_TRACK_MODIFICATIONS': True,
     "SQLALCHEMY_DATABASE_URI": SQLALCHEMY_DATABASE_URI,
 })
+
+cors = CORS(app)
 api = Api(app)
 db.init_app(app)
 
+user_schema = UserSchema()
+users_schema = UserSchema(many=True)
+article_schema = ArticleSchema()
+articles_schema = ArticleSchema(many=True)
+comment_schema = CommentSchema()
+comments_schema = CommentSchema(many=True)
+like_schema = LikeSchema()
+likes_schema = LikeSchema(many=True)
 
 api.add_resource(UserList, '/api/users')
 api.add_resource(ArticleList, '/api/articles')

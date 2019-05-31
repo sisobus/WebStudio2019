@@ -1,6 +1,8 @@
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug import generate_password_hash, check_password_hash
 from sqlalchemy.orm import relationship, backref
+import json
+from marshmallow_sqlalchemy import ModelSchema
 
 db = SQLAlchemy()
 
@@ -20,6 +22,10 @@ class User(db.Model):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
+class UserSchema(ModelSchema):
+    class Meta:
+        model = User
+
 class Article(db.Model):
     __tablename__ = 'article'
     id = db.Column(db.Integer, primary_key=True)
@@ -31,6 +37,11 @@ class Article(db.Model):
         self.user_id = user_id
         self.title = title
         self.content = content
+
+class ArticleSchema(ModelSchema):
+    class Meta:
+        model = Article
+
 
 class Comment(db.Model):
 	__tablename__ = 'comment'
@@ -44,6 +55,10 @@ class Comment(db.Model):
 		self.article_id = article_id
 		self.content = content
 
+class CommentSchema(ModelSchema):
+    class Meta:
+        model = Comment
+
 class Like(db.Model):
 	__tablename__ = 'like'
 	id =db.Column(db.Integer, primary_key=True)
@@ -53,3 +68,7 @@ class Like(db.Model):
 	def __init__(self, user_id, article_id):
 		self.user_id = user_id
 		self.article_id = article_id
+
+class LikeSchema(ModelSchema):
+    class Meta:
+        model = Like
