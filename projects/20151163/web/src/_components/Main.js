@@ -1,8 +1,8 @@
 import React from 'react';
 import '../App.css';
-import PicturesWall from "../PicturesWall";
+import MenuBar from '../Menu';
 import EditableTagGroup from "../EditableTagGroup";
-import { Layout, Menu, Icon } from 'antd';
+import { Layout } from 'antd';
 import MyComponent from '../StackGrid'
 
 /*import { NavLink } from 'react-router-dom'*/
@@ -16,15 +16,7 @@ class MainPage extends React.Component{
 			<div id="Main">
 				<Layout className="layout">
 					<Header>
-						<div className="logo"/><Icon type="smile"/>
-							<Menu
- 	       					mode="horizontal"
-        					defaultSelectedKeys={['2']}
-        					style={{ lineHeight: '64px' }}>
-								<Menu.Item key= "1" >All</Menu.Item>
-								<Menu.Item key="2">Upload</Menu.Item>
-								<Menu.Item key="3">Request Enroll</Menu.Item>
-      						</Menu>
+						<MenuBar/>
 					</Header>
 
 					<Content style={{ padding: '110px 30px' }}>
@@ -48,9 +40,6 @@ class MainPage extends React.Component{
 							<Articles></Articles>*/}
 							<div className="StackGrid">
 								<MyComponent/>
-							</div>
-							<div className="PicturesWall">
-								<PicturesWall/>
 							</div>
 						</div>
 					</Content>

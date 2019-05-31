@@ -16,7 +16,7 @@ function App() {
 			<Router>
 				<Route path = "/" exact component = { MainPage } />
 				<Route path = "/Upload" component = { Upload } />
-				<Route path = "/Request-Enroll" component=  { Request_Enroll } /> 
+				<Route path = "/Request_Enroll" component=  { Request_Enroll } /> 
 			</Router>
 		</div>
 	)
