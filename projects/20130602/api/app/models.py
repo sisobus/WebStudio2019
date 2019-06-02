@@ -7,10 +7,11 @@ db = SQLAlchemy()
 
 class User(db.Model):
     __tablename__ = 'user'
+    __table_args__ = {'mysql_collate': 'utf8_general_ci'}
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
-    pwd = db.Column(db.String(80))
+    password = db.Column(db.String(80))
 
     def __init__(self, name, password):
         self.name = name
@@ -32,6 +33,7 @@ class Daily(db.Model):
     satis = db.Column(db.Integer)
     like = db.Column(db.Integer)
     weather_id = db.Column(db.Integer, db.ForeignKey('weather.id'))
+
 
     weather = relationship('Weather', backref=backref('daily', order_by=id))
 

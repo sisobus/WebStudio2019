@@ -20,7 +20,7 @@ def query_now(city, country):
 
 def query_5day(city, country):
     try:
-        URL = 'http://api.openweathermap.org/data/2.5/forcast?q={},{}&mode=json&units=metric&appid={}'
+        URL = 'https://api.openweathermap.org/data/2.5/forecast?q={},{}&appid={}' # &mode=json&units=metric
         res = requests.get(URL.format(city, country, API_KEY))
         print(res)
         data = res.json()
@@ -37,4 +37,5 @@ if __name__ == '__main__':
     city = "London"
     country = "uk"
 
+    query_now(city, country)
     query_5day(city, country)

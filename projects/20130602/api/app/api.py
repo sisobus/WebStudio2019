@@ -1,10 +1,11 @@
 from flask import request, make_response
 from flask_restful import Resource
-from .models import db, User, Daily, Weather
-from .utils import serializer
+from models import db, User, Daily, Weather
+from utils import serializer
 import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
-from .weather import query_now, query_5day
+from weather import query_now, query_5day
+
 
 class Users(Resource):
     # method_decorators = {
@@ -60,6 +61,10 @@ class Weather5day(Resource):
         args = request.args
         print(args)
         return query_5day(args['city'], args['country'])
+
+
+
+
 
 
 
