@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 //import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Route} from "react-router-dom";
+// import { BrowserRouter as Router, Route} from "react-router-dom";
+import { Router, Route } from "react-router-dom"
 
 import Head from './components/Head';
 import Page from './components/Page';
@@ -11,6 +12,7 @@ import MovieList from './components/MovieList';
 //import ReviewList from './components/ReviewList';
 import Login from './components/Login';
 //ㄴimport Info from './components/Info';
+import { history } from './components/history'
 
 import { Layout } from 'antd';
 
@@ -23,21 +25,21 @@ class App extends Component {
         <Layout>
           <Header>
             <Head/>
-            
-            
           </Header>
           <Layout>
+          <Router history={history}>
             <Sider><Sidebar/></Sider>
             <Content>
-              <Router>
                 <Route path="/" exact component={MovieList}/>
                 <Route path="/movielist/:order_by" exact component = {MovieList}/>
                 <Route path="/page/:movie_id" exact component={Page}/>
                 <Route path="/upload" exact component={Upload}/>
                 <Route path="/login" exact component={Login}/>
-              </Router>
+              
             </Content>
+            </Router>
           </Layout>
+          
           <Footer>Footer</Footer>
         </Layout>
       </div>

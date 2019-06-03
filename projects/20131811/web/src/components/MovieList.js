@@ -13,14 +13,15 @@ class MovieList extends Component {
     //일단 그냥 전체 리스트 불러옴.
     //다음에 날짜순으로 정렬하게 불러와야 함 
     const order_by = this.props.match.params.order_by
-
-
+    
+    console.log('http://localhost:5000/api/movies?order='+order_by)
     fetch('http://localhost:5000/api/movies?order='+order_by)
       .then(response => response.json())
       .then(rsp => this.setState({ movies: JSON.parse(rsp) }))
   }
   //Article에 데이터 전달
   render() {
+    console.log('!!')
     const movieArr = this.state.movies;
 
     return (
