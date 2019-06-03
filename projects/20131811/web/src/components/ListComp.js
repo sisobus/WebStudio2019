@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { List, Avatar, Icon, Rate } from 'antd';
-
+import { List, Icon, Rate } from 'antd';
+import { Link } from "react-router-dom";
 
 const IconText = ({ type, text }) => (
     <span>
@@ -11,9 +11,11 @@ const IconText = ({ type, text }) => (
 
 class ListComp extends Component {
     //제일 처음 실행
+    /*
     constructor(props) {
         super(props);
     }
+    */
 
     //Article에 데이터 전달
     render() {
@@ -55,8 +57,9 @@ class ListComp extends Component {
                         >
                             <List.Item.Meta
                                 //avatar={<Avatar src={item.avatar} />}
-                                title={<a href={item.href}>{item.title}</a>}
-                                description={item.name}
+                                //title={<a href={item.href}>{item.title}</a>}
+                                title = {<Link to ={`/page/${item.id}`}>{item.name}</Link>}
+                                //description={item.name}
                             />
                             <Rate disabled defaultValue={item.total_star/item.people_num} />
                         </List.Item>

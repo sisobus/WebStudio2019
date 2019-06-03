@@ -1,36 +1,31 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import { List, Rate } from 'antd';
 
 
 class ReviewList extends Component {
-
-    //제일 처음 실행
-    constructor(props) {
-      super(props);
-      this.state = {
-          datas: []
-      }
-      /*
-      fetch('http://localhost:8080/article/list')
-      .then(res => res.json())
-      .then(data => this.setState({
-          datas: data
-      }))
-      .then(console.log(this.state));
-      */
-    }
-    //그다음 실행
-    componentWillMount() {
-    }
-  
-    //Article에 데이터 전달
-    render () {
-      return (
-        <div>
-            
-        </div>
-      );
-    }
+  /*
+  constructor(props) {
+    super(props);
   }
-  
-  export default ReviewList;
-  
+*/
+  render() {
+    const reviews = this.props.reviews;
+    
+    return (
+      <div>
+        <List
+          size="large"
+          header={<div>Header</div>}
+          footer={<div>Footer</div>}
+          bordered
+          dataSource={reviews}
+          renderItem={item => <List.Item>
+            <Rate disabled defaultValue={item.star} /> | 유저 : {item.user_id} | {item.content}
+            </List.Item>}
+        />
+      </div>
+    );
+  }
+}
+
+export default ReviewList;

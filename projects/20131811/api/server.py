@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, session
 from flask_restful import Api, Resource
 from flask_cors import CORS
 from datetime import datetime
@@ -154,7 +154,41 @@ class ReviewList(Resource):
         db.session.commit()
         return '{} deleted successfully'.format(_id)
     
+class Login(Resource):
+    def get(self):
+        if not session.get('loggedin'):
+            return "not logged in"
+        information = {'account' : session['account'], 'id' : session['id']}
+        return json.dumps(information, ensure_ascii=False)
 
+    def post(self):
+        r_json = request.get_json()
+        account= r_json['account']
+        print('account : ' + account)
+        password = r_json['password']
+        print('password=  '+ password)
+        user = User.query.filter_by(account=account).first()
+        if user is None:
+            #로그인 실패 리턴 
+            return json.dumps('fail', ensure_ascii=False)
+        result = user.check_password(password)
+        print('result = '+str(result))
+        if result == False or result is None:
+            #로그인 실패 리턴
+            print('login fail')
+            return json.dumps('fail', ensure_ascii=False)
+        else:
+            print('login success')
+            information = {'account' : user.account, 'id' : user.id}
+            session['loggedin'] = True
+            session['account'] = user.account
+            session['id'] = user.id
+            return json.dumps(information, ensure_ascii=False)
+
+class Logout(Resource):
+    def get(self):
+        session.clear()
+        return 'success'
 
 class UserList(Resource):
     def get_users(self):
@@ -202,8 +236,12 @@ class UserList(Resource):
 api.add_resource(UserList, '/api/users')
 api.add_resource(MovieList, '/api/movies')
 api.add_resource(ReviewList, '/api/reviews')
+api.add_resource(Login, '/api/login')
+api.add_resource(Logout, '/api/logout')
 
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
+    app.secret_key = 'app secret key'
+    app.config['SESSION_TYPE'] = 'filesystem'
     app.run(host='0.0.0.0', port=5000, debug=True)
