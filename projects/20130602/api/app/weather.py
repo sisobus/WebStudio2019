@@ -4,6 +4,7 @@ import requests
 #     API_KEY = json.load(fp)['key']
 API_KEY = '60efa98fd883262c59309ae9e81183a4'
 
+#99330b572f6a44fda61190bb729995b5 #weatherbit
 
 def query_now(city, country):
     try:

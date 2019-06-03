@@ -30,35 +30,41 @@ class Daily(db.Model):
     __tablename__ = 'daily'
 
     id = db.Column(db.Integer, primary_key=True)
-    satis = db.Column(db.Integer)
-    like = db.Column(db.Integer)
     weather_id = db.Column(db.Integer, db.ForeignKey('weather.id'))
-
+    img_name = db.Column(db.String)
+    satis = db.Column(db.Integer)
 
     weather = relationship('Weather', backref=backref('daily', order_by=id))
+
+    def __init__(self, weather_id, img_name, satis):
+        self.weather_id = weather_id
+        self.img_name = img_name
+        self.satis = satis
+
+
 
 
 class Weather(db.Model):
     __tablename__ = 'weather'
 
     id = db.Column(db.Integer, primary_key=True)
+    city = db.Column(db.String)
     date = db.Column(db.DATE)
     time = db.Column(db.Integer)
-    city = db.Column(db.String)
     cluster = db.Column(db.Integer)
 
-    def __init__(self, date, time, city, cluster):
+    def __init__(self, city, date, time, cluster):
+        self.city = city
         self.date = date
         self.time = time
-        self.city = city
         self.cluster = cluster
 
     def serialize(self):
         return json.dumps({
             'id': self.id,
+            'city': self.city,
             'date': self.date,
             'time': self.time,
-            'city': self.city,
             'cluster': self.cluster
         })
 
@@ -83,3 +89,7 @@ class MyScrap(db.Model):
 
     user = relationship('User', backref=backref('myscrap', order_by=id))
     daily = relationship('Daily', backref=backref('myscrap', order_by=id))
+
+    def __init__(self, user_id, daily_id):
+        self.user_id = user_id
+        self.daily_id = daily_id
