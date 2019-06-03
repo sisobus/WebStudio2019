@@ -78,10 +78,26 @@ h1.introduction {
     height:900px;
 }
 
-.item{
-    display:block;
-    max-width: 100%;
+.Wall{
+    display: flex;
+    margin:0;
+}
 
+.PictureBlock{
+    margin:7px;
+    padding-bottom: 16px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.image{
+    display:block;
+    margin: 0;
+}
+
+.img{
+    max-width: 100%;
+    vertical-align: top;
 }
 
 .ant-menu-horizontal {

@@ -9,25 +9,36 @@ class MyComponent extends Component {
 		<StackGrid
 		  columnWidth={150}
 		>
-			<div className="picture-blocks">
-				<div className="item">
-					<img src="/images/IMG_4801.JPG" alt="A Smiling Baby" height= "300px" ></img>
-				</div>
-				
-				<div className="item">
-					<img src="/images/IMG_4802.JPG" alt="A Smiling Kid" height="300px"></img>
-				</div>
-				
-				<div className="item">
-					<img src="/images/IMG_4803.JPG" alt="A Smiling Kid" height="300px"></img>
-				</div>
-
-				<div className="item">
-					<img src="/images/IMG_4804.JPG" alt="A Smiling Kid" height="300px"></img>
-				</div>	
-				
-
-			</div>
+			<div className="Wall">
+				<span className='PictureBlock'>
+					<figure className="image">
+						<div className='img'>
+							<img src="/images/IMG_4801.JPG" alt="A Smiling Baby" height= "300px" ></img>
+						</div>
+					</figure>
+				</span>
+				<span className='PictureBlock'>
+					<figure className="image">
+						<div className='img'>
+							<img src="/images/IMG_4802.JPG" alt="A Smiling Baby" height= "300px" ></img>
+						</div>
+					</figure>
+				</span>
+				<span className='PictureBlock'>
+					<figure className="image">
+						<div className='img'>
+							<img src="/images/IMG_4803.JPG" alt="A Smiling Baby" height= "300px" ></img>
+						</div>
+					</figure>
+				</span>
+				<span className='PictureBlock'>
+					<figure className="image">
+						<div className='img'>
+							<img src="/images/IMG_4804.JPG" alt="A Smiling Baby" height= "300px" ></img>
+						</div>
+					</figure>
+				</span>
+			</div>	
 		</StackGrid>
 	  );
 	}
