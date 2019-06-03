@@ -4,7 +4,7 @@ import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import './LoginPage.css';
 
 
-class NormalLoginForm extends React.Component {
+class Loginform extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
@@ -50,16 +50,13 @@ class NormalLoginForm extends React.Component {
           <Button type="primary" htmlType="submit" className="login-form-button">
             Log in
           </Button>
-          Or <a href="sadf">register now!</a>
+          Or <a href="./resist">register now!</a>
         </Form.Item>
       </Form>
     );
   }
 }
 
-const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(NormalLoginForm);
-
-ReactDOM.render(<WrappedNormalLoginForm />, mountNode);
-
+const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(Loginform);
 
 export default WrappedNormalLoginForm

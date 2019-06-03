@@ -1,12 +1,12 @@
 from flask import Flask, request
-from flaks_restful import Api, Resource
+from flask_restful import Api, Resource
 import json
 import os
 from data import db, User
-from socket import MySocketIO
+#from socket import MySocketIO
 
 basedir = os.path.dirname(os.path.abspath(__file__))
-SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, app.db)
+SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
 app = Flask(__name__)
 app.config.update({
 		'SQLALCHEMY_TRACK_MODIFICATIONS' : True,
@@ -14,7 +14,7 @@ app.config.update({
 		})
 api = Api(app)
 db.init_app(app)
-socketio = MySocketIO(app)
+#socketio = MySocketIO(app)
 
 
 class Userlist(Resource):
@@ -43,7 +43,10 @@ class Userlist(Resource):
 		db.session.commit()
 		return 'your account has been deleted'
 
+api.add_resource(Userlist, '/api/users')
+
 if __name__ == '__main__':
 	with app.app_context():
 		db.create_all()
-	socketio.run(app)
+	#socketio.run(app)
+	app.run(host='0.0.0.0', port=5002, debug=True )

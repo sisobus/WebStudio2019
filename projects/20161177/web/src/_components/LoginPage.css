@@ -1,1 +1,5 @@
 @import '~antd/dist/antd.css';
+
+.login-form { 
+    padding : 200px 450px !important;
+}

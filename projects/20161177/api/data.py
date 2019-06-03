@@ -12,10 +12,10 @@ class User(db.Model):
 	nickname = db.Column(db.String(300))
 	password = db.Column(db.String(300))
 
-	def __init(self, email, nickname, password):
+	def __init(self, email, password, nickname):
 		self.email = email
-		self.nickname = nickname
 		self.set_password(password)
+		self.nickname = nickname
 		
 	def set_password(self, password):
 		self.password = generate_password_hash(password)
@@ -27,7 +27,7 @@ class User(db.Model):
 		return json.dumps({
 			'id': self.id,
 			'email': self.email,
-			'nickname': self.nickname,
-			'password': self.password
+			'password': self.password,
+			'nickname': self.nickname
 		})
 
