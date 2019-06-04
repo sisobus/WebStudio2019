@@ -1,0 +1,14 @@
+.navbar-wrapper {
+  height: 50px;
+  background: #24292e;
+  color: hsla(0, 0%, 100%, .7);
+}
+.navbar-container {
+  width: 60%;
+  height: 50px;
+  margin: 0 auto;
+}
+#logo {
+  font-size: 20pt;
+  padding-top: 10px;
+}
