@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import logo from './logo.svg';
 import './App.css';
 
 import { Router, Route, Switch } from "react-router-dom";
@@ -11,7 +10,6 @@ import Upload from './components/Upload';
 import MovieList from './components/MovieList';
 import MovieListDate from './components/MovieListDate';
 import MovieListStar from './components/MovieListStar';
-//import Login from './components/Login';
 import { history } from './components/history'
 import { Layout } from 'antd';
 
@@ -37,7 +35,6 @@ class App extends Component {
                   <Route path="/movielist/star" exact component={MovieListStar} />
                   <Route path="/page/:movie_id" exact component={Page} />
                   <Route path="/upload" exact component={Upload} />
-                  
                 </Switch>
               </Content>
             </Layout>

@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import { Menu, Icon } from 'antd';
 import { Link } from "react-router-dom";
-//import { history } from './history'
-
+import { history } from './history'
 
 const { SubMenu } = Menu;
 
 
 class Sidebar extends Component {
+
+  constructor(props) {
+    super(props);
+  }
+  
   rootSubmenuKeys = ['sub1', 'sub2'];
 
   state = {
@@ -29,9 +33,9 @@ class Sidebar extends Component {
     if (key === '1') {
       console.log(1)
       //window.location.assign('/movielist/date');
-      //history.push('/movielist/date')
+      history.push('/movielist/date')
     } else if (key === '2') {
-      //history.push('/movielist/star')
+      history.push('/movielist/star')
       //window.location.assign('/movielist/star');
       console.log(2)
     } else if (key === '5') {
@@ -40,6 +44,8 @@ class Sidebar extends Component {
   }
 
   render() {
+    console.log('11241241241')
+    console.log(this.props)
     return (
       <Menu
         mode="inline"
@@ -57,8 +63,8 @@ class Sidebar extends Component {
             </span>
           }
         >
-          <Menu.Item key="1">{<Link to={`/movielist/date`}>By Date</Link>}</Menu.Item>
-          <Menu.Item key="2">{<Link to={`/movielist/star`}>By Star</Link>}</Menu.Item>
+          <Menu.Item key="1">By Date</Menu.Item>
+          <Menu.Item key="2">By Star</Menu.Item>
 
         </SubMenu>
         <SubMenu

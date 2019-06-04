@@ -11,3 +11,4 @@ __pycache__/*
 data/*
 **/data/*
 app.db
+.vscode/
