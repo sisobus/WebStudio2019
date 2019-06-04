@@ -9,6 +9,26 @@ from config import alchemy_uri
 
 from flask_sqlalchemy import SQLAlchemy
 
+####
+# import boto3
+# from config import S3_BUCKET, S3_KEY, S3_SECRET
+#
+# s3 = boto3.client(
+#     's3',
+#     aws_access_key_id=S3_KEY,
+#     aws_secret_access_key=S3_SECRET,
+# )
+#
+# @app.route('/files')
+# def files():
+#     s3_resource = boto3.resource('s3')
+#     my_bucket = s3_resource.Bucket(S3_BUCKET)
+#     summaries = my_bucket.objects.all()
+#
+#     # return render_template('files.html', my_bucket=my_bucket, files=summaries)
+#     return
+####
+
 # basedir = os.path.dirname(os.path.abspath(__file__))
 # SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
 print(os.path.abspath('../template'))

@@ -9,6 +9,8 @@ from weather import query_now, query_5day
 import os
 from werkzeug.utils import secure_filename
 
+import boto3
+
 
 class Users(Resource):
     # method_decorators = {
@@ -71,9 +73,11 @@ class WeatherPast(Resource):
 
 
 class ImageUpload(Resource):
+    #---temp----------
     def get(self):
         headers = {'Content-Type': 'text/html'}
         return make_response(render_template("upload_image_temp.html"), 200, headers)
+    #--------------
 
     def post(self):
         if request.files:
@@ -82,7 +86,13 @@ class ImageUpload(Resource):
             if image.filename == '':
                 print("Image doesnt exist!!")
                 return redirect(request.url)
-            image.save(os.path.join('./../static/img', secure_filename(image.filename)))
+
+            #------------
+            # image.save(os.path.join('./../static/img', secure_filename(image.filename)))
+            s3 = boto3.resource('s3')
+            s3.Bucket('project-lookmorning').put_object(Key=image.filename, Body=image)
+
+            #-------------
             print("Image saved")
             return "image {} has posted".format(image)
         return make_response(404)
