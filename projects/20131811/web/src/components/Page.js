@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReviewList from './ReviewList';
+import ReviewForm from './ReviewForm';
 
 
 
@@ -36,7 +37,8 @@ class Page extends Component {
           <br />
         </div>
         <div>
-          여기 리뷰 리스트 출력
+          여기 리뷰 입력 폼
+          <ReviewForm/>
           <br/>
           <ReviewList reviews={reviews}/>
         </div>
