@@ -1,0 +1,10 @@
+.table {
+    display: table;
+    width: inherit;
+    height: inherit;
+    .table-cell {
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+    }
+}
