@@ -20,15 +20,22 @@ class Page extends Component {
       .then(response => response.json())
       .then(rsp => this.setState({ movie: JSON.parse(rsp) }))
 
-    fetch('http://localhost:5000/api/reviews?movie_id='+movie_id)
+    fetch('http://localhost:5000/api/reviews?movie_id=' + movie_id)
+      .then(response => response.json())
+      .then(rsp => this.setState({ reviews: JSON.parse(rsp) }))
+  }
+
+  myCallback = () => {
+    const movie_id = this.props.match.params.movie_id
+    fetch('http://localhost:5000/api/reviews?movie_id=' + movie_id)
       .then(response => response.json())
       .then(rsp => this.setState({ reviews: JSON.parse(rsp) }))
   }
 
   //Article에 데이터 전달
   render() {
+
     const movie = this.state.movie;
-    const reviews = this.state.reviews;
     return (
       <div>
         <div>
@@ -38,9 +45,9 @@ class Page extends Component {
         </div>
         <div>
           여기 리뷰 입력 폼
-          <ReviewForm/>
-          <br/>
-          <ReviewList reviews={reviews}/>
+          <ReviewForm movie_id={this.props.match.params.movie_id} callbackFromParent={this.myCallback} />
+          <br />
+          <ReviewList reviews={this.state.reviews} />
         </div>
       </div>
     );

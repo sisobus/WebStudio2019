@@ -8,6 +8,7 @@ class ReviewList extends Component {
     super(props);
   }
 */
+  //props 새로 넘어왔을때 별표가 업데이트 안되는 현상이 있음 이거 확인 
   render() {
     const reviews = this.props.reviews;
     

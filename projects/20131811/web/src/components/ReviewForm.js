@@ -1,26 +1,12 @@
-import React, { Component, history } from 'react';
+import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
-
+import { history } from './history'
 
 import { Button, Modal, Form, Input, Rate } from 'antd';
 
 const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
     // eslint-disable-next-line
     class extends Component {
-
-        onSubmit = e => {
-            console.log(2)
-            const content=e.content;
-            const star=e.star;
-            console.log(content)
-            console.log(star)
-            return (
-                <div>
-                    <Redirect to='/movielist/date'/>
-                </div>
-            )
-            
-        }
         render() {
             const { visible, onCancel, onCreate, form } = this.props;
             const { getFieldDecorator } = form;
@@ -30,7 +16,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                     title="새로운 리뷰 등록하기"
                     okText="Create"
                     onCancel={onCancel}
-                    onOk={this.onSubmit}
+                    onOk={onCreate}
                 >
                     <Form layout="vertical">
                         <Form.Item label="Review">
@@ -41,10 +27,10 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
                         <Form.Item label="Star">
                             {getFieldDecorator('star', {
                                 rules: []
-                            }) (<Rate allowHalf Value={0} />)
+                            })(<Rate allowHalf Value={0} />)
                             }
                         </Form.Item>
-                        
+
                     </Form>
                 </Modal>
             );
@@ -54,7 +40,7 @@ const CollectionCreateForm = Form.create({ name: 'form_in_modal' })(
 
 class ReviewForm extends Component {
     state = {
-        visible: false,
+        visible: false
     };
 
     showModal = () => {
@@ -71,10 +57,31 @@ class ReviewForm extends Component {
             if (err) {
                 return;
             }
-
             console.log('Received values of form: ', values);
-            form.resetFields();
-            this.setState({ visible: false });
+            const content = values.review
+            const star = values.star == undefined ? 0 : values.star
+            //임시 유저아이디
+            const user_id = 56
+            const movie_id = this.props.movie_id
+            const jsons = {
+                'content': content,
+                'star': star,
+                'user_id': user_id,
+                'movie_id': movie_id
+            }
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(jsons)
+            }
+            fetch('http://localhost:5000/api/reviews', requestOptions)
+                .then(response => response.json())
+                .then(rsp => console.log(rsp))
+                .then(() => {
+                    this.setState({ visible: false });
+                    form.resetFields();
+                    this.props.callbackFromParent();
+                })
         });
     };
 
