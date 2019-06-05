@@ -1,13 +1,16 @@
-from flask import Flask, request, session
+from flask import Flask, request, jsonify, abort
 from flask_restful import Api, Resource
 from flask_cors import CORS
-from datetime import datetime
-
+from datetime import datetime, timedelta
 from sqlalchemy import desc
+from models import db, User, Movie, Review, LoginSession
+from flask_jwt_extended import (
+    JWTManager, create_access_token, create_refresh_token,
+    jwt_required, jwt_refresh_token_required, get_jwt_identity,
+    get_jti, get_raw_jwt)
 
 import json
 import os
-from models import db, User, Movie, Review
 
 basedir = os.path.dirname(os.path.abspath(__file__))
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
@@ -15,11 +18,14 @@ app = Flask(__name__)
 app.config.update({
     'SQLALCHEMY_TRACK_MODIFICATIONS': True,
     "SQLALCHEMY_DATABASE_URI": SQLALCHEMY_DATABASE_URI,
+    'SECRET_KEY': 'THISISSECRETKEYOFTHISPROJECTHAHA',
+    'JWT_ACCESS_TOKEN_EXPIRES': timedelta(minutes=15),
+    'JWT_REFRESH_TOKEN_EXPIRES': timedelta(days=30)
 })
 cors = CORS(app)
 api = Api(app)
 db.init_app(app)
-
+jwt = JWTManager(app)
 
 def serializer(l):
     ret = []
@@ -56,7 +62,7 @@ class MovieList(Resource):
         new_movie = Movie(name, photo)
         db.session.add(new_movie)
         db.session.commit()
-        return 'create movie : {} successfully'.format(name)
+        return new_movie.id
 
     def put(self):
         r_json = request.get_json()
@@ -154,41 +160,6 @@ class ReviewList(Resource):
         db.session.commit()
         return '{} deleted successfully'.format(_id)
     
-class Login(Resource):
-    def get(self):
-        if not session.get('loggedin'):
-            return "not logged in"
-        information = {'account' : session['account'], 'id' : session['id']}
-        return json.dumps(information, ensure_ascii=False)
-
-    def post(self):
-        r_json = request.get_json()
-        account= r_json['account']
-        print('account : ' + account)
-        password = r_json['password']
-        print('password=  '+ password)
-        user = User.query.filter_by(account=account).first()
-        if user is None:
-            #로그인 실패 리턴 
-            return json.dumps('fail', ensure_ascii=False)
-        result = user.check_password(password)
-        print('result = '+str(result))
-        if result == False or result is None:
-            #로그인 실패 리턴
-            print('login fail')
-            return json.dumps('fail', ensure_ascii=False)
-        else:
-            print('login success')
-            information = {'account' : user.account, 'id' : user.id}
-            session['loggedin'] = True
-            session['account'] = user.account
-            session['id'] = user.id
-            return json.dumps(information, ensure_ascii=False)
-
-class Logout(Resource):
-    def get(self):
-        session.clear()
-        return 'success'
 
 class UserList(Resource):
     def get_users(self):
@@ -205,11 +176,11 @@ class UserList(Resource):
         password = r_json['password']
         user = User.query.filter_by(account=account).first()
         if user:
-            return '{} is aleady exists'.format(account)
+            return 'fail'.format(account)
         new_user = User(account, password)
         db.session.add(new_user)
         db.session.commit()
-        return 'create account: {}, pw: {} successcully'.format(account, password)
+        return 'success'.format(account, password)
 
     def put(self):
         r_json = request.get_json()
@@ -233,11 +204,72 @@ class UserList(Resource):
         return '{} deleted successfully'.format(_id)
 
 
+class UserLogin(Resource):
+    def post(self):
+        r_json = request.get_json()
+        account = r_json['account']
+        password = r_json['password']
+        user = User.query.filter_by(account=account).first()
+        if user is None:
+            abort(400, 'User is not exists')
+        if not user.check_password(password):
+            abort(400, 'Password is incorrect')
+
+        _user = json.loads(user.serialize())
+        del _user['password']
+        access_token = create_access_token(identity=_user)
+        refresh_token = create_refresh_token(identity=_user)
+        jti = get_jti(refresh_token)
+        _user['token'] = access_token
+        _user['refresh'] = refresh_token
+        login_session = LoginSession.query.filter_by(
+            user_id=user.id).first()
+        if login_session:
+            login_session.jti = jti
+        else:
+            new_login_session = LoginSession(
+                user.id, jti)
+            db.session.add(new_login_session)
+        try:
+            db.session.commit()
+        except Exception as e:
+            print(e)
+            abort(400, e)
+        return jsonify({ 'message': 'login successfully', 'data': _user })
+        
+
+class PrivateRoute(Resource):
+    @jwt_required
+    def get(self):
+        return jsonify({ 'message': 'This is private route!'})
+
+
+class UserRefresh(Resource):
+    @jwt_refresh_token_required
+    def post(self):
+        current_user = get_jwt_identity()
+        login_session = LoginSession.query.filter_by(
+            user_id=current_user['id']).first()
+        if login_session is None:
+            abort(401)
+        raw_jwt = get_raw_jwt()
+        jti = raw_jwt['jti']
+        if login_session.jti != jti:
+            abort(401)
+        ret = {
+            'token': create_access_token(identity=current_user)
+        }
+        return jsonify({'message': 'Refresh successfully', 'data': ret})
+
+
 api.add_resource(UserList, '/api/users')
 api.add_resource(MovieList, '/api/movies')
 api.add_resource(ReviewList, '/api/reviews')
-api.add_resource(Login, '/api/login')
-api.add_resource(Logout, '/api/logout')
+api.add_resource(UserLogin, '/api/auth/login')
+api.add_resource(PrivateRoute, '/api/private/routes')
+api.add_resource(UserRefresh, '/api/auth/refresh')
+
+
 
 if __name__ == '__main__':
     with app.app_context():
