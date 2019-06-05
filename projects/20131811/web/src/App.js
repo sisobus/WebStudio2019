@@ -12,6 +12,7 @@ import MovieListDate from './components/MovieListDate';
 import MovieListStar from './components/MovieListStar';
 import { history } from './components/history'
 import { Layout } from 'antd';
+import AddMovieForm from './components/AddMovieForm';
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -35,6 +36,7 @@ class App extends Component {
                   <Route path="/movielist/star" exact component={MovieListStar} />
                   <Route path="/page/:movie_id" exact component={Page} />
                   <Route path="/upload" exact component={Upload} />
+                  <Route path="/add" exact component={AddMovieForm} />
                 </Switch>
               </Content>
             </Layout>

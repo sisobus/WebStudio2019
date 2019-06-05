@@ -19,8 +19,6 @@ class MovieListStar extends Component {
   }
   //Article에 데이터 전달
   render() {
-    console.log('!!')
-    const movieArr = this.state.movies;
 
     return (
       <div>
@@ -28,7 +26,7 @@ class MovieListStar extends Component {
           머릿글
         </div>
         <div>
-          <ListComp movie={movieArr}/>
+          <ListComp movie={this.state.movies}/>
         </div>
       </div>
     );

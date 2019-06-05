@@ -21,7 +21,7 @@ class ReviewList extends Component {
           bordered
           dataSource={reviews}
           renderItem={item => <List.Item>
-            <Rate disabled defaultValue={item.star} /> | 유저 : {item.user_id} | {item.content}
+            <Rate disabled value={item.star} /> | 유저 : {item.user_id} | {item.content}
             </List.Item>}
         />
       </div>

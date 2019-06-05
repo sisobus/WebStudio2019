@@ -61,7 +61,7 @@ class ReviewForm extends Component {
             const content = values.review
             const star = values.star == undefined ? 0 : values.star
             //임시 유저아이디
-            const user_id = 56
+            const user_id = 57
             const movie_id = this.props.movie_id
             const jsons = {
                 'content': content,

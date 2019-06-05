@@ -16,11 +16,15 @@ class ListComp extends Component {
         super(props);
     }
     */
-
+    calculate = (star, people) => {
+        if (people == 0) {
+            return 0
+        } else {
+            return star / people
+        }
+    }
     //Article에 데이터 전달
     render() {
-        const movie = this.props.movie;
-        console.log(movie)
         return (
             <div>
                 <List
@@ -32,7 +36,7 @@ class ListComp extends Component {
                         },
                         pageSize: 5,
                     }}
-                    dataSource={movie}
+                    dataSource={this.props.movie}
                     footer={
                         <div>
                             아래쪽에 올 부분
@@ -58,10 +62,10 @@ class ListComp extends Component {
                             <List.Item.Meta
                                 //avatar={<Avatar src={item.avatar} />}
                                 //title={<a href={item.href}>{item.title}</a>}
-                                title = {<Link to ={`/page/${item.id}`}>{item.name}</Link>}
-                                //description={item.name}
+                                title={<Link to={`/page/${item.id}`}>{item.name}</Link>}
+                            //description={item.name}
                             />
-                            <Rate disabled defaultValue={item.total_star/item.people_num} />
+                            <Rate disabled value={this.calculate(item.total_star, item.people_num)} />
                         </List.Item>
                     )}
                 />

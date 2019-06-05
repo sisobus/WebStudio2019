@@ -18,6 +18,7 @@ class MovieList extends Component {
     fetch('http://localhost:5000/api/movies?order='+order_by)
       .then(response => response.json())
       .then(rsp => this.setState({ movies: JSON.parse(rsp) }))
+      .then(console.log('here!!'))
   }
   //Article에 데이터 전달
   render() {

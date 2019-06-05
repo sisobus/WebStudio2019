@@ -16,11 +16,10 @@ class MovieListDate extends Component {
     fetch('http://localhost:5000/api/movies?order=date')
       .then(response => response.json())
       .then(rsp => this.setState({ movies: JSON.parse(rsp) }))
+      .then(console.log(this.state.movies))
   }
   //Article에 데이터 전달
   render() {
-    console.log('!!')
-    const movieArr = this.state.movies;
 
     return (
       <div>
@@ -28,7 +27,7 @@ class MovieListDate extends Component {
           머릿글
         </div>
         <div>
-          <ListComp movie={movieArr}/>
+          <ListComp movie={this.state.movies}/>
         </div>
       </div>
     );

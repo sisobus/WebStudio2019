@@ -35,6 +35,7 @@ class Sidebar extends Component {
       console.log(2)
     } else if (key === '5') {
       console.log(3)
+      history.push('/add')
     }
   }
 
