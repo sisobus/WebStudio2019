@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from "react-router-dom";
-import { history } from './history'
 
 import { Button, Modal, Form, Input, Rate } from 'antd';
 
@@ -59,7 +57,7 @@ class ReviewForm extends Component {
             }
             console.log('Received values of form: ', values);
             const content = values.review
-            const star = values.star == undefined ? 0 : values.star
+            const star = values.star === undefined ? 0 : values.star
             //임시 유저아이디
             const user_id = 57
             const movie_id = this.props.movie_id

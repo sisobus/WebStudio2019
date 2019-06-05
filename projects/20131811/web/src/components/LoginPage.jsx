@@ -1,7 +1,7 @@
 import React from 'react'
 import { Form, Divider } from 'antd'
 import { LoginForm } from './LoginForm'
-import { RegisterForm } from './RegisterForm'
+import RegisterForm  from './RegisterForm'
 import { history } from './history'
 import withMiddle from '../components/withMiddle'
 

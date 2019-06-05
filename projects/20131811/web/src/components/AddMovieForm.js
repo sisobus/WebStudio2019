@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Select, Input, Button, Upload, message, Icon } from 'antd';
+import { Form, Input, Button } from 'antd';
 import { history } from './history'
 
 class AddMovieForm extends Component {

@@ -17,7 +17,7 @@ class ListComp extends Component {
     }
     */
     calculate = (star, people) => {
-        if (people == 0) {
+        if (people === 0) {
             return 0
         } else {
             return star / people

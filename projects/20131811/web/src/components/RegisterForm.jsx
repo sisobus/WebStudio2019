@@ -1,9 +1,10 @@
 import React from 'react'
-import { Form, Icon, Input, Button } from 'antd'
+import { Form, Icon, Input, Button, message } from 'antd'
 import classNames from 'classnames/bind'
 import styles from './LoginForm.module.scss'
-import { history } from './history'
 import { Link } from 'react-router-dom'
+import { history } from './history'
+
 
 const cx = classNames.bind(styles)
 
@@ -15,8 +16,7 @@ class RegisterForm extends React.Component {
       confirmDirty: false,
     }
 
-    this.username = null
-    this.email = null
+    this.account = null
     this.password = null
     this.passwordCheck = null
     this.secretKey = null
@@ -54,43 +54,46 @@ class RegisterForm extends React.Component {
           e.preventDefault()
           this.props.form.validateFields(err => {
             if (!err) {
-              const username = this.username.value
-              const email = this.email.value
+              const account = this.account.value
               const password = this.password.value
-// signup fetch
+              console.log('account : ' + account + ' password : ' + password)
+              const jsons = {
+                'account': account,
+                'password': password
+              }
+              const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(jsons)
+              }
+              fetch('http://localhost:5000/api/users', requestOptions)
+                .then(response => response.json())
+                .then(rsp => {
+                  console.log(rsp)
+                  if (rsp == 'success') {
+                    history.push('/login')
+                  } else {
+                    message.error('Account already exist')
+                  }
+                }
+                )
             }
           })
         }}
         className={cx("login-form")}
       >
         <Form.Item style={{ margin: "0 0 10px 0" }}>
-          {getFieldDecorator("username", {
+          {getFieldDecorator("account", {
             rules: [
               { required: true, message: "Please input your username!" }
             ]
           })(
             <Input
-              name="username"
+              name="account"
               prefix={<Icon type="user" />}
-              placeholder="Name"
+              placeholder="Account name"
               ref={node => {
-                this.username = node.input
-              }}
-            />
-          )}
-        </Form.Item>
-        <Form.Item style={{ margin: "0 0 10px 0" }}>
-          {getFieldDecorator("email", {
-            rules: [{ required: true, message: "Please input your email!" }]
-          })(
-            <Input
-              name="email"
-              prefix={
-                <Icon type="mail" style={{ color: "rgba(0,0,0,.25)" }} />
-              }
-              placeholder="Email"
-              ref={node => {
-                this.email = node.input
+                this.account = node.input
               }}
             />
           )}
@@ -139,6 +142,7 @@ class RegisterForm extends React.Component {
             />
           )}
         </Form.Item>
+        {/*
         <Form.Item style={{ margin: "0 0 10px 0" }}>
           {getFieldDecorator("secretKey", {
             rules: [{ required: true, message: "Please input Secret Key!" }]
@@ -154,6 +158,8 @@ class RegisterForm extends React.Component {
             />
           )}
         </Form.Item>
+            */
+        }
         <Form.Item style={{ margin: "0 0 12px 0" }}>
           <Button
             type="primary"
@@ -170,5 +176,4 @@ class RegisterForm extends React.Component {
     )
   }
 }
-
-export { RegisterForm }
+export default Form.create()(RegisterForm);
