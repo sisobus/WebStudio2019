@@ -3,9 +3,10 @@ import '../App.css';
 import MenuBar from '../Menu';
 import EditableTagGroup from "../EditableTagGroup";
 import { Layout } from 'antd';
-import MyComponent from '../StackGrid'
 
-/*import { NavLink } from 'react-router-dom'*/
+
+import Articles from '../Articles';
+import Pictures from '../Pictures';
 
 
 const { Header, Content, Footer } = Layout;
@@ -27,6 +28,7 @@ class MainPage extends React.Component{
 							<h2 className= "text center capitalize">
 							Hello, this is my Smile Archive site!
 							</h2>
+							<Articles/>
 						</div>
 
 						<div className="Tag">
@@ -35,11 +37,9 @@ class MainPage extends React.Component{
 							</div>
 						</div>
 
-						<div className="Pictures" style={{ background: '#fff', padding: 24, minHeight: 280 }}>
-							{/*<Users></Users>
-							<Articles></Articles>*/}
+						<div className="Pictures">
 							<div className="StackGrid">
-								<MyComponent/>
+								{/* <MyComponent/> */}<Pictures/>
 							</div>
 						</div>
 					</Content>

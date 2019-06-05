@@ -1,8 +1,11 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from flask_restful import Api, Resource
 import json
 import cal_id
-from models import db, User
+from models import db, User, UserSchema
+
+user_schema = UserSchema()
+users_schema = UserSchema(many=True)
 
 class UserList(Resource):
     def get_users(self):
@@ -11,10 +14,9 @@ class UserList(Resource):
 
     def get(self):
         users = self.get_users()
-        ret = ''
-        for user in users:
-            ret += '[email: {}, password: {}]'.format(user.email, user.password)
-        return ret
+        result = users_schema.dump(users)
+        return jsonify(result.data)
+
 
     def post(self):
         r_json = request.get_json()

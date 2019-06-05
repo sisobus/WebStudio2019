@@ -1,8 +1,11 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from flask_restful import Api, Resource
 import json
 import cal_id
-from models import db, Comment
+from models import db, Comment, CommentSchema
+
+comment_schema = CommentSchema()
+comments_schema = CommentSchema(many=True)
 
 class CommentList(Resource):
 
@@ -12,10 +15,8 @@ class CommentList(Resource):
 
 	def get(self):
 		comments = self.get_comments()
-		ret = ''
-		for comment in comments:
-			ret += '[id= {}, user_id= {}, article_id= {}, content= {} ]'.format(comment.id, comment.user_id, comment.article_id, comment.content)
-		return ret
+		result = comments_schema.dump(comments)
+		return jsonify(result.data)
 
 	def post(self):
 		r_json = request.get_json()

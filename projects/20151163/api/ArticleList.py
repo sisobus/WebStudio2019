@@ -1,9 +1,11 @@
-from flask import Flask, request
+from flask import Flask, request,jsonify
 from flask_restful import Api, Resource
 import json
 import cal_id
-from models import db, Article
+from models import db, Article, ArticleSchema
 
+article_schema = ArticleSchema()
+articles_schema = ArticleSchema(many=True)
 
 class ArticleList(Resource):
 
@@ -13,16 +15,15 @@ class ArticleList(Resource):
 
 	def get(self):
 		articles =self.get_articles()
-		ret = ''
-		for article in articles:
-		    ret += '[id: {}, user_id: {}, title: {}, content: {}]'.format(article.id, article.user_id, article.title, article.content)
-		return ret
+		result = articles_schema.dump(articles)
+		return jsonify(result.data)
 
 	def post(self):
 		r_json = request.get_json()
 		user_id = r_json['user_id']
 		title = r_json['title']
 		content = r_json['content']
+		
 		article = Article.query.filter_by(title = title).first()
 		if article: 
 		    return '{} already exists'.format(title)

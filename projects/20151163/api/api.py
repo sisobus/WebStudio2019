@@ -1,12 +1,14 @@
 from flask import Flask, request, jsonify
 from flask_restful import Api, Resource
 from flask_cors import CORS
-from models import db, User, Article, Comment, Like, ArticleSchema, UserSchema,CommentSchema, LikeSchema
-import os
+import json, os
+
+from models import db, User, Article, Comment, Like
 from UserList import UserList
 from ArticleList import ArticleList
 from CommentList import CommentList
 from LikeList import LikeList
+from PicturesList import Picture, PicturesList
 
 basedir = os.path.dirname(os.path.abspath(__file__))
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
@@ -20,19 +22,18 @@ cors = CORS(app)
 api = Api(app)
 db.init_app(app)
 
-user_schema = UserSchema()
-users_schema = UserSchema(many=True)
-article_schema = ArticleSchema()
-articles_schema = ArticleSchema(many=True)
-comment_schema = CommentSchema()
-comments_schema = CommentSchema(many=True)
-like_schema = LikeSchema()
-likes_schema = LikeSchema(many=True)
+def serializer(l):
+    ret = []
+    for row in l:
+        ret.append(json.loads(row.serialize()))
+    return json.dumps(ret)
 
 api.add_resource(UserList, '/api/users')
 api.add_resource(ArticleList, '/api/articles')
 api.add_resource(CommentList, '/api/comments')
 api.add_resource(LikeList, '/api/likes')
+api.add_resource(PicturesList, '/api/pictures')
+api.add_resource(Picture, '/api/pictures/<name>')
 
 if __name__ == '__main__':
     with app.app_context():
