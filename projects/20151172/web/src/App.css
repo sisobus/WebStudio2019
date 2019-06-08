@@ -29,8 +29,6 @@ input[type=checkbox] {
 	width: 0;
 	visibility: hidden;
 }
-
-	
 	
 label {
 	cursor: pointer;
@@ -64,13 +62,31 @@ label:after {
 	-ms-transition: ease-in-out 200ms;
 	-o-transition: ease-in-out 200ms;
 	transition: ease-in-out 200ms;
+	cursor: pointer;
 }
 
-Input:checked + label {
+input:checked + label {
+	background: #FFBD07;
+}
+
+
+input:checked + label:after {
 	left: calc(100% - 5px);
 	-webkit-transform: translateX(-100%);
 	-moz-transform: translateX(-100%);
 	-ms-transform: translateX(-100%);
 	-o-transform: translateX(-100%);
 	transform: translateX(-100%);
+}
+
+.App.transition,
+.App.transition *,
+.App.transition *:before,
+.App.transition *:after {
+	-webkit-transition: ease-in-out 200ms/important;
+	-moz-transition: ease-in-out 200ms/important;
+	-ms-transition: ease-in-out 200ms/important;
+	-o-transition: ease-in-out 200ms/important;
+	transition: ease-in-out 200ms/important;
+	transition-delay: 0/important;
 }
