@@ -8,7 +8,7 @@ from UserList import UserList
 from ArticleList import ArticleList
 from CommentList import CommentList
 from LikeList import LikeList
-from PicturesList import Picture, PicturesList
+from PicturesList import Picture, PicturesList, Uploader
 
 basedir = os.path.dirname(os.path.abspath(__file__))
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
@@ -34,6 +34,8 @@ api.add_resource(CommentList, '/api/comments')
 api.add_resource(LikeList, '/api/likes')
 api.add_resource(PicturesList, '/api/pictures')
 api.add_resource(Picture, '/api/pictures/<name>')
+api.add_resource(Uploader, '/api/pictures/new')
+
 
 if __name__ == '__main__':
     with app.app_context():

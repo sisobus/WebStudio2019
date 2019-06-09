@@ -35,10 +35,11 @@
 .UpperMenu{
     widows: 100%;
     display: flex;
-    /*여기 div로 나눠줘서 flex로 조절하고 싶다
-    justify-content: space-between;*/
 }
 
+.FrontMessage{
+    margin: 10px 10px 40px 10px;
+}
 .text{
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto Oxygen-Sans", Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     letter-spacing: -0.4px;
@@ -46,6 +47,16 @@
     color: rgb(51, 51, 51);
     font-weight: 600;
     font-style: normal;
+}
+
+.subtext{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto Oxygen-Sans", Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    letter-spacing: -0.4px;
+    font-size: 14px;
+    color: rgb(51, 51, 51);
+    font-weight: 600;
+    font-style: normal;
+    text-align: left;
 }
 
 .center{
@@ -88,32 +99,42 @@ h1.introduction {
     margin:0; 
 }
 
-.Wall{
-    display: flex;
-    flex-wrap: wrap;
-    margin:0;
-}
-
-.PictureBlock{
-    padding-bottom: 16px;
-    padding-left: 4px;
-    padding-right: 4px;
-}
-
-.image{
-    display:block;
-    margin: 0;
-}
-
-.img{
-    max-width: 100%;
-    vertical-align: top;
-}
-
 .ant-menu-horizontal {
     border-bottom: 0;
 }
 
 .ant-layout-header {
     border-bottom: 1px solid #e8e8e8;
+}
+
+.Request{
+    display: flex;
+}
+.ant-form-horizontal{
+    width: 100%;
+}
+
+.ant-col-sm-offset-8{
+    width:100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.ant-col-sm-8{
+    margin-right: 10px;
+}
+
+.Request
+.ant-form-horizontal
+.ant-form-item
+.ant-col-sm-16{
+    width: 33.3%;
+}
+
+.Request
+.ant-form-horizontal
+.ant-form-item
+.ant-col-sm-offset-8{
+    width:100%;
 }

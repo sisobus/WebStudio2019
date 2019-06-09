@@ -1,9 +1,9 @@
+//업로드 코드 치고 업로드 가능하게 만들기
 import React from 'react';
 import '../App.css';
 import PicturesWall from "../PicturesWall";
-import EditableTagGroup from "../EditableTagGroup";
 import { Layout } from 'antd';
-import MenuBar from '../Menu'
+import { UploadMenu } from '../Menu';
 
 const { Header, Content, Footer } = Layout;
 
@@ -13,7 +13,7 @@ class Upload extends React.Component{
 			<div id="Main">
 			<Layout className="layout">
 				<Header>
-					<MenuBar/>
+					<UploadMenu/>
 				</Header>
 
 				<Content style={{ padding: '110px 30px' }}>
@@ -22,14 +22,8 @@ class Upload extends React.Component{
 						Upload Page
 						</h1>
 						<h2 className= "text center capitalize">
-						What do U want to upload?
+						What do U want to share?
 						</h2>
-					</div>
-
-					<div className="Tag">
-						<div className="EditableTagGroup">
-							<EditableTagGroup/>
-						</div>
 					</div>
 
 					<div className="PicturesWall">

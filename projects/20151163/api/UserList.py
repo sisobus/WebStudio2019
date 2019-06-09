@@ -1,3 +1,4 @@
+'''register폼에서 받는거 구현 필요'''
 from flask import Flask, request, jsonify
 from flask_restful import Api, Resource
 import json
@@ -26,7 +27,7 @@ class UserList(Resource):
         if user:
             return '{} aleady exists'.format(email)
         new_user = User(email, password)
-        db.session.add(new_user)
+        db.session.add(new_use현)
         db.session.commit()
         return 'Create email: {}, pw: {} successcully'.format(email, password)
 

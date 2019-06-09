@@ -1,13 +1,9 @@
 import React from 'react';
 import '../App.css';
-import MenuBar from '../Menu';
-import EditableTagGroup from "../EditableTagGroup";
+import AllMenu from '../Menu';
 import { Layout } from 'antd';
 
-
-import Articles from '../Articles';
 import Pictures from '../Pictures';
-
 
 const { Header, Content, Footer } = Layout;
 
@@ -17,7 +13,7 @@ class MainPage extends React.Component{
 			<div id="Main">
 				<Layout className="layout">
 					<Header>
-						<MenuBar/>
+						<AllMenu/>
 					</Header>
 
 					<Content style={{ padding: '110px 30px' }}>
@@ -26,20 +22,14 @@ class MainPage extends React.Component{
 							Smile Archive
 							</h1>
 							<h2 className= "text center capitalize">
-							Hello, this is my Smile Archive site!
+							Hello, this is smile archive site!
 							</h2>
-							<Articles/>
 						</div>
 
-						<div className="Tag">
-							<div className="EditableTagGroup">
-								<EditableTagGroup/>
-							</div>
-						</div>
 
 						<div className="Pictures">
 							<div className="StackGrid">
-								{/* <MyComponent/> */}<Pictures/>
+								<Pictures/>
 							</div>
 						</div>
 					</Content>

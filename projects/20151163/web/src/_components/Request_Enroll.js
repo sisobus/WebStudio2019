@@ -1,8 +1,8 @@
 import React from 'react';
 import '../App.css';
 import { Layout } from 'antd';
-import MenuBar from '../Menu'
-/*import { NavLink } from 'react-router-dom'*/
+import {RequestMenu} from '../Menu';
+import  WrappedRegistrationForm  from '../Registerform.jsx';
 
 
 const { Header, Content, Footer } = Layout;
@@ -13,7 +13,7 @@ class Request_Enroll extends React.Component{
 			<div id="Main">
 			<Layout className="layout">
 				<Header>
-					<MenuBar/>
+					<RequestMenu/>
 				</Header>
 
 				<Content style={{ padding: '110px 30px' }}>
@@ -24,6 +24,9 @@ class Request_Enroll extends React.Component{
 						<h2 className= "text center capitalize">
 						Who are U?
 						</h2>
+					</div>
+					<div className='Request'>
+						<WrappedRegistrationForm/>
 					</div>
 				</Content>
 
