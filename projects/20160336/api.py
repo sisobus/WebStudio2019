@@ -256,11 +256,12 @@ class UserRefresh(Resource):
         }
         return jsonify({'message': 'Refresh successfully', 'data': ret})
 
-class Test(Resource):
+class Home(Resource):
     def get(self):
-        return 'hello'
+        return '''<html><h1>Books</h1>
+<p>prototype for keeping your list of books online</p></html>'''
 
-api.add_resource(Test, '/')
+api.add_resource(Home, '/')
 api.add_resource(UserRefresh, '/api/auth/refresh')
 api.add_resource(PrivateRoute, '/api/private/routes')
 api.add_resource(UserLogin, '/api/auth/login')
