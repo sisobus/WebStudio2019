@@ -48,5 +48,6 @@ class Uploader(Resource):
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-                flash('File(s) successfully uploaded')
-                return redirect('/pictures/new')
+                # flash('File(s) successfully uploaded')
+                return 'success'
+                # return redirect('/pictures/new')

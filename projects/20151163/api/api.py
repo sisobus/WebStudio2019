@@ -3,11 +3,8 @@ from flask_restful import Api, Resource
 from flask_cors import CORS
 import json, os
 
-from models import db, User, Article, Comment, Like
+from models import db, User
 from UserList import UserList
-from ArticleList import ArticleList
-from CommentList import CommentList
-from LikeList import LikeList
 from PicturesList import Picture, PicturesList, Uploader
 
 basedir = os.path.dirname(os.path.abspath(__file__))
@@ -29,9 +26,6 @@ def serializer(l):
     return json.dumps(ret)
 
 api.add_resource(UserList, '/api/users')
-api.add_resource(ArticleList, '/api/articles')
-api.add_resource(CommentList, '/api/comments')
-api.add_resource(LikeList, '/api/likes')
 api.add_resource(PicturesList, '/api/pictures')
 api.add_resource(Picture, '/api/pictures/<name>')
 api.add_resource(Uploader, '/api/pictures/new')

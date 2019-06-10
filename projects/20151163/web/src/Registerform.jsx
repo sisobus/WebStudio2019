@@ -1,4 +1,3 @@
-//유저 리스트에 보내는거 구현ls
 import React from 'react';
 import './App.css';
 import {
@@ -18,12 +17,12 @@ class RegistrationForm extends React.Component {
         users: []
     }
 
-    fetch('http://localhost:5000/api/users')
-        .then(response =>
-            response.json().then(rsp =>
-                this.setState({ users: rsp })
-            )
-        )
+     fetch('http://localhost:5000/api/users')
+         .then(response =>
+             response.json().then(rsp =>
+                 this.setState({ users: rsp })
+             )
+         )
   }
   state = {
     confirmDirty: false,
@@ -35,6 +34,13 @@ class RegistrationForm extends React.Component {
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
+        fetch('http://localhost:5000/api/users', {
+          method: 'POST',
+          body: JSON.stringify(values),
+          headers: {
+            'content-type': 'application/json',
+          },
+        }).then(console.log)
       }
     });
   };
@@ -72,7 +78,6 @@ class RegistrationForm extends React.Component {
   };
 
   render() {
-    const { users } = this.state;
     const { getFieldDecorator } = this.props.form;
 
     const formItemLayout = {
@@ -113,7 +118,7 @@ class RegistrationForm extends React.Component {
                 message: 'Please input your E-mail!',
               },
             ],
-          })(<Input/>)}
+          })(<Input />)}
         </Form.Item>
 
         <Form.Item
@@ -128,14 +133,14 @@ class RegistrationForm extends React.Component {
         >
           {getFieldDecorator('nickname', {
             rules: [{ required: true, message: 'Please input your name!', whitespace: true }],
-          })(<Input action='http://localhost:5000/api/users' fileList={users}/>)}
+          })(<Input />)}
         </Form.Item>
 
-        <Form.Item id="button" {...tailFormItemLayout} >
+        <Form.Item htmlFor="button" {...tailFormItemLayout} >
           <Button type="primary" htmlType="submit">
             Register
           </Button>
-        </Form.Item><myFunction/>
+        </Form.Item>{/*<myFunction/>*/}
       </Form> 
     );
   }

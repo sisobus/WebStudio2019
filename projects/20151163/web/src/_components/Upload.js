@@ -1,4 +1,3 @@
-//업로드 코드 치고 업로드 가능하게 만들기
 import React from 'react';
 import '../App.css';
 import PicturesWall from "../PicturesWall";
@@ -16,7 +15,7 @@ class Upload extends React.Component{
 					<UploadMenu/>
 				</Header>
 
-				<Content style={{ padding: '110px 30px' }}>
+				<Content style={{ padding: '110px 30px 200px 30px' }}>
 					<div className="FrontMessage">
 						<h1 className="introduction text uppercase center">
 						Upload Page

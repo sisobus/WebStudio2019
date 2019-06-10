@@ -1,13 +1,54 @@
 import React from 'react';
 import './App.css';
-import { Layout, Menu, Icon } from 'antd';
+import { Layout, Menu, Icon, Modal, Input, Button } from 'antd';
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router'
+
+
 
 const { Header } = Layout;
 
 class AllMenu extends React.Component{
+    state = { 
+        visible: false, 
+        password : "",
+        toUpload: false,
+    };
+
+    showModal = () => {
+      this.setState({
+        visible: true,
+      });
+    };
+  
+    handleOk = e => {
+        if(this.state.password === "1234"){
+            this.setState({
+                visible : false,
+              toUpload: true , 
+            });
+        } 
+        else{
+            console.log("Incorrect")}
+    };
+      
+  
+    handleCancel = e => {
+      console.log(e);
+      this.setState({
+        visible: false,
+      });
+    };
+
+    onChange = (e) =>{
+        this.setState({
+          password : e.target.value
+        });
+      }
+
 	render () {
-		return(
+        return this.state.toUpload ? (<Redirect to="/upload"/>) : (
+
             <Header>
                 <div className="logo"/><Icon type="smile"/>
                     <Menu
@@ -17,9 +58,21 @@ class AllMenu extends React.Component{
                         <Menu.Item key= "1" >
                             <Link to = '/'>All</Link>
                         </Menu.Item>
+
                         <Menu.Item key="2">
-                            <Link to = '/Upload'>Upload</Link>
+                            <Button type='link' onClick={this.showModal}>
+                            Upload
+                            </Button>
+                            <Modal
+                            title="Input the Upload Code"
+                            visible={this.state.visible}
+                            onOk={this.handleOk}
+                            onCancel={this.handleCancel}
+                            >
+                            <Input.Password placeholder="input password" onChange={this.onChange} />
+                            </Modal>
                         </Menu.Item>
+
                         <Menu.Item key="3">
                             <Link to = '/Request_Enroll'>Request Enrollment</Link>
                         </Menu.Item>
@@ -56,8 +109,45 @@ class UploadMenu extends React.Component{
 
 
 class RequestMenu extends React.Component{
+    state = { 
+        visible: false, 
+        password : "",
+        toUpload: false,
+    };
+
+    showModal = () => {
+      this.setState({
+        visible: true,
+      });
+    };
+  
+    handleOk = e => {
+        if(this.state.password === "20151163"){
+            this.setState({
+                visible : false,
+              toUpload: true , 
+            });
+        } 
+        else{
+            console.log("Incorrect")}
+    };
+      
+  
+    handleCancel = e => {
+      console.log(e);
+      this.setState({
+        visible: false,
+      });
+    };
+
+    onChange = (e) =>{
+        this.setState({
+          password : e.target.value
+        });
+      }
+
 	render () {
-		return(
+        return this.state.toUpload ? (<Redirect to="/upload"/>) : (
             <Header>
                 <div className="logo"/><Icon type="smile"/>
                     <Menu
@@ -68,7 +158,17 @@ class RequestMenu extends React.Component{
                             <Link to = '/'>All</Link>
                         </Menu.Item>
                         <Menu.Item key="2">
-                            <Link to = '/Upload'>Upload</Link>
+                            <Button type='link' onClick={this.showModal}>
+                            Upload
+                            </Button>
+                            <Modal
+                            title="Input the Upload Code"
+                            visible={this.state.visible}
+                            onOk={this.handleOk}
+                            onCancel={this.handleCancel}
+                            >
+                            <Input.Password placeholder="input password" onChange={this.onChange} />
+                            </Modal>
                         </Menu.Item>
                         <Menu.Item key="3">
                             <Link to = '/Request_Enroll'>Request Enrollment</Link>
@@ -79,4 +179,5 @@ class RequestMenu extends React.Component{
     }
 }
 
-export { UploadMenu, RequestMenu};
+export { UploadMenu, RequestMenu };
+

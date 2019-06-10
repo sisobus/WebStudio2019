@@ -104,6 +104,7 @@ h1.introduction {
 }
 
 .ant-layout-header {
+    z-index: 1000;
     border-bottom: 1px solid #e8e8e8;
 }
 
@@ -137,4 +138,8 @@ h1.introduction {
 .ant-form-item
 .ant-col-sm-offset-8{
     width:100%;
+}
+
+.ant-btn-link{
+    color:rgba(0, 0, 0, 0.65);
 }

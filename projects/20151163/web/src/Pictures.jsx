@@ -42,7 +42,7 @@ class Pictures extends React.Component {
                     enter={transition.enter}
                     entered={transition.entered}
                     leaved={transition.leaved}
-                >}
+                >
                     {this.state.pictures.map(obj  => (
                         <figure
                             key={obj.path}

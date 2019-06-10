@@ -16,7 +16,7 @@ class Request_Enroll extends React.Component{
 					<RequestMenu/>
 				</Header>
 
-				<Content style={{ padding: '110px 30px' }}>
+				<Content style={{ padding: '110px 30px 200px 30px' }}>
 					<div className="FrontMessage">
 						<h1 className="introduction text uppercase center">
 						Request Enrollment Page
