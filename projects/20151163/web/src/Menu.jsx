@@ -122,7 +122,7 @@ class RequestMenu extends React.Component{
     };
   
     handleOk = e => {
-        if(this.state.password === "20151163"){
+        if(this.state.password === "1234"){
             this.setState({
                 visible : false,
               toUpload: true , 
