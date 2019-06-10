@@ -1,0 +1,40 @@
+
+유저 테스트
+curl -X POST -H "Content-Type: application/json" \
+ -d '{"email": "sisobus@vuno.co", "password": "1234qwer"}'\
+ http://0.0.0.0:5000/api/users
+
+ curl -X PUT -H "Content-Type: application/json" \
+  -d '{"email": "sisobus@vuno.co", "password": "tnwjdgkfqlalfqjsgh"}'\
+  http://0.0.0.0:5000/api/users
+
+  curl -X DELETE -H "Content-Type: application/json" \
+  -d '{"email": "sisobus@vuno.co"}'\
+  http://0.0.0.0:5000/api/users
+
+글 테스트
+  curl -X POST -H "Content-Type: application/json" \
+   -d '{"user_id": "1", "title": "title1", "content": "content1"}'\
+   http://0.0.0.0:5000/api/articles
+
+   curl -X PUT -H "Content-Type: application/json" \
+    -d '{"id": "1", "title": "title2", "content": "content2"}'\
+    http://0.0.0.0:5000/api/articles
+
+    curl -X DELETE -H "Content-Type: application/json" \
+    -d '{"id" : "1"}'\
+    http://0.0.0.0:5000/api/articles
+
+
+댓글 테스트
+    curl -X POST -H "Content-Type: application/json" \
+     -d '{"user_id": "1", "article_id": "1", "content": "content1"}'\
+     http://0.0.0.0:5000/api/comments
+
+     curl -X PUT -H "Content-Type: application/json" \
+      -d '{"id": "1", "content": "content2"}'\
+      http://0.0.0.0:5000/api/comments
+
+      curl -X DELETE -H "Content-Type: application/json" \
+      -d '{"id" : "1"}'\
+      http://0.0.0.0:5000/api/comments
