@@ -84,8 +84,6 @@ class ArticleList(Resource):
         articles = self.get_articles()
         for article in articles:
             print(article.comments)
-        print(articles[0].comments[0].content)
-        print(articles[0].comments[0].user.email)
         return jsonify(serializer(articles))
 
     def post(self):
@@ -258,6 +256,11 @@ class UserRefresh(Resource):
         }
         return jsonify({'message': 'Refresh successfully', 'data': ret})
 
+class Test(Resource):
+    def get(self):
+        return 'hello'
+
+api.add_resource(Test, '/')
 api.add_resource(UserRefresh, '/api/auth/refresh')
 api.add_resource(PrivateRoute, '/api/private/routes')
 api.add_resource(UserLogin, '/api/auth/login')
