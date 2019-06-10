@@ -21,6 +21,16 @@ class LoginPage extends React.Component {
     this.WrappedLoginForm = Form.create()(LoginForm)
     this.WrappedRegisterForm = Form.create()(RegisterForm)
   }
+
+  changeLocation = () => {
+    this.setState({
+      isLoginPage : !this.state.isLoginPage,
+      isRegisterPage : !this.state.isRegisterPage
+    })
+    console.log('change location')
+  }
+
+
   render() {
     const WrappedLoginForm = this.WrappedLoginForm
     const WrappedRegisterForm = this.WrappedRegisterForm
@@ -31,7 +41,7 @@ class LoginPage extends React.Component {
             <h1>Login</h1>
             <h2>Web Studio 2019</h2>
             <Divider style={{ margin: '10px 0' }} />
-            <WrappedLoginForm />
+            <WrappedLoginForm callbackFromParent={this.changeLocation}/>
           </div>
         )}
         {this.state.isRegisterPage && (
@@ -39,7 +49,7 @@ class LoginPage extends React.Component {
             <h1>REGISTER</h1>
             <h2>Web Studio 2019</h2>
             <Divider style={{ margin: '10px 0' }} />
-            <WrappedRegisterForm />
+            <WrappedRegisterForm callbackFromParent={this.changeLocation}/>
           </div>
         )}
       </React.Fragment>

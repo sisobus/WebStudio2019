@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import './App.css';
 
 import { Router, Route, Switch } from "react-router-dom";
+import { PrivateRoute } from './components/PrivateRoute'
+
 
 import { history } from './components/history'
 import LoginPage from './components/LoginPage';
 import Main from './Main'
-import  RegisterForm from './components/RegisterForm';
 
 class App extends Component {
   render() {
@@ -15,8 +16,8 @@ class App extends Component {
         <Router history={history}>
           <Switch>
             <Route path='/login' exact component={LoginPage} />
-            <Route path='/register' exact component={RegisterForm} />
-            <Route component={Main} />
+            <Route path='/register' exact component={LoginPage} />
+            <PrivateRoute component={Main} />
           </Switch>
         </Router>
       </div>

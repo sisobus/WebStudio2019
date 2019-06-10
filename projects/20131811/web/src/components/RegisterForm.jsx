@@ -24,6 +24,11 @@ class RegisterForm extends React.Component {
     this.handleConfirmBlur = this.handleConfirmBlur.bind(this)
   }
 
+  changePage = () => {
+    this.props.callbackFromParent();
+  }
+
+
   handleConfirmBlur = e => {
     const value = e.target.value
     this.setState({ confirmDirty: this.state.confirmDirty || !!value })
@@ -71,6 +76,7 @@ class RegisterForm extends React.Component {
                 .then(rsp => {
                   console.log(rsp)
                   if (rsp == 'success') {
+                    this.changePage();
                     history.push('/login')
                   } else {
                     message.error('Account already exist')
@@ -168,7 +174,7 @@ class RegisterForm extends React.Component {
           >
             Register
           </Button>
-          <Link className={cx("signup-button")} to="/login">
+          <Link className={cx("signup-button")} to="/login" onClick={this.changePage}>
             Sign In
           </Link>
         </Form.Item>

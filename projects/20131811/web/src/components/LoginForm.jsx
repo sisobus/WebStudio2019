@@ -17,6 +17,10 @@ class LoginForm extends React.Component {
     this.password = null
   }
 
+  changePage = () => {
+    this.props.callbackFromParent();
+  }
+
   render() {
     const { getFieldDecorator } = this.props.form
     return (
@@ -119,7 +123,7 @@ class LoginForm extends React.Component {
           >
             Log in
           </Button>
-          <Link className={cx("signup-button")} to="/register">
+          <Link className={cx("signup-button")} to="/register" onClick={this.changePage}>
             Sign up
           </Link>
         </Form.Item>
