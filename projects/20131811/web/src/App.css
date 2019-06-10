@@ -33,3 +33,16 @@
     transform: rotate(360deg);
   }
 }
+
+.ant-layout-header {
+  height: 200px;
+  padding: 0 50px;
+  line-height: 64px;
+  background: black;
+}
+
+.ant-menu{
+  color : red;
+  background: black;
+
+}

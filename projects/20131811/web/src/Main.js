@@ -11,6 +11,8 @@ import MovieListDate from './components/MovieListDate';
 import MovieListStar from './components/MovieListStar';
 import { Layout } from 'antd';
 import AddMovieForm from './components/AddMovieForm';
+import LoginInfo from './components/LoginInfo';
+
 
 
 const { Header, Footer, Sider, Content } = Layout;
@@ -23,6 +25,7 @@ class Main extends Component {
                     <Header>
                         <Head />
                     </Header>
+                    <LoginInfo />
                     <Layout>
                         <Sider>
                             <Sidebar />

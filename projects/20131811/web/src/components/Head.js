@@ -1,29 +1,17 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import './Head.css'
 
 
 class Head extends Component {
 
-    //제일 처음 실행
-    /*
-    constructor(props) {
-      super(props);
-      
-    }
-    */
-  
-    render () {
-      return (
-        <div>
-          <div>
-            진짜 헤드
-          </div>
-          <div>
-            로그인 창
-          </div>
-        </div>
-      );
-    }
+  render() {
+    return (
+      <div className='header'>
+        <br/>
+        NETFL REVIEW
+      </div>
+    );
   }
-  
-  export default Head;
-  
+}
+
+export default Head;

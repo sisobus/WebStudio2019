@@ -40,8 +40,6 @@ class Sidebar extends Component {
   }
 
   render() {
-    console.log('11241241241')
-    console.log(this.props)
     return (
       <Menu
         mode="inline"
