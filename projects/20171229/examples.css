@@ -2,13 +2,37 @@
 /* Reset CSS
  * --------------------------------------- */
 .section{
-  padding: 50px;
+  padding: 0px;
+}
 
+.portfolio{
+  align: center;
+}
+
+h1{
+  color: white;
+  text-align: center;
+}
+
+h2{
+  color: black;
+  text-align: center;
+}
+
+.pic-work{
+  color: white;
+  font-size: 1em;
 }
 
 .wrapper cl {
   max-height: 100%;
   width: auto;
+}
+
+.pic-title {
+  color: white;
+  font-size: 7em;
+  padding-top: 50px;
 }
 
  .pic {
@@ -155,9 +179,7 @@
  @media screen and (max-width: 768px) {
    body {
      font-family: 'Jeju Gothic';
-
-
-     overflow-y: scroll;
+   overflow-y: scroll;
      width: 120%;
    }
 
@@ -212,8 +234,8 @@ caption,th {
 h1,h2,h3,h4,h5,h6 {
     font-weight: normal;
     font-size: 100%;
-    margin:20;
-    padding:20;
+    margin:0;
+    padding:0;
     color:#255;
 }
 q:before,q:after {
