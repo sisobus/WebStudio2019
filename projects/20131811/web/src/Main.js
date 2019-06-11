@@ -30,7 +30,7 @@ class Main extends Component {
                         <Sider>
                             <Sidebar />
                         </Sider>
-                        <Content>
+                        <Content className='body'>
                             <Switch>
                                 <PrivateRoute path="/" exact component={MovieListDate} />
                                 <PrivateRoute path="/movielist/date" exact component={MovieListDate} />

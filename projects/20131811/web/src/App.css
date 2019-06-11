@@ -1,5 +1,12 @@
 @import '~antd/dist/antd.css';
+@import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
+@import './antd.less';
 
+.header {
+    font-size : 100px;
+    color : red;
+    font-family: 'Anton', sans-serif;
+}
 .App {
   text-align: center;
 }
@@ -34,6 +41,7 @@
   }
 }
 
+/*헤더*/
 .ant-layout-header {
   height: 200px;
   padding: 0 50px;
@@ -41,8 +49,57 @@
   background: black;
 }
 
+/*메뉴*/
 .ant-menu{
-  color : red;
+  color : white;
   background: black;
+}
 
+
+/*메뉴 배경*/
+.ant-menu-submenu > .ant-menu {
+  background-color: black;
+  border-radius: 4px;
+}
+
+/*소메뉴들 */
+.ant-menu-item {
+  color: white;
+  background: black;
+}
+
+/*소메뉴들 */
+.ant-menu-active {
+  color: pink;
+}
+
+/*메뉴오른쪽에실같이튀어나온거*/
+.ant-menu-vertical .ant-menu-item::after, .ant-menu-vertical-left .ant-menu-item::after, .ant-menu-vertical-right .ant-menu-item::after, .ant-menu-inline .ant-menu-item::after{
+  border-right: black;
+}
+
+/*선택된거 배경*/
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background-color: red;
+}
+
+/*드래그해서 선택했을 때*/
+::selection {
+  color: green;
+  background: yellow;
+}
+
+/*사이드바 아래 남는부분 */
+.ant-layout-sider-children {
+  background : black;
+}
+
+
+.body{
+  background: rgb(100, 100, 100);
+  color : white;
+}
+
+.whitefont{
+  color:white;
 }

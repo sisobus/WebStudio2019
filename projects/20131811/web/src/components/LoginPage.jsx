@@ -36,6 +36,11 @@ class LoginPage extends React.Component {
     const WrappedRegisterForm = this.WrappedRegisterForm
     return (
       <React.Fragment>
+        <br/>
+        <br/>
+        <div className='header'>
+          NETFL REVIEW
+        </div>
         {this.state.isLoginPage && (
           <div className={cx('login')}>
             <h1>Login</h1>
