@@ -23,6 +23,11 @@ body.dark-mode a {
 	color: #fff
 }
 
+body.dark-mode code {
+	color: #333;
+	background-color: #92E3F1;
+}
+
 body.dark-mode .dark-mode-toggle > button {
 	color: #999;
 }
@@ -180,4 +185,11 @@ a {
 	color: #333;
 	font-family: 'Quicksand';
 	text-decoration: none;
+}
+
+code {
+	background-color: #f6cd00;
+	padding: 0 5px;
+	border-radius: 2px;
+
 }
