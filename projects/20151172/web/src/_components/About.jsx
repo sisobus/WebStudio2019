@@ -12,9 +12,12 @@ class Aboutpage extends React.Component {
 					<Icon type="left-circle" className="home" />
 					</Link>
 				</div>
-				<h1>this is me</h1>
+				<h1>This is me</h1>
 				<p>I do what i wanna do</p>
-				<p>Adobe Photoshop/Adobe Premiere Pro/Adobe After Effects</p>				
+				<h2>Tool I can use</h2> 
+				<p>Adobe Photoshop/Adobe Premiere Pro/Adobe After Effects</p>
+				<h2>Work I mainly do</h2>
+				<p>Graphic Design/Contents Planning/Film Making/Illustration</p>
 			</div>
 		)
 	}
