@@ -9,8 +9,8 @@ class Mainpage extends React.Component {
 				<div className = "main-wrapper">
 					<div className = "Nav">
 						<ul>
-							<li><Link to="/about">About</Link></li>
-							<li><Link to="/work">Work</Link></li>
+							<li><Link to="/about" className="link">About</Link></li>
+							<li><Link to="/work" className="link" >Work</Link></li>
 						</ul>
 					</div>
 				</div>
