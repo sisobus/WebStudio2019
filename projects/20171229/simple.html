@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="user-scalable=no, width=device-width">
+	<title>Baehatrice</title>
+	<meta name="author" content="Bae HaYoung" />
+	<meta name="description" content="Baehatrice Portfolio" />
+	<meta name="keywords"  content="fullpage,jquery,demo,simple" />
+	<meta name="Resource-type" content="Document" />
+
+
+	<link rel="stylesheet" type="text/css" href="fullpage.min.css" />
+	<link rel="stylesheet" type="text/css" href="examples.css" />
+</head>
+<body>
+
+	<ul id="menu">
+	    <li data-menuanchor="firstPage" class="active"><a href="#firstPage">Baehatrice</a></li>
+	    <li data-menuanchor="secondPage"><a href="#secondPage">Makeup</a></li>
+	    <li data-menuanchor="3rdPage"><a href="#3rdPage">Graphic Design</a></li>
+			<li data-menuanchor="4thPage"><a href="#4thPage">Photography</a></li>
+			<li data-menuanchor="5thPage"><a href="#5thPage">Others</a></li>
+	</ul>
+
+
+
+	<article class="htmleaf-container">
+			<section class="wrapper cl">
+					<div class="pic">
+							<img src="1-1.jpg" class="pic-image">
+							<span class="pic-caption top-to-bottom">
+							<h1 class="pic-title">Baehatrice</h1>
+							</span>
+					</div>
+			</section>
+	</article>
+
+
+<div id="fullpage">
+	<div class="section" id="section1">
+	    <div class="slide ">
+				<h1>Makeup</h1></div>
+	    <div class="slide active">
+					<h1>M1</h1>
+					<img src="rock.jpg" width="400" height="300"  >
+					<img src="sand.jpg" width="400" height="300"  >
+					<img src="wall.jpg" width="400" height="300" >
+
+			</div>
+
+	    <div class="slide"><h1>M2</h1>
+				<img src="smoke.jpg" width="400" height="300"  >
+				<img src="connection.jpg" width="450" height="300"  >
+				<img src="horse.jpg" width="450" height="300" >
+			</div>
+
+	    <div class="slide"><h1>M3</h1></div>
+	</div>
+	<div class="section" id="section2">
+		<div class="slide "><h1>Graphic Design</h1></div>
+		<div class="slide active"><h1>G1</h1></div>
+		<div class="slide"><h1>G2</h1></div>
+		<div class="slide"><h1>G3</h1></div>
+	</div>
+	<div class="section" id="section3">
+		<div class="slide "><h1>Photography</h1></div>
+		<div class="slide active"><h1>P1</h1></div>
+		<div class="slide"><h1>P2</h1></div>
+		<div class="slide"><h1>P3</h1></div>
+	</div>
+	<div class="section" id="section4">
+		<div class="slide "><h1>Others</h1></div>
+		<div class="slide active"><h1>1.Installation</h1></div>
+		<div class="slide"><h1>2.Physical</h1></div>
+		<div class="slide"><h1>3. Craft</h1></div>
+	</div>
+	<div class="section" id="section5">
+		<div class="slide "><h1>Others</h1></div>
+		<div class="slide active"><h1>1.Installation</h1></div>
+		<div class="slide"><h1>2.Physical</h1></div>
+		<div class="slide"><h1>3. Craft</h1></div>
+	</div>
+</div>
+
+
+
+<script type="text/javascript" src="fullpage.min.js"></script>
+<script type="text/javascript" src="examples.js"></script>
+<script type="text/javascript">
+	var myFullpage = new fullpage('#fullpage', {
+		sectionsColor: ['#000000','#f8f8f8','#000000','#f8f8f8','#000000'],
+		anchors: ['firstPage', 'secondPage', '3rdPage', '4thPage', '5thPage'],
+		navigation:true,
+		navigationTooltips: ['Baehatrice', 'Makeup', 'Graphic Design', 'Photography', 'Others' ],
+		showActiveTooltip: true,
+		menu: '#menu'
+	});
+</script>
+</body>
+</html>
