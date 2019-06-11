@@ -1,7 +1,8 @@
-from flask import Flask, request
+from flask import Flask, request, send_from_directory
 from flask_restful import Api, Resource
 import json
 import os
+from flask_cors import CORS
 from models import db, Article
 
 basedir = os.path.dirname(os.path.abspath(__file__))
@@ -12,13 +13,19 @@ app.config.update({
     "SQLALCHEMY_DATABASE_URI": SQLALCHEMY_DATABASE_URI,
 })
 api = Api(app)
+cors = CORS(app)
 db.init_app(app)
+IMAGE_PATH = os.path.join(basedir, 'image')
 
 def serializer(l):
-    ret = ''
+    ret = []
     for row in l:
-        ret += row.serialize()
-    return ret
+        ret.append(json.loads(row.serialize()))
+    return ret  
+
+class Picture(Resource):
+    def get(self, name):
+        return send_from_directory(IMAGE_PATH, name)
 
 class ArticleList(Resource):
     def get_articles(self):
@@ -32,9 +39,10 @@ class ArticleList(Resource):
     def post(self):
         r_json = request.get_json() 
         title = r_json['title']
-        imaeg = r_json['image']
+        image = r_json['image']
+        category = r_json['category']
         content = r_json['content']
-        new_article = Article(title, image, content)
+        new_article = Article(title, image, category, content)
         db.session.add(new_article)
         db.session.commit()
         return "write successfully"
@@ -44,6 +52,7 @@ class ArticleList(Resource):
         _id = r_json['id']
         title = r_json['title']
         image = r_json['image']
+        category = r_json['category']
         content = r_json['content']
         article = Article.query.filter_by(id=_id).first()
         if not article:
@@ -65,8 +74,10 @@ class ArticleList(Resource):
         return "delete successfully"
 
 api.add_resource(ArticleList, '/api/articles')
+api.add_resource(Picture, '/api/pictures/<name>')
 
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
     app.run(host='0.0.0.0', port=5000, debug=True)
+
