@@ -3,6 +3,7 @@ import './App.css';
 import Mainpage from './_components/Main'
 import Aboutpage from './_components/About'
 import Workpage from './_components/Work'
+import Contactpage from './_components/Contact'
 import { BrowserRouter as Router, Route } from "react-router-dom"
 import DarkModeToggle from './DarkModeToggle';
 import DarkModeCommands from './DarkModeCommands';
@@ -27,6 +28,7 @@ function App() {
 				<Route path="/" exact component={Mainpage} />
 				<Route path="/about" exact component={Aboutpage} />
 				<Route path="/work" exact component={Workpage} />
+				<Route path="/contact" exact component={Contactpage} />
 			</Router>
 		
 			<footer id = "footer">

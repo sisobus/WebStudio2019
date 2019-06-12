@@ -11,6 +11,7 @@ class Mainpage extends React.Component {
 						<ul>
 							<li><Link to="/about" className="link">About</Link></li>
 							<li><Link to="/work" className="link" >Work</Link></li>
+							<li><Link to="/contact" classNAME="link">Contact</Link></li>
 						</ul>
 					</div>
 				</div>
