@@ -14,9 +14,9 @@ class Aboutpage extends React.Component {
 				</div>
 				<h1>This is me</h1>
 				<p>I do what i wanna do</p>
-				<h2>Tool I can use</h2> 
+				<h2 className="subtitle">Tool I can use</h2> 
 				<p>Adobe Photoshop/Adobe Premiere Pro/Adobe After Effects</p>
-				<h2>Work I mainly do</h2>
+				<h2 className="subtitle">Work I mainly do</h2>
 				<p>Graphic Design/Contents Planning/Film Making/Illustration</p>
 			</div>
 		)
