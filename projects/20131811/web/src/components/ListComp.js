@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { List, Icon, Rate } from 'antd';
 import { Link } from "react-router-dom";
-import './ListComp.css';
 
 const IconText = ({ type, text }) => (
     <span>
@@ -63,7 +62,7 @@ class ListComp extends Component {
                             <List.Item.Meta 
                                 //avatar={<Avatar src={item.avatar} />}
                                 //title={<a href={item.href}>{item.title}</a>}
-                                title={<Link className='title' to={`/page/${item.id}`}>{item.name}</Link>}
+                                title={<Link  to={`/page/${item.id}`}>{item.name}</Link>}
                             //description={item.name}
                             />
                             <Rate disabled value={this.calculate(item.total_star, item.people_num)} />
