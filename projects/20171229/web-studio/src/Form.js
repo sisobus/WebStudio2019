@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.css';
+
 import { Form, Select, Input, Button } from 'antd';
 
 
 const { Option } = Select;
 
-class App extends React.Component {
+class send extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
@@ -54,5 +55,5 @@ class App extends React.Component {
   }
 }
 
-const WrappedApp = Form.create({ name: 'coordinated' })(App);
+const WrappedApp = Form.create({ name: 'coordinated' })(send);
 export default WrappedApp;
