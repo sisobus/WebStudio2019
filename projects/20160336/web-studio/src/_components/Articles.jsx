@@ -8,19 +8,19 @@ class Articles extends React.Component {
     this.state = {
       articles: [
         {
-          title: "updated title [1]",
+          title: "경성 탐정 이상 시리즈",
           author: "Sangkeun Kim",
           content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
           like: 0
         },
         {
-          title: "updated title [2]",
+          title: "하드보일드 탐정",
           author: "Sangkeun Kim",
           content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
           like: 0
         },
         {
-          title: "updated title [3]",
+          title: "빨간 마스크",
           author: "Sangkeun Kim",
           content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
           like: 0
