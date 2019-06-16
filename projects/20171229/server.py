@@ -1,5 +1,6 @@
 from flask import Flask, request
 from flask_restful import Api, Resource
+from flask_cors import CORS
 import json
 import os
 from models import db, User, Article, Comment, Like
@@ -11,14 +12,16 @@ app.config.update({
     'SQLALCHEMY_TRACK_MODIFICATIONS': True,
     "SQLALCHEMY_DATABASE_URI": SQLALCHEMY_DATABASE_URI,
 })
+cors = CORS(app)
 api = Api(app)
 db.init_app(app)
 
 def serializer(l):
-    ret = ''
+    ret = []
     for row in l:
-        ret += row.serialize()
-    return ret
+        ret.append(json.loads(row.serialize()))
+    return json.dumps(ret)
+
 
 class UserList(Resource):
     def get_users(self):
@@ -28,7 +31,6 @@ class UserList(Resource):
     def get(self):
         users = self.get_users()
         return serializer(users)
-        
 
     def post(self):
         r_json = request.get_json()
@@ -82,6 +84,7 @@ class ArticleList(Resource):
         user_id = r_json['user_id']
         title = r_json['title']
         content = r_json['content']
+        email = r_json['email']
 
         new_article = Article(user_id, title, content)
         db.session.add(new_article)
@@ -93,11 +96,13 @@ class ArticleList(Resource):
         _id = r_json['id']
         title = r_json['title']
         content = r_json['content']
+        email = r_json['email']
         article = Article.query.filter_by(id=_id).first()
         if not article:
             return "article[:{}] is not exists".format(_id)
         article.title = title
         article.content = content
+        article.email = email
         db.session.commit()
         return "update successfully"
 
@@ -198,4 +203,4 @@ api.add_resource(LikeList, '/api/likes')
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)

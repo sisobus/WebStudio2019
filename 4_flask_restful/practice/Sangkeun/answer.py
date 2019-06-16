@@ -175,7 +175,7 @@ class CommentList(Resource):
         _id = r_json['id']
         comments = self.get_comments()
         new_comments = []
-        
+
         for comment in comments:
             if comment['id'] == _id:
                 continue
@@ -227,4 +227,4 @@ api.add_resource(CommentList, '/api/comments')
 api.add_resource(LikeList, '/api/likes')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(debug=True)

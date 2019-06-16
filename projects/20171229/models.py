@@ -92,4 +92,3 @@ class Like(db.Model):
             'user_id': self.user_id,
             'aritcle_id': self.article_id
         })
-
