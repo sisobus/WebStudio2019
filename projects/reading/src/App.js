@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, DatePicker } from 'antd';
+import { Button, DatePicker, Card } from 'antd';
 import './App.css';
 import Sider from './Sider'
 
@@ -25,6 +25,21 @@ function App() {
 				</div>
                                 <div style={{ padding:20 }}>
 				<RangePicker onChange={onChange} />
+				</div>
+                                <div style={{ padding:20 }}>
+					<Card
+					    hoverable
+					    style={{ width: 240 }}
+					    cover={
+						<img 
+							alt="example" 
+							src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" 
+						/>
+						}
+  					>
+					    <Card.Meta title="Europe Street beat" 
+						description="www.instagram.com" />
+				 	 </Card>
 				</div>
 			</div>
 		</div>
