@@ -29,7 +29,7 @@ class Articles extends React.Component {
     }
     this.handleLike = this.handleLike.bind(this)
 
-    fetch('http://127.0.0.1:5000/api/articles')
+    fetch('http://127.0.0.1:5000/api/users')
        .then(response => {
          response.json().then(rsp=> {
 	this.setState({ articles: rsp })
