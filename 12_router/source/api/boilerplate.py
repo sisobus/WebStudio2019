@@ -191,7 +191,6 @@ class LikeList(Resource):
         db.session.commit()
         return "like successfully"
 
-
 api.add_resource(UserList, '/api/users')
 api.add_resource(ArticleList, '/api/articles')
 api.add_resource(CommentList, '/api/comments')
