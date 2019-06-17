@@ -7,31 +7,30 @@ class Articles extends React.Component {
     super(props)
     this.state = {
       articles: [{
-		title: 'goose',
-		content: 'content!1!',
-		author: 'Sangkeun Kim',
-		key:1,
-		idx:1,
-		}, {
-                title: 'goose',
-                content: 'content!2!', 
-                author: 'Sangkeun Kim',
-                key:2,
-                idx:2,
-		}, {
-                title: 'goose',
-                content: 'content!3!', 
-                author: 'Sangkeun Kim',
-                key:3,
-                idx:3,
-		}, {
-                title: 'goose',
-                content: 'content!4!', 
-                author: 'Sangkeun Kim',
-                key:4,
-                idx:4,
-		}
-	]
+	title:'aaa',
+	content: 'content!1!',
+	author:'San',
+	key:1,
+	idx:1,
+	},{
+        title:'aaa',
+        content: 'content!2!',
+        author:'San',
+        key:2,
+        idx:2,
+	},{
+        title:'aaa',
+        content: 'content!3!',
+        author:'San',
+        key:3,
+        idx:3,
+	{,{
+        title:'aaa',
+        content: 'content!4!',
+        author:'San',
+        key:4,
+        idx:4,
+	}]
     }
     this.handleLike = this.handleLike.bind(this)
 
