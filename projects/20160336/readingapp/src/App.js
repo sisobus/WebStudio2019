@@ -1,24 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import MainPage from './_components/Main'
+import BlankPage from './_components/BlankPage'
+import { Router, Route } from "react-router-dom"
+import { history } from './_components/history'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router history={history}>
+        <Route path="/" exact component={MainPage} />
+        <Route path="/blank" exact component={BlankPage} />
+        <Route path="/about" exact component={MainPage} />
+        <Route path="/hi" exact component={BlankPage} />
+        <Route path="/secret" exact component={MainPage} />
+      </Router>
     </div>
   );
 }
