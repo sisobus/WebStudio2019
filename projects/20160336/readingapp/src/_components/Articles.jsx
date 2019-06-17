@@ -7,7 +7,7 @@ class Articles extends React.Component {
     super(props)
     this.state = {
       articles: [
-        {
+        {/*{
           title: "updated title [1]",
           author: "Sangkeun Kim",
           content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -24,10 +24,18 @@ class Articles extends React.Component {
           author: "Sangkeun Kim",
           content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
           like: 0
-        },
+        }*/}
       ]
     }
     this.handleLike = this.handleLike.bind(this)
+
+    fetch('http://127.0.0.1:5000/api/articles')
+       .then(response => {
+         response.json().then(rsp=> {
+	this.setState({ articles: rsp })
+     })
+  })
+
   }
   handleLike(idx) {
     let nextStateArticle = [...this.state.articles]
