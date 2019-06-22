@@ -8,11 +8,11 @@ db = SQLAlchemy()
 class User(db.Model):
 	__tablename__ = 'user'
 	id = db.Column(db.Integer, primary_key=True)
-	email = db.Column(db.String(300))
+	email = db.Column(db.String(600))
 	nickname = db.Column(db.String(300))
 	password = db.Column(db.String(300))
 
-	def __init(self, email, password, nickname):
+	def __init__(self, email, password, nickname):
 		self.email = email
 		self.set_password(password)
 		self.nickname = nickname
@@ -21,7 +21,7 @@ class User(db.Model):
 		self.password = generate_password_hash(password)
 
 	def check_password(self, password):
-		return check_password_hash(password)
+		return check_password_hash(self.password, password)
 	
 	def serialize(self):
 		return json.dumps({
@@ -31,3 +31,14 @@ class User(db.Model):
 			'nickname': self.nickname
 		})
 
+class LoginSession(db.Model):
+	__tablename__ = 'login_session'
+	id = db.Column(db.Integer, primary_key=True)
+	user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+	jti = db.Column(db.Text)
+
+	user = relationship('User')
+
+	def __init__(self, user_id, jti):
+		self.user_id = user_id
+		self.jti = jti

@@ -1,16 +1,12 @@
-import { Form, Input, Tooltip, Icon, Checkbox, Button } from 'antd';
+import { Form, Input, Tooltip, Icon, Checkbox, Button, message } from 'antd';
 import React from 'react';
 import './Resister.css';
-import UserForm from './UserForm';
+import {history} from './History';
 
-//let requestOptions;
   
 class RegistrationForm extends React.Component {
     state = {
       confirmDirty: false,
-      email: '',
-      password: '',
-      nickname: ''
     };
   
     handleSubmit = e => {
@@ -18,27 +14,24 @@ class RegistrationForm extends React.Component {
       this.props.form.validateFieldsAndScroll((err, values) => {
         if (!err) {
           console.log('Received values of form: ', values);
-          console.log(values.email);
-          console.log(values.password);
-          console.log(values.nickname);
 
-          fetch('http://0.0.0.0:5002/api/users', {
+          fetch('http://0.0.0.0:5003/api/users', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-            'email': values.email,
-            'password': values.password,
-            'nickname': values.nickname
-        })
-      })
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(data) {
-      });
+              email: values.email,
+              password: values.password,
+              nickname: values.nickname
+            })
+          })
+            .then(response => {
+              message.success(response.message);
+              console.log(response);
+              history.push('/')
+            })
         }
-      });
-    };
+      })
+    }
   
     handleConfirmBlur = e => {
       const value = e.target.value;
@@ -66,18 +59,7 @@ class RegistrationForm extends React.Component {
       this.setState({
           [e.target.name]: e.target.value
       });
-    }
-
-   /*requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        email: this.state.email,
-        password: this.state.password,
-        nickname: this.state.nickname
-      })
-    }*/
- 
+    };
   
     render() {
       const { getFieldDecorator } = this.props.form;
@@ -120,11 +102,6 @@ class RegistrationForm extends React.Component {
                   message: 'Please input your E-mail!',
                 },
               ],
-              /*
-              value: (e) => this.state.email,
-              onChange: (e) => this.handleChange,
-              name: "email"
-              */
             })(<Input />)}
           </Form.Item>
           <Form.Item label="Password" hasFeedback>
@@ -138,11 +115,6 @@ class RegistrationForm extends React.Component {
                   validator: this.validateToNextPassword,
                 },
               ],
-              /*
-              value: (e) => this.state.email,
-              onChange: (e) => this.handleChange,
-              name: "password"
-              */
             })(<Input.Password />)}
           </Form.Item>
           <Form.Item label="Confirm Password" hasFeedback>
@@ -170,11 +142,6 @@ class RegistrationForm extends React.Component {
           >
             {getFieldDecorator('nickname', {
               rules: [{ required: true, message: 'Please input your nickname!', whitespace: true }],
-              /*
-              value: (e) => this.state.email,
-              onChange: (e) => this.handleChange,
-              name: "nickname"
-              */
             })(<Input />)}
           </Form.Item>
 
@@ -197,27 +164,6 @@ class RegistrationForm extends React.Component {
     }
   }
 
-  /*
-function fetchUser(values) {
-
-  console.log(this.values.email);
-      fetch('https://0.0.0.0:5002/api/users', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: this.values.email,
-          password: this.values.password,
-          nickname: this.values.nickname
-        })
-      })
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(data) {
-      });
-  }
-  */
- 
   const WrappedRegistrationForm = Form.create({ name: 'register' })(RegistrationForm);
   
   export default WrappedRegistrationForm
