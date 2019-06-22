@@ -6,10 +6,8 @@ import GamePage from './_components/GamePage';
 import Resister from './_components/Resister';
 import {Router, Route} from "react-router-dom";
 import {history} from './_components/History';
-import {io} from './_components/chat-server'
 
 function App() {
-  console.log(io)
   return (
     <div className="App">
       <Router history={history}>

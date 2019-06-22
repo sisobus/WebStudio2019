@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, abort
+from flask import Flask, jsonify, abort, request
 from flask_restful import Api, Resource
 from flask_cors import CORS
 from flask_jwt_extended import (
@@ -10,7 +10,6 @@ import json
 import os
 from data import db, User, LoginSession
 from flask_socketio import SocketIO, emit
-# from MySocket import MySocketIO
 
 basedir = os.path.dirname(os.path.abspath(__file__))
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
@@ -28,7 +27,6 @@ api = Api(app)
 db.init_app(app)
 jwt = JWTManager(app)
 socketio = SocketIO(app)
-# socketio = MySocketIO(app)
 
 
 def serializer(l):

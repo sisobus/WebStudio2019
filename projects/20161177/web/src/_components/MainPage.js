@@ -1,18 +1,30 @@
 import React from 'react';
-import {Button} from 'antd';
+import {Button, Layout} from 'antd';
+import { ChatForm } from "./chat-server"
 //import {history} from './History';
 import './MainPage.css';
 
-class GamePage extends React.Component {
+const { Header, Sider, Content, Footer } = Layout;
+
+class MainPage extends React.Component {
     render() {
-        return (
-            <React.Fragment>
-                <Button>
-                    ok
-                </Button>
-            </React.Fragment>
-        )
+        
+        return(
+            <div>
+            <Layout>
+                <Header>Header</Header>
+                <Layout>
+                    <Content>Content</Content>
+                    <Sider>Sider</Sider>
+                </Layout>
+                <Footer>
+                    <ChatForm></ChatForm>
+                </Footer>
+            </Layout>
+        </div> 
+        );
+
     }
 }
 
-export default GamePage
+export default MainPage

@@ -43,7 +43,7 @@ class Loginform extends React.Component {
               console.log(response);
               const { data } = response
               login({
-                user: { id: data.id, email: data.email },
+                user: { id: data.id, email: data.email, nickname: data.nickname },
                 token: data.token,
                 refreshToken: data.refresh
               })
