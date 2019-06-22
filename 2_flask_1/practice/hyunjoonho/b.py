@@ -1,5 +1,4 @@
 from flask import Flask
-
 import os
 from datetime import datetime
 
@@ -7,7 +6,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    return 'Hello, World!'
+    return '2019 web studio fighting ^^'
+
 
 @app.route('/variable/<input_string>')
 def variable(input_string):
@@ -32,7 +32,6 @@ def current_date():
     current = datetime.now()
     return current.strftime("%Y-%m-%d %H:%M:%S")
 
-
-
 if __name__ == '__main__':
     app.run(debug=True)
+
