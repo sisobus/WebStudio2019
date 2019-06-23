@@ -123,21 +123,27 @@ api.add_resource(PrivateRoute, '/api/private/routes')
 api.add_resource(UserLogin, '/api/auth/login')
 api.add_resource(UserRefresh, '/api/auth/refresh')
 
-@socketio.on('connect', namespace='/mynamespace')
+@socketio.on('connect')
 def connect():
-	print('connect')
-	#emit("response", {'data': 'connected', 'nickname': db.session['nickname']})
+	print('user connect')
+	emit('connect', {'data' : 'connected'})
 
-@socketio.on('disconnect', namespace='/mynamespace')
-def disconnect():
-	print('disconnect')
-	#db.session.clear()
-	print("Disconnected")
+@socketio.on('sending')
+def sending(data):
+	nickname = data.get('nickname')
+	message = data.get('message')
+	emit("response", {'nickname': nickname, 'message': message}, broadcast = True)
+	print('recieve messages', nickname, message)
+
+
+
 
 @socketio.on('request', namespace='/mynamespace')
-def request(message):
+def req(message):
 	print('request')
+	print(message)
 	#emit("response", {'data': message['data'], 'nickname': db.session['nickname']}, broadcast = True)
+
 
 if __name__ == '__main__':
 	with app.app_context():

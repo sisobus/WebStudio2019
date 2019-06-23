@@ -1,27 +1,32 @@
 import React from 'react';
-import {Button, Layout} from 'antd';
-import { ChatForm } from "./chat-server"
+import { Layout } from 'antd';
+import { ChatForm } from "./ChatServer"
 //import {history} from './History';
 import './MainPage.css';
+import { ChatWindow } from './ChatWindow';
 
 const { Header, Sider, Content, Footer } = Layout;
 
 class MainPage extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         
         return(
-            <div>
             <Layout>
                 <Header>Header</Header>
                 <Layout>
-                    <Content>Content</Content>
+                    <Content>
+                        <ChatWindow></ChatWindow>
+                    </Content>
                     <Sider>Sider</Sider>
                 </Layout>
                 <Footer>
                     <ChatForm></ChatForm>
                 </Footer>
             </Layout>
-        </div> 
         );
 
     }

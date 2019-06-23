@@ -55,11 +55,6 @@ class RegistrationForm extends React.Component {
       callback();
     };
 
-    handleChange = (e) => {
-      this.setState({
-          [e.target.name]: e.target.value
-      });
-    };
   
     render() {
       const { getFieldDecorator } = this.props.form;
