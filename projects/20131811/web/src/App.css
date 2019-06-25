@@ -1,12 +1,37 @@
 @import '~antd/dist/antd.css';
-@import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Anton|Noto+Sans+KR:400,900&display=swap');
 @import './antd.less';
+
 
 .header {
     font-size : 100px;
-    color : red;
+    color : #E50914;
     font-family: 'Anton', sans-serif;
 }
+
+.footer{
+  background-color: #221F1F;
+  color : white;
+}
+
+.title {
+  font-size : 50px;
+  color : white;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 900;
+}
+
+.info {
+  color : white;
+  background-color: #221F1F;
+  text-align: right;
+  font-size: 20px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 900;
+  margin : 50;
+}
+
+
 .App {
   text-align: center;
 }
@@ -17,8 +42,12 @@
   pointer-events: none;
 }
 
+.reviewcontent{
+  text-align: center;
+}
+
 .App-header {
-  background-color: #282c34;
+  background-color: #221F1F;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -46,26 +75,26 @@
   height: 200px;
   padding: 0 50px;
   line-height: 64px;
-  background: black;
+  background: #221F1F;
 }
 
 /*메뉴*/
 .ant-menu{
   color : white;
-  background: black;
+  background: #221F1F;
 }
 
 
 /*메뉴 배경*/
 .ant-menu-submenu > .ant-menu {
-  background-color: black;
+  background-color: #221F1F;
   border-radius: 4px;
 }
 
 /*소메뉴들 */
 .ant-menu-item {
   color: white;
-  background: black;
+  background: #221F1F;
 }
 
 /*소메뉴들 */
@@ -75,12 +104,12 @@
 
 /*메뉴오른쪽에실같이튀어나온거*/
 .ant-menu-vertical .ant-menu-item::after, .ant-menu-vertical-left .ant-menu-item::after, .ant-menu-vertical-right .ant-menu-item::after, .ant-menu-inline .ant-menu-item::after{
-  border-right: black;
+  border-right: #221F1F;
 }
 
 /*선택된거 배경*/
 .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
-  background-color: red;
+  background-color: #E50914;
 }
 
 /*드래그해서 선택했을 때*/
@@ -91,12 +120,12 @@
 
 /*사이드바 아래 남는부분 */
 .ant-layout-sider-children {
-  background : black;
+  background : #221F1F;
 }
 
 
 .body{
-  background: black;
+  background: #221F1F;
   color : white;
 }
 
@@ -124,21 +153,21 @@ a {
 /*새로운 리뷰 쓰는 버튼 */
 .ant-btn-primary {
   color: #fff;
-  background-color: red;
-  border-color:red;
+  background-color: #E50914;
+  border-color:#E50914;
 }
 
 /*버튼 클릭했을 때 */
 .ant-btn-primary:hover, .ant-btn-primary:focus {
-  color: red;
+  color: #E50914;
   background-color: white;
   border-color:white;
 }
 
 /*기본버튼 눌렀을 때*/
 .ant-btn:hover, .aant-btn:focus {
-  color : red;
-  border-color : red;
+  color : #E50914;
+  border-color : #E50914;
 }
 
 /*리뷰 화면 글씨색*/
@@ -148,11 +177,31 @@ a {
 
 /*체크박스 */
 .ant-checkbox-checked .ant-checkbox-inner {
-  background-color: red;
-  border-color: red;
+  background-color: #E50914;
+  border-color: #E50914;
 }
 /*체크박스 둘레 */
 .ant-checkbox-wrapper:hover .ant-checkbox-inner, .ant-checkbox:hover .ant-checkbox-inner, .ant-checkbox-input:focus + .ant-checkbox-inner {
-  border-color: red;
+  border-color: #E50914;
 }
 
+
+
+/*리스트 아래줄*/
+.ant-list-item:last-child {
+  border-bottom: 0px solid #e8e8e8;
+}
+.ant-list-something-after-last-item .ant-spin-container > .ant-list-items > .ant-list-item:last-child {
+  border-bottom: 0px solid #e8e8e8;
+}
+.ant-list-split .ant-list-item {
+  border-bottom: 0px solid #e8e8e8;
+}
+
+/*리스트아래 숫자*/
+.ant-pagination-item-active a {
+  color: #E50914;
+}
+.ant-pagination-item-active {
+  border-color: #E50914;
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReviewList from './ReviewList';
 import ReviewForm from './ReviewForm';
+import { Row, Col } from 'antd';
 
 
 
@@ -40,17 +41,26 @@ class Page extends Component {
     console.log(imagesource)
     return (
       <div>
-        <div>
-          영화 아이디 : {movie.id}
-          영화 이름 : {movie.name}
-          영화 사진 : <img src={imagesource}/>
-          <br />
+        <div className='title'>
+          {movie.name}
         </div>
+        <br />
+        <br />
         <div>
-          여기 리뷰 입력 폼
+          <img src={imagesource} width='40%' />
+        </div>
+        <br />
+        <br />
+        <div>
           <ReviewForm movie_id={this.props.match.params.movie_id} callbackFromParent={this.myCallback} />
           <br />
-          <ReviewList reviews={this.state.reviews} />
+          <br />
+          <Row>
+            <Col span={4}></Col>
+            <Col span={16}><ReviewList reviews={this.state.reviews} /></Col>
+            <Col span={4}></Col>
+          </Row>
+          <br/>
         </div>
       </div>
     );

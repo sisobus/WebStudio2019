@@ -89,19 +89,22 @@ class AddMovieForm extends Component {
 
         return (
             <div>
-                <div>
-                    something
-                </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                    
                 <div>
                     <Form labelCol={{ span: 5 }} wrapperCol={{ span: 12 }} onSubmit={this.handleSubmit}>
                         <Form.Item label="Title">
                             {getFieldDecorator('title', {
-                                rules: [{ required: true, message: 'Please input your note!' }],
+                                rules: [{ required: true, message: 'Please input title!' }],
                             })(<Input />)}
                         </Form.Item>
-                        <Form.Item label="Image URL">
+                        <Form.Item label="Image">
                             {getFieldDecorator('image', {
-                                rules: [{ required: true, message: 'Please select your gender!' }],
+                                rules: [{ required: true, message: 'Please select image file!' }],
                             })(
                                 //<Input />
                                 <Upload {...props}>
@@ -118,6 +121,11 @@ class AddMovieForm extends Component {
                         </Form.Item>
                     </Form>
                 </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
             </div>
         )
     }

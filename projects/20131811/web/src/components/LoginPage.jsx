@@ -4,6 +4,7 @@ import { LoginForm } from './LoginForm'
 import RegisterForm  from './RegisterForm'
 import { history } from './history'
 import withMiddle from '../components/withMiddle'
+import Head from './Head'
 
 import classNames from 'classnames/bind'
 import styles from './LoginPage.module.scss'
@@ -38,9 +39,7 @@ class LoginPage extends React.Component {
       <React.Fragment>
         <br/>
         <br/>
-        <div className='header'>
-          NETFL REVIEW
-        </div>
+        <Head />
         {this.state.isLoginPage && (
           <div className={cx('login')}>
             <h1>Login</h1>

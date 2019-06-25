@@ -5,9 +5,14 @@ class Head extends Component {
 
   render() {
     return (
-      <div className='header'>
-        <br/>
-        NETFL REVIEW
+      <div>
+        <br />
+        <div>
+          <div className='header'>
+            <img src='http://localhost:5000/api/download?filename=logo.png' height='130px' />
+            &nbsp;REVIEW
+        </div>
+        </div>
       </div>
     );
   }

@@ -1,5 +1,5 @@
 body{
-  background-color: black;
+  background-color: #221F1F;
 }
 
 .login {
@@ -7,8 +7,8 @@ body{
   padding: 50px 85px;
   margin: 0 auto;
   border-radius: 20px;
-  box-shadow: 2px 2px rgba(0, 0, 0, 0.1);
-  background: black;
+  box-shadow: 2px 2px #221F1F;
+  background: #221F1F;
   img {
     height: 39px;
     margin-top: 30px;
@@ -28,6 +28,6 @@ body{
   }
 }
 :global .ant-divider {
-  background: black !important;
+  background: #221F1F !important;
 }
 

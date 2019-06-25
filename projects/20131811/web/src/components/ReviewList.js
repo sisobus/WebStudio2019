@@ -16,14 +16,20 @@ class ReviewList extends Component {
       <div>
         <List
           size="large"
-          header={<div>Header</div>}
-          footer={<div>Footer</div>}
+          //header={<div>Header</div>}
+          //footer={<div>Footer</div>}
           bordered
           dataSource={reviews}
-          renderItem={item => <List.Item>
-            <Rate disabled value={item.star} /> | 유저 : {item.user_id} | {item.content}
+          renderItem={item => <List.Item >
+            <div><Rate disabled value={item.star} /></div>
+            <div>{item.content}</div>
             </List.Item>}
         />
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+
       </div>
     );
   }

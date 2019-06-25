@@ -32,8 +32,8 @@ class ListComp extends Component {
     render() {
         return (
             <div >
-                <List
-                    itemLayout="vertical"
+                <List 
+                    itemLayout="horizontal"
                     size="large"
                     pagination={{
                         onChange: page => {
@@ -42,19 +42,19 @@ class ListComp extends Component {
                         pageSize: 5,
                     }}
                     dataSource={this.props.movie}
+                    /*
                     footer={
                         <div>
                             아래쪽에 올 부분
                         </div>
                     }
+                    */
                     renderItem={item => (
                         <List.Item
                             key={item.name}
                             actions={[
-                                //'이부분에 총 별점과 사람수 넣기',
-                                <IconText type="star-o" text={item.total_star} />,
-                                //<IconText type="like-o" text="156" />,
-                                <IconText type="message" text={item.people_num} />,
+                                <br/>
+                                //<IconText type="message" text={item.people_num} />
                             ]}
                             extra={
                                 <img
@@ -74,6 +74,8 @@ class ListComp extends Component {
                         </List.Item>
                     )}
                 />
+                <br/>
+                <br/>
             </div>
         );
     }

@@ -1,17 +1,25 @@
 import React, { Component } from 'react';
-import './LoginInfo.css'
+import { Button } from 'antd';
+import { history } from './history'
+
+
 
 
 class LoginInfo extends Component {
+
+    click = () => {
+        history.push('/login')
+    }
 
     render() {
         const user_info = JSON.parse(localStorage.getItem('USER'));
 
         return (
-            <div className='layout'>
-                <div className='loginInfo'>
-                    user : {user_info.account}
-                </div>
+            <div className='info'>
+                {user_info.account} 님 환영합니다!
+                <Button type="danger" onClick={this.click}>Logout</Button>
+                <br />
+                <br/>
             </div>
         );
     }

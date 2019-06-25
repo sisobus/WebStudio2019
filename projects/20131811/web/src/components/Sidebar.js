@@ -52,7 +52,7 @@ class Sidebar extends Component {
           key="sub1"
           title={
             <span>
-              <Icon type="mail" />
+              <Icon type="align-center" />
               <span>Movie list</span>
             </span>
           }
@@ -65,7 +65,7 @@ class Sidebar extends Component {
           key="sub2"
           title={
             <span>
-              <Icon type="appstore" />
+              <Icon type="plus" />
               <span>Add Movie</span>
             </span>
           }

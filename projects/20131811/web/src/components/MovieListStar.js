@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Row, Col } from 'antd';
+
 import ListComp from './ListComp';
 
 
@@ -21,13 +23,12 @@ class MovieListStar extends Component {
   render() {
 
     return (
-      <div>
-        <div>
-          머릿글
-        </div>
-        <div>
-          <ListComp movie={this.state.movies}/>
-        </div>
+      <div >
+        <Row>
+          <Col span={4}></Col>
+          <Col span={16}><ListComp movie={this.state.movies} /></Col>
+          <Col span={4}></Col>
+        </Row>
       </div>
     );
   }

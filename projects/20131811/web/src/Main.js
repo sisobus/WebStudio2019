@@ -40,7 +40,9 @@ class Main extends Component {
                             </Switch>
                         </Content>
                     </Layout>
-                    <Footer>Footer</Footer>
+                    <Footer className='footer'>
+                        Web Studio 2019 Jung Yeongmo
+                    </Footer>
                 </Layout>
             </div>
         );
