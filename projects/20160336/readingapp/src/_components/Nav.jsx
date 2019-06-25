@@ -6,7 +6,7 @@ class Nav extends React.Component {
     return (
       <div className="navbar-wrapper">
         <div className="navbar-container">
-          <p id="logo">Going to Read</p>
+          <p id="logo">Movie Score</p>
         </div>
       </div>
     )

@@ -8,6 +8,10 @@
   text-shadow: 3px 2px black;
 }
 
+.article img{
+  height:200px;
+}
+
 .article.author {
   color: gray;
   font-size: 10pt;

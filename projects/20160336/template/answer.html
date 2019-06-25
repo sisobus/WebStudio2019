@@ -46,6 +46,8 @@
       .catch(error => {
         console.log(error);
       });
+
+      
     fetch('http://0.0.0.0:5000/api/articles', requestOptions)
       .then(handleResponse)
       .then(response => {
