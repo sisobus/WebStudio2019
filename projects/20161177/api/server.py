@@ -29,8 +29,6 @@ db.init_app(app)
 jwt = JWTManager(app)
 socketio = SocketIO(app)
 
-gamestart = False
-
 
 def serializer(l):
     ret = []
@@ -142,8 +140,9 @@ def sending(data):
 	nickname = data.get('nickname')
 	message = data.get('message')
 	emit("response", {'nickname': nickname, 'message': message}, broadcast = True)
+	print(gamestart)
 	if gamestart :
-		checksentence()
+		checksentence(data)
 	print('recieve messages', nickname, message)
 
 @socketio.on('login_list')
@@ -180,11 +179,14 @@ def matching():
 
 @socketio.on('join_room')
 def on_join(data):
+	global gamestart
+	gamestart = True
 	join_room('game')
 	user1 = data[0].get('nickname')
 	user2 = data[1].get('nickname')
 	NG1 = random.choice(words)
 	NG2 = random.choice(words)
+	global game
 	game = [{
 		'nickname' : user1,
 		'NG' : NG1
@@ -194,9 +196,25 @@ def on_join(data):
 	}]
 	print(game)
 	emit('open_room', game, broadcast = True)
-	gamestart = True
+
 
 words = ['ㅎㅇ', '안녕', 'ㅋㅋ', 'ㅎㅎ', '아니', '이야', '정말', 'ㄹㅇ']
+
+def checksentence(data):
+	nickname = data.get('nickname')
+	message = data.get('message')
+	checkmessage = message.split()
+	print(checkmessage)
+
+	for idx_i, val_i in enumerate(game) :
+		if val_i['nickname'] == nickname :
+			for idx_j, val_j in enumerate(checkmessage) :
+				if val_j == val_i['NG'] :
+					print(val_i['nickname'] + 'is losing the game')
+					global gamestart
+					gamestart = False
+					socketio.emit('game_over', broadcast=True)
+
 
 
 if __name__ == '__main__':

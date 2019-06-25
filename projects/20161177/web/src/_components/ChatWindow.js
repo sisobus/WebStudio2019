@@ -13,8 +13,7 @@ class ChatWindow extends React.Component {
     state = {
         nickname : null,
         message : null,
-        gamestart : false,
-        losingGame : false
+        gamestart : false
     }
 
     handleChange() {
@@ -25,7 +24,7 @@ class ChatWindow extends React.Component {
 
 
     recieveMessage () {
-        io.on('response', (data) => {
+        io.on("response", (data) => {
             this.setState({
                 nickname : data['nickname'], 
                 message : data['message'], 
@@ -42,7 +41,9 @@ class ChatWindow extends React.Component {
         savedMessages.push(newMessage);
         localStorage.setItem('saved messages', JSON.stringify(savedMessages));
     } 
+
     
+    /*
     checkSentence() {
         const check = this.state
         var word = check.message.split(" ")
@@ -65,15 +66,17 @@ class ChatWindow extends React.Component {
             }
         }   
     }
-
+*/
     gameSet() {
-        this.setState({
-            gamestart : false,
-            losingGame : false
-        })
-        return (
-            <div> {this.state.nickname} is losing the game</div>
-        )
+        io.on('game_over', () => {
+            this.setState({
+                gamestart : false
+            })
+            console.log(this.state.nickname + 'is losing the game')         
+            return (
+                <div> *** {this.state.nickname} is losing the game *** </div>
+            )          
+        })      
     }
 
     changeGameMode() {
@@ -90,6 +93,7 @@ class ChatWindow extends React.Component {
     componentDidMount() {
         this.recieveMessage()
         this.gameStart()
+        this.gameSet()
     }
 
     render() {
@@ -110,7 +114,7 @@ class ChatWindow extends React.Component {
         
         if (newMessage.message !== null) {
             if (newMessage.gamestart) {
-                this.checkSentence()
+                //this.checkSentence()
             }
             this.loadMessages()
             var savedMessages = JSON.parse(localStorage.getItem('saved messages'))
