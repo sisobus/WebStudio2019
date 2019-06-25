@@ -23,6 +23,7 @@ class ListComp extends Component {
             return star / people
         }
     }
+    
     //Article에 데이터 전달
     render() {
         return (
