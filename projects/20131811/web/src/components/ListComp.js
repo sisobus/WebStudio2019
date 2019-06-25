@@ -23,7 +23,11 @@ class ListComp extends Component {
             return star / people
         }
     }
-    
+
+    getUrl = (filename) => {
+        return 'http://localhost:5000/api/download?filename=' + filename;
+    }
+
     //Article에 데이터 전달
     render() {
         return (
@@ -56,7 +60,7 @@ class ListComp extends Component {
                                 <img
                                     width={272}
                                     alt="logo"
-                                    src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
+                                    src = {this.getUrl(item.photo)}
                                 />
                             }
                         >

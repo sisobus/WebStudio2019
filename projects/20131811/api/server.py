@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, abort
+from flask import Flask, request, jsonify, abort, send_file
 from flask_restful import Api, Resource
 from flask_cors import CORS
 from datetime import datetime, timedelta
@@ -8,6 +8,8 @@ from flask_jwt_extended import (
     JWTManager, create_access_token, create_refresh_token,
     jwt_required, jwt_refresh_token_required, get_jwt_identity,
     get_jti, get_raw_jwt)
+from werkzeug.utils import secure_filename
+
 
 import json
 import os
@@ -262,12 +264,36 @@ class UserRefresh(Resource):
         return jsonify({'message': 'Refresh successfully', 'data': ret})
 
 
+class UploadFile(Resource):
+    def post(self):
+        UPLOAD_FOLDER = '.'
+        target=os.path.join(UPLOAD_FOLDER,'images')
+        if not os.path.isdir(target):
+            os.mkdir(target)
+        file = request.files['file'] 
+        filename = secure_filename(file.filename)
+        destination="/".join([target, filename])
+        file.save(destination)
+        #session['uploadFilePath']=destination
+        response = filename
+        return response
+
+class DownloadFile(Resource):
+    def get(self):
+        filename = request.args.get('filename')
+        return send_file('./images/'+filename, mimetype='image/png')
+
+
+
+
 api.add_resource(UserList, '/api/users')
 api.add_resource(MovieList, '/api/movies')
 api.add_resource(ReviewList, '/api/reviews')
 api.add_resource(UserLogin, '/api/auth/login')
 api.add_resource(PrivateRoute, '/api/private/routes')
 api.add_resource(UserRefresh, '/api/auth/refresh')
+api.add_resource(UploadFile, '/api/upload')
+api.add_resource(DownloadFile, '/api/download')
 
 
 

@@ -36,11 +36,14 @@ class Page extends Component {
   render() {
 
     const movie = this.state.movie;
+    const imagesource = 'http://localhost:5000/api/download?filename=' + this.state.movie.photo
+    console.log(imagesource)
     return (
       <div>
         <div>
           영화 아이디 : {movie.id}
           영화 이름 : {movie.name}
+          영화 사진 : <img src={imagesource}/>
           <br />
         </div>
         <div>
