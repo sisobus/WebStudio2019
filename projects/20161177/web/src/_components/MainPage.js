@@ -16,7 +16,7 @@ class MainPage extends React.Component {
     constructor (props) {
         super(props)
         this.state = {
-            GameMode : false
+            GameMode : false,
         }
     this.matching = this.matching.bind(this)
     }
@@ -35,25 +35,27 @@ class MainPage extends React.Component {
 
     matchSuccess() {
         io.on('matched', (data) =>{
-            io.emit('join_room', {room : 'game'})
+            this.handleChange()
+            io.emit('join_room', data)
         })
     }
 
-    gameStart() {
-        io.on('open_room', () => {
-            console.log('Game Start!')
-            this.handleChange()
-        })
+    myCallback = (dataFromChild) => {
+        if (dataFromChild) {
+            this.setState({
+                GameMode : false
+            })
+        }
     }
 
     componentDidMount () {
         this.matchSuccess()
-        this.gameStart()
     }
 
 
 
     render() {
+        console.log(this.state.GameMode)
         
         return(
             <Layout className='mainpage'>
@@ -63,6 +65,7 @@ class MainPage extends React.Component {
                 <Layout>
                     <Content>
                         <ChatWindow
+                        callbackFromParent = { this.myCallback }
                         GameMode = {this.state.GameMode}
                         ></ChatWindow>
                     </Content>

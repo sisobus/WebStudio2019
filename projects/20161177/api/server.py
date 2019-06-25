@@ -8,6 +8,7 @@ from flask_jwt_extended import (
 from datetime import timedelta
 import json
 import os
+import random
 from data import db, User, LoginSession
 from flask_socketio import SocketIO, emit, join_room
 
@@ -27,6 +28,8 @@ api = Api(app)
 db.init_app(app)
 jwt = JWTManager(app)
 socketio = SocketIO(app)
+
+gamestart = False
 
 
 def serializer(l):
@@ -139,6 +142,8 @@ def sending(data):
 	nickname = data.get('nickname')
 	message = data.get('message')
 	emit("response", {'nickname': nickname, 'message': message}, broadcast = True)
+	if gamestart :
+		checksentence()
 	print('recieve messages', nickname, message)
 
 @socketio.on('login_list')
@@ -169,14 +174,29 @@ def matching():
 	users = User.query.filter_by(login=2).all()
 	_users = serializer(users)
 	if len(_users) > 1 :
-		socketio.emit('matched', _users)
+		socketio.emit('matched', _users, broadcast=True)
+		print(_users)
 		print('match up!')
 
 @socketio.on('join_room')
 def on_join(data):
-	room = data['room']
-	join_room(room)
-	emit('open_room', broadcast = True)
+	join_room('game')
+	user1 = data[0].get('nickname')
+	user2 = data[1].get('nickname')
+	NG1 = random.choice(words)
+	NG2 = random.choice(words)
+	game = [{
+		'nickname' : user1,
+		'NG' : NG1
+	}, {
+		'nickname' : user2,
+		'NG' : NG2
+	}]
+	print(game)
+	emit('open_room', game, broadcast = True)
+	gamestart = True
+
+words = ['ㅎㅇ', '안녕', 'ㅋㅋ', 'ㅎㅎ', '아니', '이야', '정말', 'ㄹㅇ']
 
 
 if __name__ == '__main__':

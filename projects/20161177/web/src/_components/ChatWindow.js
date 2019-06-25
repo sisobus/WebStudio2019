@@ -1,12 +1,26 @@
 import React from 'react'
 import { io } from './ChatServer'
 
-
+var NGword = [{
+    nickname : '',
+    NG : ''
+}, {
+    nickname : '',
+    NG : ''
+}]
 
 class ChatWindow extends React.Component {
     state = {
         nickname : null,
-        message : null
+        message : null,
+        gamestart : false,
+        losingGame : false
+    }
+
+    handleChange() {
+        this.setState({
+            gamestart : true
+        })
     }
 
 
@@ -30,21 +44,62 @@ class ChatWindow extends React.Component {
     } 
     
     checkSentence() {
-        var a = this.state.message.split(" ")
+        const check = this.state
+        var word = check.message.split(" ")
+        console.log(word)
+        console.log(word.length)
+        console.log(NGword[0].nickname)
+        console.log(NGword.length)
+
+        for(var z = 0; z<NGword.length; z++) {
+            if (NGword[z].nickname === check.nickname) {
+                for (var i = 0; i < word.length; i++) {
+                    console.log('하고 있음')
+                    if (NGword[z].NG === word[i]) {
+                        console.log(check.nickname + 'is defeat')
+                        this.setState({
+                            losingGame : true
+                        })
+                    }
+                }
+            }
+        }   
+    }
+
+    gameSet() {
+        this.setState({
+            gamestart : false,
+            losingGame : false
+        })
+        return (
+            <div> {this.state.nickname} is losing the game</div>
+        )
+    }
+
+    changeGameMode() {
+        this.props.callbackFromParent(this.state.gamestart)
+    }
+
+    gameStart() {
+        io.on('open_room', (data) => {
+            NGword = data
+            console.log(NGword)
+        })
     }
 
     componentDidMount() {
         this.recieveMessage()
+        this.gameStart()
     }
 
-
     render() {
-
+        var newMessage = this.state
+        
         const { GameMode } = this.props
-        var GameStart = false
-        if (GameMode && GameStart === false) {
-            GameStart = true
+        if (GameMode) {
+            this.handleChange()
             localStorage.removeItem('saved messages')
+            this.changeGameMode()
             return (
                 <div>
                     Game Start
@@ -52,13 +107,11 @@ class ChatWindow extends React.Component {
             )
         }
 
-        var newMessage = this.state
-
-        if(GameStart) {
-            this.checkSentence()
-        }
         
         if (newMessage.message !== null) {
+            if (newMessage.gamestart) {
+                this.checkSentence()
+            }
             this.loadMessages()
             var savedMessages = JSON.parse(localStorage.getItem('saved messages'))
             return(
