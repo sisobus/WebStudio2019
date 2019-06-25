@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify, abort
+from datetime import datetime
 from flask_restful import Api, Resource
 from flask_cors import CORS
 import json
@@ -84,6 +85,8 @@ class ArticleList(Resource):
         articles = self.get_articles()
         for article in articles:
             print(article.comments)
+        print(articles[0].comments[0].content)
+        print(articles[0].comments[0].user.email)
         return jsonify(serializer(articles))
 
     def post(self):
@@ -256,12 +259,6 @@ class UserRefresh(Resource):
         }
         return jsonify({'message': 'Refresh successfully', 'data': ret})
 
-class Home(Resource):
-    def get(self):
-        return '''<html><h1>Books</h1>
-<p>prototype for keeping your list of books online</p></html>'''
-
-api.add_resource(Home, '/')
 api.add_resource(UserRefresh, '/api/auth/refresh')
 api.add_resource(PrivateRoute, '/api/private/routes')
 api.add_resource(UserLogin, '/api/auth/login')
@@ -270,6 +267,14 @@ api.add_resource(ArticleList, '/api/articles')
 api.add_resource(CommentList, '/api/comments')
 api.add_resource(LikeList, '/api/likes')
 
+@app.route('/')
+def hello():
+    return ("Hello World")
+
+@app.route('/current_date') 
+def current_date():
+    current = datetime.now()
+    return current.strftime("%Y-%m-%d %H:%M:%S")
 
 if __name__ == '__main__':
     with app.app_context():
