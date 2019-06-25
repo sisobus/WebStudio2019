@@ -1,9 +1,0 @@
-{
-<<<<<<< HEAD
-    "python.pythonPath": "venv/bin/python3"
-=======
-  "python.pythonPath": "venv/bin/python3.6",
-  "python.linting.pylintEnabled": true,
-  "python.linting.enabled": true
->>>>>>> projects-sidebarproblem
-}
