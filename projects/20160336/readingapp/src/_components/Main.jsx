@@ -10,7 +10,7 @@ class MainPage extends React.Component {
     return (
       <React.Fragment>
         <Nav />
-        <Link to "Articles">
+        <Link to Articles>
 	  <Button type="primary">Go to Blank</Button>
 	</Link>
         <div className="main-wrapper">

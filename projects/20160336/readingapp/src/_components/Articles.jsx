@@ -5,9 +5,9 @@ import './Articles.css'
 class Articles extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
+    /*this.state = {
       articles: [
-        {/*{
+        {
           title: "updated title [1]",
           author: "Sangkeun Kim",
           content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -24,11 +24,11 @@ class Articles extends React.Component {
           author: "Sangkeun Kim",
           content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
           like: 0
-        }*/}
+        }
       ]
     }
     this.handleLike = this.handleLike.bind(this)
-
+*/
     fetch('http://127.0.0.1:5000/api/users')
        .then(response => {
          response.json().then(rsp=> {
