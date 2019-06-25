@@ -271,10 +271,6 @@ api.add_resource(LikeList, '/api/likes')
 def hello():
     return ("Hello World")
 
-@app.route('/current_date') 
-def current_date():
-    current = datetime.now()
-    return current.strftime("%Y-%m-%d %H:%M:%S")
 
 if __name__ == '__main__':
     with app.app_context():

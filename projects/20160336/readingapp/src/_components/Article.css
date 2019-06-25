@@ -4,9 +4,11 @@
   padding: 10px;
   width: 100%;
 }
-.article .title {
+.article.title {
+  text-shadow: 3px 2px black;
 }
-.article .author {
+
+.article.author {
   color: gray;
   font-size: 10pt;
 }

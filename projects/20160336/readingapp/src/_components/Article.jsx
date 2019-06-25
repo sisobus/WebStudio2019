@@ -14,12 +14,11 @@ class Article extends React.Component {
   render() {
     return (
       <div className="article">
-        <h1 className="title">{this.props.title}
-          <button
-            onClick={this.handleClick}
-          >Like</button>
-        </h1>
-        <p className="author">{this.props.author} [{this.props.like}]</p>
+        <h1 className="title">{this.props.title}</h1>
+        <p className="image"><img src={this.props.image} alt="books" width="500"/></p>
+        <p className="author">{this.props.author} [{this.props.like}]
+        <button onClick={this.handleClick}>Like</button>
+        </p>
         <p className="content">{this.props.content}</p>
       </div>
     )

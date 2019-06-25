@@ -5,36 +5,37 @@ import './Articles.css'
 class Articles extends React.Component {
   constructor(props) {
     super(props)
-    /*this.state = {
+    this.state = {
       articles: [
         {
-          title: "updated title [1]",
-          author: "Sangkeun Kim",
+          title: "Good Omens  ",
+          image: "https://images-na.ssl-images-amazon.com/images/I/41OkgiyRskL.jpg",
+          author: "User",
           content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
           like: 0
         },
         {
-          title: "updated title [2]",
-          author: "Sangkeun Kim",
+          title: "Good Omens  ",
+          image: "https://images-na.ssl-images-amazon.com/images/I/51hULWlc1TL._SX260_.jpg",
+          author: "User",
           content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
           like: 0
         },
         {
-          title: "updated title [3]",
-          author: "Sangkeun Kim",
+          title: "Good Omens  ",
+          image: "https://images-na.ssl-images-amazon.com/images/I/41axkeEpgxL._SX258_BO1,204,203,200_.jpg",
+          author: "User",
           content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
           like: 0
         }
       ]
     }
     this.handleLike = this.handleLike.bind(this)
-*/
+
     fetch('http://127.0.0.1:5000/api/users')
        .then(response => {
-         response.json().then(rsp=> {
-	this.setState({ articles: rsp })
-     })
-  })
+         response.json().then(rsp=> {this.setState({ articles: rsp })})
+    })
 
   }
   handleLike(idx) {
@@ -58,8 +59,7 @@ class Articles extends React.Component {
             idx={idx}
             onClick={this.handleLike}
           />
-        ))
-      }
+        ))}
       </div>
     )
   }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from 'antd'
 import { Link } from "react-router-dom"
-import {history } from './history'
+import { history } from './history'
 import Nav from './Nav'
 
 class BlankPage extends React.Component {
