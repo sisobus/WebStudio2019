@@ -16,7 +16,7 @@ class LoginUsers extends React.Component {
 
     callLoginUsers() {
         var {users} = this.state
-        io.on('login_users', (data) => {
+        io.on("login_users", (data) => {
             if (users.id != null) {
                 this.setState({
                     users : users.concat(data)
@@ -26,6 +26,7 @@ class LoginUsers extends React.Component {
                     users : data
                 })
             }
+            console.log(this.state)
         })
     }
     

@@ -28,10 +28,6 @@ class ChatWindow extends React.Component {
         savedMessages.push(newMessage);
         localStorage.setItem('saved messages', JSON.stringify(savedMessages));
     } 
-
-    gameStart() {
-        io.emit('game_start')
-    }
     
     checkSentence() {
         var a = this.state.message.split(" ")
@@ -49,7 +45,6 @@ class ChatWindow extends React.Component {
         if (GameMode && GameStart === false) {
             GameStart = true
             localStorage.removeItem('saved messages')
-            this.gameStart()
             return (
                 <div>
                     Game Start
@@ -67,7 +62,7 @@ class ChatWindow extends React.Component {
             this.loadMessages()
             var savedMessages = JSON.parse(localStorage.getItem('saved messages'))
             return(
-                <div>
+                <div className='chat-window' id='align-left'>
                     {savedMessages.map((data, i) => {
                         return(
                             <li key = {i}> {data.nickname} : {data.message} </li>
@@ -79,8 +74,8 @@ class ChatWindow extends React.Component {
         } else {
         
             return(
-                <div>
-                    No Message
+                <div className='chat-window'>
+                    <h1>No Message</h1>
                 </div>
             )
         }

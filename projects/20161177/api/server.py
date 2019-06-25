@@ -9,7 +9,7 @@ from datetime import timedelta
 import json
 import os
 from data import db, User, LoginSession
-from flask_socketio import SocketIO, emit
+from flask_socketio import SocketIO, emit, join_room
 
 basedir = os.path.dirname(os.path.abspath(__file__))
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
@@ -128,6 +128,7 @@ api.add_resource(PrivateRoute, '/api/private/routes')
 api.add_resource(UserLogin, '/api/auth/login')
 api.add_resource(UserRefresh, '/api/auth/refresh')
 
+
 @socketio.on('connect')
 def connect():
 	print('user connect')
@@ -144,7 +145,7 @@ def sending(data):
 def users_login():
 	users = User.query.filter_by(login=1).all()
 	_users = serializer(users)
-	emit('login_users', _users, boradcast = True)
+	emit("login_users", _users, boradcast = True)
 	print(_users)
 	print('유저 목록을 불러왔습니다')
 	
@@ -156,9 +157,26 @@ def logout(data):
 	db.session.commit()
 	print('로그아웃 하였습니다')
 
-@socketio.on('game_start')
-def game_start():
-	print('gamestart')
+@socketio.on('game_searching')
+def game_searching(data):
+	_id = data.get('id')
+	user = User.query.filter_by(id=_id).first()
+	user.login = 2
+	db.session.commit()
+	matching()
+
+def matching():
+	users = User.query.filter_by(login=2).all()
+	_users = serializer(users)
+	if len(_users) > 1 :
+		socketio.emit('matched', _users)
+		print('match up!')
+
+@socketio.on('join_room')
+def on_join(data):
+	room = data['room']
+	join_room(room)
+	emit('open_room', broadcast = True)
 
 
 if __name__ == '__main__':

@@ -34,7 +34,6 @@ class ChatForm extends React.Component {
     
     sendMessage = () => {
         socket.emit('sending', {nickname: this.state.nickname, message: this.state.message})
-
     }
 
     componentDidMount() {
@@ -43,7 +42,7 @@ class ChatForm extends React.Component {
 
     render () {
         return(
-            <Form>
+            <Form className = 'chatForm'>
                 <Input 
                     placeholder="message"
                     defaultValue = ''

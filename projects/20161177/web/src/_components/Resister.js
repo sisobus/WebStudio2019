@@ -1,6 +1,6 @@
 import { Form, Input, Tooltip, Icon, Checkbox, Button, message } from 'antd';
 import React from 'react';
-import './Resister.css';
+import '../index.css';
 import { history } from './History';
 
   
@@ -84,7 +84,7 @@ class RegistrationForm extends React.Component {
   
   
       return (
-        <Form {...formItemLayout} onSubmit={this.handleSubmit}>
+        <Form className = 'resisterForm' {...formItemLayout} onSubmit={this.handleSubmit}>
           <Form.Item label="E-mail">
             {getFieldDecorator('email', {
               rules: [

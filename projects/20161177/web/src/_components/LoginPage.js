@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Icon, Input, Button, Checkbox, message } from 'antd';
-import './LoginPage.css';
+import '../index.css';
 import { login } from "../authentication"
 import { history } from './History';
 import logo from './LOGO.png'
@@ -62,8 +62,8 @@ class Loginform extends React.Component {
     const { getFieldDecorator } = this.props.form;
     return (
       <Form onSubmit={this.handleSubmit} className="login-form">
-        <div className = "logo">
-          <img src = {logo} alt = 'LOGO'/>
+        <div >
+          <img src = {logo} id = 'logo-in-login' alt = 'LOGO'/>
         </div>
         <Form.Item>
           {getFieldDecorator('email', {
@@ -94,7 +94,7 @@ class Loginform extends React.Component {
           <a className="login-form-forgot" href="asdf">
             Forgot password<br></br>
           </a>
-          <Button type="primary" htmlType="submit" className="login-form-button" size = 'large'>
+          <Button type="primary" htmlType="submit" className="login-form-button" >
             Log in
           </Button>
           <br></br>Or <a href="./resist">register now!</a>
