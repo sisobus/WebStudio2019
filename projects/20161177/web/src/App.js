@@ -7,7 +7,13 @@ import Resister from './_components/Resister';
 import {Router, Route} from "react-router-dom";
 import {history} from './_components/History';
 
+
 function App() {
+  localStorage.removeItem('USER')
+  localStorage.removeItem('access_token')
+  localStorage.removeItem('refresh_token')
+  localStorage.removeItem('new message')
+  localStorage.removeItem('saved messages')
   return (
     <div className="App">
       <Router history={history}>

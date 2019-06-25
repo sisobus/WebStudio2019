@@ -6,9 +6,7 @@ import './GamePage.css';
 class GamePage extends React.Component {
     render() {
         return (
-            <React.Fragment>
-                
-            </React.Fragment>
+            <div></div>
         )
     }
 }

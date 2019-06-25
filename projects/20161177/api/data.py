@@ -11,11 +11,13 @@ class User(db.Model):
 	email = db.Column(db.String(600))
 	nickname = db.Column(db.String(300))
 	password = db.Column(db.String(300))
+	login = db.Column(db.Integer, nullable=False)
 
 	def __init__(self, email, password, nickname):
 		self.email = email
 		self.set_password(password)
 		self.nickname = nickname
+		self.login = 0
 		
 	def set_password(self, password):
 		self.password = generate_password_hash(password)
@@ -28,8 +30,10 @@ class User(db.Model):
 			'id': self.id,
 			'email': self.email,
 			'password': self.password,
-			'nickname': self.nickname
+			'nickname': self.nickname,
+			'login': self.login
 		})
+
 
 class LoginSession(db.Model):
 	__tablename__ = 'login_session'

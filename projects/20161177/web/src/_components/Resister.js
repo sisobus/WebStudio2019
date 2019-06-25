@@ -1,7 +1,7 @@
 import { Form, Input, Tooltip, Icon, Checkbox, Button, message } from 'antd';
 import React from 'react';
 import './Resister.css';
-import {history} from './History';
+import { history } from './History';
 
   
 class RegistrationForm extends React.Component {

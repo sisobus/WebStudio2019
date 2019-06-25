@@ -44,10 +44,11 @@ class Userlist(Resource):
 
 	def get(self):
 		users = self.get_users()
-		return serializer(users)
+		_users = serializer(users)
+		return jsonify({'all users': _users})
 
 	def post(self):
-		r_json = request.get_json()
+		r_json = request.get_json() 
 		email = r_json['email']
 		nickname = r_json['nickname']
 		password = r_json['password']
@@ -57,11 +58,12 @@ class Userlist(Resource):
 		new_user = User(email, password, nickname)
 		db.session.add(new_user)
 		db.session.commit()
-		return jsonify({'message': 'Your account is successfully updated', 'data': new_user})
+		return jsonify({'message': 'Your account is successfully updated'})
 
 	def delete(self):
 		r_json = request.get_json()
 		_id = r_json['id']
+		user = User.query.filter_by(id=_id).first()
 		db.session.delete(user)
 		db.session.commit()
 		return 'your account has been deleted'
@@ -76,8 +78,11 @@ class UserLogin(Resource) :
 			abort(400, 'User is not exists')
 		if not user.check_password(password):
 			abort(400, 'Password is incorrect')
-		
+		user.login = 1
+		db.session.commit()
+
 		_user = json.loads(user.serialize())
+		print(_user)
 		del _user['password']
 		access_token = create_access_token(identity = _user)
 		refresh_token = create_refresh_token(identity = _user)
@@ -135,14 +140,25 @@ def sending(data):
 	emit("response", {'nickname': nickname, 'message': message}, broadcast = True)
 	print('recieve messages', nickname, message)
 
+@socketio.on('login_list')
+def users_login():
+	users = User.query.filter_by(login=1).all()
+	_users = serializer(users)
+	emit('login_users', _users, boradcast = True)
+	print(_users)
+	print('유저 목록을 불러왔습니다')
+	
+@socketio.on('user_logout')
+def logout(data):
+	_id = data.get('id')
+	user = User.query.filter_by(id=_id).first()
+	user.login = 0
+	db.session.commit()
+	print('로그아웃 하였습니다')
 
-
-
-@socketio.on('request', namespace='/mynamespace')
-def req(message):
-	print('request')
-	print(message)
-	#emit("response", {'data': message['data'], 'nickname': db.session['nickname']}, broadcast = True)
+@socketio.on('game_start')
+def game_start():
+	print('gamestart')
 
 
 if __name__ == '__main__':

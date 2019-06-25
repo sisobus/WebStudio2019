@@ -1,8 +1,9 @@
 import React from 'react';
 import { Form, Icon, Input, Button, Checkbox, message } from 'antd';
-import { history } from './History';
 import './LoginPage.css';
 import { login } from "../authentication"
+import { history } from './History';
+import logo from './LOGO.png'
 
 
 class Loginform extends React.Component {
@@ -32,7 +33,7 @@ class Loginform extends React.Component {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               'email': values.email,
-              'password': values.password
+              'password': values.password,
             })
           }
 
@@ -46,7 +47,7 @@ class Loginform extends React.Component {
                 user: { id: data.id, email: data.email, nickname: data.nickname },
                 token: data.token,
                 refreshToken: data.refresh
-              })
+              })              
               history.push('/main')
             })
             .catch(error => {
@@ -61,6 +62,9 @@ class Loginform extends React.Component {
     const { getFieldDecorator } = this.props.form;
     return (
       <Form onSubmit={this.handleSubmit} className="login-form">
+        <div className = "logo">
+          <img src = {logo} alt = 'LOGO'/>
+        </div>
         <Form.Item>
           {getFieldDecorator('email', {
             rules: [{ required: true, message: 'Please input your username!' }],
@@ -88,12 +92,12 @@ class Loginform extends React.Component {
             initialValue: true,
           })(<Checkbox>Remember me</Checkbox>)}
           <a className="login-form-forgot" href="asdf">
-            Forgot password
+            Forgot password<br></br>
           </a>
-          <Button type="primary" htmlType="submit" className="login-form-button">
+          <Button type="primary" htmlType="submit" className="login-form-button" size = 'large'>
             Log in
           </Button>
-          Or <a href="./resist">register now!</a>
+          <br></br>Or <a href="./resist">register now!</a>
         </Form.Item>
       </Form>
     );

@@ -1,6 +1,6 @@
 import React from 'react'
 import io from 'socket.io-client'
-import { Input, Form, Button } from 'antd';
+import { Input, Form } from 'antd';
 import { getUser } from "../authentication"
 
 console.log('socket io is working');
@@ -16,12 +16,14 @@ socket.on('connect', (data) => {
 class ChatForm extends React.Component {
     state = {
         nickname: '',
-        message: ''
+        message: []
     }
 
     setUsername () {
         const username = getUser()
-        this.state.nickname = username['nickname']
+        this.setState ({
+            nickname : username['nickname']
+        }) 
     }
 
     handleChange = (e) => {
@@ -32,18 +34,11 @@ class ChatForm extends React.Component {
     
     sendMessage = () => {
         socket.emit('sending', {nickname: this.state.nickname, message: this.state.message})
+
     }
-/*
-    recieveMessage() {
-        socket.on('response', (data) => {
-            this.state.nickname = data['nickname']
-            this.state.message = data['message']
-        })
-    }
-*/
+
     componentDidMount() {
         this.setUsername()
-        //this.recieveMessage()
     }
 
     render () {
@@ -51,9 +46,11 @@ class ChatForm extends React.Component {
             <Form>
                 <Input 
                     placeholder="message"
+                    defaultValue = ''
                     value = {this.state.message}
                     onChange = {this.handleChange} 
                     onPressEnter={this.sendMessage}
+                    addonAfter='send'
                 />
             </Form>
         );
