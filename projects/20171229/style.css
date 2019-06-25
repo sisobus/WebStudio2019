@@ -5,6 +5,7 @@ html, body {
   height: 100%;
 }
 h1, h2, h3, h4, h5, p {
+  font-size: 10pt;
   margin: 0;
 }
 .navbar-wrapper {
@@ -17,10 +18,7 @@ h1, h2, h3, h4, h5, p {
   height: 50px;
   margin: 0 auto;
 }
-#logo {
-  font-size: 20pt;
-  padding-top: 10px;
-}
+
 .main-wrapper {
   width: 100%;
 }

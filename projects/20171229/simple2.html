@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="user-scalable=no, width=device-width">
+	<title>Baehatrice</title>
+
+	<link rel="stylesheet" type="text/css" href="fullpage.min.css" />
+	<link rel="stylesheet" type="text/css" href="examples.css" />
+</head>
+<script src="Form.js"></script>
+<script>
+	let requestOptions = {
+		method: 'GET',
+		headers: { 'content-Type': 'application/json' }
+	}
+	const handleResponse = response => {
+		return response.text().then(text => {
+			const data = text && JSON.parse(text)
+			if (!response.ok) {
+				if (response.status === 401) {
+					// auto logout if 401 response returned from api
+					return Promise.reject(response)
+				}
+				const error = (data && data.message) || response.statusText
+				return Promise.reject(error)
+			}
+
+			return data
+		})
+	}
+
+	fetch('http://127.0.0.1:5000/api/articles', requestOptions)
+		.then(handleResponse)
+		.then(response => {
+
+			console.log(response);
+
+			let html = "";
+			for (let i = 0; i < 8; i++) {
+				html += `<div class="article">${response[i].title}</div>`;
+				html += `<h1 class="title">${response[i].img}</h1>`;
+				html += `<p class="author">${response[i].width}</p>`;
+				html += `<p class="content">${response[i].height}</p>`;
+				html += `</div>`;
+			}
+
+			let html = "";
+			for (let i = 9; i < 17; i++) {
+				html += `<div class="article">${response[i].title}</div>`;
+				html += `<h1 class="title">${response[i].img}</h1>`;
+				html += `<p class="author">${response[i].width}</p>`;
+				html += `<p class="content">${response[i].height}</p>`;
+				html += `</div>`;
+			}
+
+			let html = "";
+			for (let i = 18; i < 26; i++) {
+				html += `<div class="article">${response[i].title}</div>`;
+				html += `<h1 class="title">${response[i].img}</h1>`;
+				html += `<p class="author">${response[i].width}</p>`;
+				html += `<p class="content">${response[i].height}</p>`;
+				html += `</div>`;
+			}
+
+			let html = "";
+			for (let i = 27; i < 33; i++) {
+				html += `<div class="article">${response[i].title}</div>`;
+				html += `<h1 class="title">${response[i].img}</h1>`;
+				html += `<p class="author">${response[i].width}</p>`;
+				html += `<p class="content">${response[i].height}</p>`;
+				html += `</div>`;
+			}
+
+			const articleContainer = document.getElementById('article-container');
+			articleContainer.insertAdjacentHTML('beforeEnd', html);
+		})
+		.catch(error => {
+			console.log(error);
+		});
+</script>
+<body>
+
+	<ul id="menu">
+	    <li data-menuanchor="firstPage" class="active"><a href="#firstPage">Baehatrice</a></li>
+	    <li data-menuanchor="secondPage"><a href="#secondPage">Makeup</a></li>
+	    <li data-menuanchor="3rdPage"><a href="#3rdPage">Graphic Design</a></li>
+			<li data-menuanchor="4thPage"><a href="#4thPage">Illustration</a></li>
+			<li data-menuanchor="5thPage"><a href="#5thPage">Others</a></li>
+			<li data-menuanchor="6thPage"><a href="http://localhost:3000/">About & Contact</a></li>
+	</ul>
+
+	<article class="htmleaf-container">
+			<section class="wrapper cl">
+					<div class="pic">
+							<img src="img/1-1.jpg" class="pic-image">
+							<span class="pic-caption top-to-bottom">
+							<h1 class="pic-title">Baehatrice</h1>
+							</span>
+					</div>
+			</section>
+	</article>
+
+<div id="fullpage">
+	<div class="section" id="section2">
+	    <div class="slide">
+				 <img src="img/makeup.jpg" width=100% height=auto align="CENTER" > </div>
+
+	    <div class="slide active">
+					<h4><br>Makeup: SHAMAN</h4>
+						<div class="portfolio">
+							<p style="text-align: center;">
+							<img src="img/m1-1.jpg" width="300" height="300" HSPACE=50 >
+				 			<img src="img/m1-2.jpg" width="300" height="300" HSPACE=50 >
+							<img src="img/m1-3.jpg" width="300" height="300" HSPACE=50 >
+							<h2><br>1. Native Witch</h2>
+							<h2>2. Cold </h2>
+							<h2>3. MUDANG </h2>
+						</p>
+						</span>
+					</div>
+			</div>
+
+	    <div class="slide">
+					<h4><br>Makeup: Ethnic</h4>
+						<div class="portfolio">
+							<p style="text-align: center;">
+							<img src="img/m2-1.jpg" width="450" height="300" HSPACE=50 >
+							<img src="img/m2-2.jpg" width="300" height="300" HSPACE=50 >
+							<img src="img/m2-3.jpg" width="450" height="300" HSPACE=50 >
+							<h2><br>1. Genie</h2>
+							<h2>2. Pattern </h2>
+							<h2>3. Feather </h2>
+						</p>
+						</span>
+					</div>
+				</div>
+
+	    <div class="slide">
+				<h4><br>Makeup: Vivid</h4>
+					<div class="portfolio">
+						<p style="text-align: center;">
+						<img src="img/m3-1.jpg" width="250" height="300" HSPACE=60 >
+						<img src="img/m3-2.jpg" width="250" height="300" HSPACE=60 >
+						<img src="img/m3-3.jpg" width="250" height="300" HSPACE=60 >
+						<h2><br>1. Pink</h2>
+						<h2>2. Dream Catcher </h2>
+						<h2>3. Black </h2>
+					</p>
+					</span>
+				</div>
+			</div>
+
+	</div>
+
+
+	<div class="section" id="section3">
+		<div class="slide "><img src="img/graphicdesign.jpg" width=100% height=auto align="CENTER" ></div>
+		<div class="slide active">
+			<h3><br>Graphics: ULCHOO</h3>
+				<div class="portfolio">
+					<p style="text-align: center;">
+						<img src="img/grap1-1.jpg" width="300" height="300" HSPACE=50 >
+						<img src="img/grap1-2.jpg" width="300" height="300" HSPACE=50 >
+						<img src="img/grap1-3.jpg" width="300" height="300" HSPACE=50 >
+						<h1><br>1. Love </h1>
+						<h1>2. Money </h1>
+						<h1>3. Diamond </h1>
+					</p>
+				</span>
+			</div>
+		</div>
+
+		<div class="slide">
+			<h3><br>Graphics: Classic</h3>
+				<div class="portfolio">
+					<p style="text-align: center;">
+						<img src="img/grap2-1.jpg" width="450" height="300" HSPACE=50 >
+						<img src="img/grap2-2.jpg" width="450" height="300" HSPACE=50 >
+						<img src="img/grap2-3.jpg" width="450" height="300" HSPACE=50 >
+						<h1><br>1. Crown </h1>
+						<h1>2. Carpet </h1>
+						<h1>3. Cigarette </h1>
+					</p>
+				</span>
+			</div>
+		</div>
+
+		<div class="slide">
+			<h3><br>Graphics: Texture</h3>
+				<div class="portfolio">
+					<p style="text-align: center;">
+						<img src="img/grap3-1.jpg" width="400" height="300" HSPACE=50 >
+						<img src="img/grap3-2.jpg" width="400" height="300" HSPACE=50 >
+						<img src="img/grap3-3.jpg" width="400" height="300" HSPACE=50 >
+						<h1><br>1. Rock </h1>
+						<h1>2. Wall </h1>
+						<h1>3. Sand </h1>
+					</p>
+				</span>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="section" id="section4">
+		<div class="slide "><img src="img/illustration.jpg" width=100% height=auto align="CENTER" ></div>
+
+		<div class="slide active">
+			<h4><br>Illustration: Myth&Religion</h4>
+				<div class="portfolio">
+					<p style="text-align: center;">
+					<img src="img/ill 1-1.png" width="300" height="300" HSPACE=50 >
+					<img src="img/ill 1-2.png" width="300" height="300" HSPACE=50 >
+					<img src="img/ill 1-3.png" width="300" height="300" HSPACE=50 >
+					<h2><br>1. SARASWATI </h2>
+					<h2>2. VIRGIN MARY </h2>
+					<h2>3. QUETZALCOATL </h2>
+				</p>
+				</span>
+			</div>
+		</div>
+
+		<div class="slide">
+			<h4><br>Illustration: Icon</h4>
+				<div class="portfolio">
+					<p style="text-align: center;">
+					<img src="img/ill 2-1.png" width="300" height="300" HSPACE=50 >
+					<img src="img/ill 2-2.png" width="300" height="300" HSPACE=50 >
+					<img src="img/ill 2-3.png" width="300" height="300" HSPACE=50 >
+					<h2><br>1. The Raw and the Cooked </h2>
+					<h2>2. Dreaming </h2>
+					<h2>3. Tsupuoo </h2>
+				</p>
+				</span>
+			</div>
+		</div>
+
+		<div class="slide">
+			<h4><br>Illustration: Characters</h4>
+				<div class="portfolio">
+					<p style="text-align: center;">
+					<img src="img/ill 3-1.png" width="300" height="300" HSPACE=50 >
+					<img src="img/ill 3-2.png" width="300" height="300" HSPACE=50 >
+					<img src="img/ill 3-3.png" width="450" height="300" HSPACE=50 >
+					<h2><br>1. Zoo </h2>
+					<h2>2. Characters </h2>
+					<h2>3. MeerCam </h2>
+				</p>
+				</span>
+			</div>
+	</div>
+</div>
+
+
+	<div class="section" id="section5">
+		<div class="slide "><img src="img/o_others.jpg" width=auto height=100% align="CENTER" ></div>
+
+		<div class="slide active">
+			<h3><br>1.Spatial Dynamics</h3>
+				<div class="portfolio">
+					<p style="text-align: center;">
+						<img src="img/o_spat1.jpg" width="400" height="300" HSPACE=50 >
+						<img src="img/o_spat2.jpg" width="400" height="300" HSPACE=50 >
+						<img src="img/o_spat3.jpg" width="400" height="300" HSPACE=50 >
+						<h5><br>1. Dragonfly1 </h5>
+						<h5>2. Dragonfly2 </h5>
+						<h5>3. Jellyfish </h5>
+					</p>
+				</span>
+			</div>
+		</div>
+
+		<div class="slide">
+			<h3><br>2.Installation</h3>
+				<div class="portfolio">
+					<p style="text-align: center;">
+						<img src="img/o_inst1.jpg" width="400" height="300" HSPACE=50 >
+						<img src="img/o_inst2.jpg" width="400" height="300" HSPACE=50 >
+						<img src="img/o_inst3.jpg" width="400" height="300" HSPACE=50 >
+						<h5><br>1. Mangrove </h5>
+						<h5>2. Disorder </h5>
+						<h5>3. MILAMALA </h5>
+					</p>
+				</span>
+			</div>
+		</div>
+
+		<div class="slide">
+			<h3><br>3.Processing</h3>
+				<div class="portfolio">
+					<p style="text-align: center;">
+						<img src="img/o_proc1.jpg" width="450" height="300" HSPACE=50 >
+						<img src="img/o_proc2.png" width="400" height="300" HSPACE=50 >
+						<h5><br>1. Dream Catcher </h5>
+						<h5>2. Mayan Calendar </h5>
+					</p>
+				</span>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="section" id="section6">
+	</div>
+</div>
+
+<script type="text/javascript" src="fullpage.min.js"></script>
+<script type="text/javascript" src="examples.js"></script>
+<script type="text/javascript">
+	var myFullpage = new fullpage('#fullpage', {
+		sectionsColor: ['#dfdfdf','#000000','#dfdfdf','#000000','#dfdfdf','#000000'],
+		anchors: ['firstPage', 'secondPage', '3rdPage', '4thPage', '5thPage', '6thPage'],
+		navigation:true,
+		navigationTooltips: ['Baehatrice', 'Makeup', 'Graphic Design', 'Illustration', 'Others', 'SEND MESSAGE'],
+		showActiveTooltip: true,
+		menu: '#menu'
+	});
+</script>
+</body>
+
+</html>
