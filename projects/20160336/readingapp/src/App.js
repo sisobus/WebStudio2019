@@ -4,7 +4,6 @@ import MainPage from './_components/Main'
 import BlankPage from './_components/BlankPage'
 import { BrowserRouter as Router, Route } from "react-router-dom"
 import { history } from './_components/history'
-
 function App() {
   return (
     <div className="App">

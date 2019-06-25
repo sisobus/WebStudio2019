@@ -36,9 +36,8 @@ class Articles extends React.Component {
        .then(response => {
          response.json().then(rsp=> {
 	this.setState({ articles: rsp })
-     })
-  })
-
+        })
+      })
   }
   handleLike(idx) {
     let nextStateArticle = [...this.state.articles]
