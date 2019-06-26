@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button } from 'antd';
 
 class Form extends Component {
   state = {
@@ -23,7 +24,11 @@ class Form extends Component {
           value={this.state.Password}
           onChange={this.handleChange}
         />
+        <Button type="primary" htmlType="submit">
+            Log in
+          </Button>
       </form>
+      
     );
   }
 }
