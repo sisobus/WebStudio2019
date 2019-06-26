@@ -2,7 +2,6 @@ import React from 'react'
 import Article from './Article'
 import './Articles.css'
 
-
 class Articles extends React.Component {
   constructor(props) {
     super(props)

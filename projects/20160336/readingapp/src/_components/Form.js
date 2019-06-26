@@ -14,7 +14,6 @@ class Form extends Component {
   render() {
     return (
       <form>
-        <div>
           <input
             placeholder="id"
             value={this.state.name}
@@ -28,7 +27,6 @@ class Form extends Component {
           <Button type="primary" htmlType="submit">
               Log in
             </Button>
-        </div>
         </form>
 
     );
