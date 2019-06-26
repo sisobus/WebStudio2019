@@ -6,7 +6,8 @@ class Form extends Component {
   }
   handleChange = (e) => {
     this.setState({
-      name: e.target.value
+      name: e.target.value,
+      Password: e.target.value
     })
   }
   render() {
@@ -17,7 +18,11 @@ class Form extends Component {
           value={this.state.name}
           onChange={this.handleChange}
         />
-        <div>{this.state.name}</div>
+        <input
+          placeholder="pw"
+          value={this.state.Password}
+          onChange={this.handleChange}
+        />
       </form>
     );
   }

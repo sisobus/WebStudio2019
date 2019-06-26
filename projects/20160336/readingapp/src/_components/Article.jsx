@@ -1,5 +1,6 @@
 import React from 'react'
 import './Article.css'
+import LinesEllipsis from 'react-lines-ellipsis'
 
 class Article extends React.Component {
   constructor(props) {
@@ -19,7 +20,13 @@ class Article extends React.Component {
         <p className="author">{this.props.author} [{this.props.like}]
         <button onClick={this.handleClick}>Like</button>
         </p>
-        <p className="content">{this.props.content}</p>
+        <p className="content">
+        <LinesEllipsis 
+            text={this.props.content}
+            maxLine='5'
+            ellipsis='...'
+            trimRight
+          /></p>
       </div>
     )
   }

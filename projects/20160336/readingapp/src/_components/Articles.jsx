@@ -12,7 +12,7 @@ class Articles extends React.Component {
           title: "About Time",
           author: "Number One",
           image:"https://pmcvariety.files.wordpress.com/2013/08/abouttime.jpg?w=1000&h=563&crop=1",
-          content: "At the age of 21, Tim Lake (Domhnall Gleeson) discovers he can travel in time... The night after another unsatisfactory New Year party, Tim's father (Bill Nighy) tells his son that the men in his family have always had the ability to travel through time. Tim can't change history, but he can change what happens and has happened in his own life-so he decides to make his world a better place...by getting a girlfriend. Sadly, that turns out not to be as easy as you might think. Moving from the Cornwall coast to London to train as a lawyer, Tim finally meets the beautiful but insecure Mary (Rachel McAdams). They fall in love, then an unfortunate time-travel incident means he's never met her at all. So they meet for the first time again-and again-but finally, after a lot of cunning time-traveling, he wins her heart. Tim then uses his power to create the perfect romantic proposal, to save his wedding from the worst best-man speeches, to save his best friend from professional disaster and to get his pregnant wife to the hospital in time for the birth of their daughter, despite a nasty traffic jam outside Abbey Road. But as his unusual life progresses, Tim finds out that his unique gift can't save him from the sorrows and ups and downs that affect all families, everywhere. There are great limits to what time travel can achieve, and it can be dangerous too.",
+          content: "At the age of 21, Tim Lake (Domhnall Gleeson) discovers he can travel in time. The night after another unsatisfactory New Year party, Tim's father (Bill Nighy) tells his son that the men in his family have always had the ability to travel through time. Tim can't change history, but he can change what happens and has happened in his own life-so he decides to make his world a better place...by getting a girlfriend. Sadly, that turns out not to be as easy as you might think. Moving from the Cornwall coast to London to train as a lawyer, Tim finally meets the beautiful but insecure Mary (Rachel McAdams). They fall in love, then an unfortunate time-travel incident means he's never met her at all. So they meet for the first time again-and again-but finally, after a lot of cunning time-traveling, he wins her heart. Tim then uses his power to create the perfect romantic proposal, to save his wedding from the worst best-man speeches, to save his best friend from professional disaster and to get his pregnant wife to the hospital in time for the birth of their daughter, despite a nasty traffic jam outside Abbey Road. But as his unusual life progresses, Tim finds out that his unique gift can't save him from the sorrows and ups and downs that affect all families, everywhere. There are great limits to what time travel can achieve, and it can be dangerous too.",
           like: 0
         },
         {
@@ -35,9 +35,9 @@ class Articles extends React.Component {
     fetch('http://127.0.0.1:5000/api/users')
        .then(response => {
          response.json().then(rsp=> {
-	this.setState({ articles: rsp })
+          	this.setState({ articles: rsp })
+          })
         })
-      })
   }
   handleLike(idx) {
     let nextStateArticle = [...this.state.articles]
@@ -60,7 +60,6 @@ class Articles extends React.Component {
             key={idx}
             idx={idx}
             onClick={this.handleLike}
-         
           />
         ))
       }

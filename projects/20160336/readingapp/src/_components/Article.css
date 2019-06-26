@@ -9,7 +9,9 @@
 }
 
 .article img{
-  height:200px;
+  right:auto;
+  left:auto;
+  width:70%;
 }
 
 .article.author {
@@ -21,4 +23,6 @@
   letter-spacing:1px;
   margin-top: 10px;
   padding:10px;
+  text-overflow:ellipsis;
 }
+
