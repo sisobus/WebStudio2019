@@ -176,6 +176,7 @@ def matching():
 		socketio.emit('matched', _users, broadcast=True)
 		print(_users)
 		print('match up!')
+		sending({ 'nickname' : 'notice', 'message' : 'The game has been started!' })
 
 @socketio.on('join_room')
 def on_join(data):
@@ -214,6 +215,11 @@ def checksentence(data):
 					global gamestart
 					gamestart = False
 					socketio.emit('game_over', broadcast=True)
+					sending({ 'nickname' : 'notice', 'message' : '***' + val_i['nickname'] + 'is losing the game ***' })
+					user = User.query.filter_by(login = 2).all()
+					user[0].login = 1
+					user[1].login = 1
+					print(serializer(user))
 
 
 

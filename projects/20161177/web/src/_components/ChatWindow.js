@@ -73,9 +73,8 @@ class ChatWindow extends React.Component {
                 gamestart : false
             })
             console.log(this.state.nickname + 'is losing the game')         
-            return (
-                <div> *** {this.state.nickname} is losing the game *** </div>
-            )          
+            //io.emit('sending', {nickname : 'notice', message : '***' + this.state.nickname + 'is losing the game ***'})
+                  
         })      
     }
 
@@ -87,6 +86,7 @@ class ChatWindow extends React.Component {
         io.on('open_room', (data) => {
             NGword = data
             console.log(NGword)
+            //io.emit('sending', {nickname : 'notice', message : 'Game has been started!'})
         })
     }
 
