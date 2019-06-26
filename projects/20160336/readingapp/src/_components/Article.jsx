@@ -17,7 +17,7 @@ class Article extends React.Component {
       <div className="article">
         <h1 className="title">{this.props.title}</h1>
         <p className="image"><img src={this.props.image} alt="books" width="500"/></p>
-        <p className="author">{this.props.author} [{this.props.like}]
+        <p className="author">{this.props.author} ({this.props.like})
         <button onClick={this.handleClick}>Like</button>
         </p>
         <p className="content">

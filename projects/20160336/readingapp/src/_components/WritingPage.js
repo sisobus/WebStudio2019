@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button } from 'antd';
+import { Button, Input } from 'antd';
 
 class Form extends Component {
   state = {
@@ -35,4 +35,4 @@ class Form extends Component {
   }
 }
 
-export default Form;
+export default WritingPage;
