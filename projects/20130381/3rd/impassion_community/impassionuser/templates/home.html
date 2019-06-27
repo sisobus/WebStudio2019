@@ -3,27 +3,23 @@
 {% block contents %}
     <div class="row mt-5">
         <div class="col-12 text-center">
-            <h1>홈페이지</h1>
+            <h1>I'mpassion</h1>
         </div>
     </div>
     <div class="row mt-5">
         {% if request.session.user %}
         <div class="col-12">
-            <button class="btn btn-primary btn-block" onclick="location.href='/impassionuser/logout/'">로그아웃</button>
+            <button class="btn btn-primary btn-block" onclick="location.href='/logout'">로그아웃</button>
         </div>
         {% else %}
         <div class="col-6">
-           <button class="btn btn-primary btn-block" onclick="location.href='/impassionuser/login/'">로그인</button>
+           <button class="btn btn-primary btn-block" onclick="location.href='/login'">로그인</button>
         </div>
         <div class="col-6">
-            <button class="btn btn-primary btn-block" onclick="location.href='/impassionuser/register/'">회원가입</button>
+            <button class="btn btn-primary btn-block" onclick="location.href='/register'">회원가입</button>
         </div>
         {% endif %}
     </div>
-    <div class="row mt-1">
-        <div class="col-12">
-            <button class="btn btn-primary btn-block" onclick="location.href='/board/list/'">게시물 보기</button>
-        </div>
-    </div>
+    
 
 {% endblock %}

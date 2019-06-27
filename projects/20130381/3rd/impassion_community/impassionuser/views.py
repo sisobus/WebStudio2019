@@ -41,7 +41,7 @@ def register(request):
         useremail = request.POST.get('useremail', None)
         password = request.POST.get('password', None)
         re_password = request.POST.get('re-password', None)
-        cardinal_number=request.POST.get('cardinal-number', None)
+        cardinal_number=request.POST.get('cardinal_number', None)
 
         res_data={}
 

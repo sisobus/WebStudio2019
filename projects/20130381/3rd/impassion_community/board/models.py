@@ -18,3 +18,11 @@ class Board(models.Model):
         verbose_name='임패션 게시글'
         verbose_name_plural='임패션 게시글'
                        
+class Comment(models.Model):
+    board = models.ForeignKey(Board, on_delete=models.CASCADE)
+    user = models.ForeignKey('impassionuser.Impassionuser', on_delete=models.CASCADE)
+    content = models.TextField()
+
+    def __str__(self):
+        return '%s - %s' % (self.id, self.user)
+

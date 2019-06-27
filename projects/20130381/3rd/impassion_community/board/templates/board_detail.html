@@ -7,8 +7,49 @@
             <label for="title">제목</label>
             <input type="text" class="form-control" id="title" value="{{ board.title }}" readonly />
             <label for="contents">내용</label>
-            <textarea class="form-control" readonly /{{ board.contents }}></textarea>
+            <textarea style="height: 500px;" class="form-control" readonly>{{board.contents}}</textarea>
         </div>
+        <div class="comment_list">
+            <div class="col-12">
+            <div class="page-header">
+              <h1>댓글 목록</h1>
+            </div>
+            <div class="comments-list">
+              {% for comment in comments %}
+                <div class="media">
+                  <div class="media-body">
+                    <h4 class="media-heading user_name">
+                      {{ comment.user }}
+                    </h4>
+                      {{ comment.content }}
+                    <hr>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+        </div>
+
+        <div class="comment_write">
+            {% if errors %}
+              <ul>
+                {% for error in errors %}
+                  <li><div class="alert alert-primary">{{ error }}</div></li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+            <h3 style="float: left;">댓글 쓰기</h3>
+            <form method="post" action="/regular_session/comment/write" enctype="multipart/form-data" class="col-12">
+              {% csrf_token %}
+              <input type="hidden" name="post_id" value="{{ board.id }}">
+              <div class="form-group row">
+                <textarea class="form-control" name="content" rows="7"></textarea>
+              </div>
+              <div class="form-group row float-right">
+                <button type="submit" class="btn btn-primary">저장하기</button>
+              </div>
+            </form>
+        </div>
+        <div style="clear: both;"></div>
         
         <button class="btn btn-primary" onclick="location.href='/regular_session/list/'">돌아가기</button>
     </div>
