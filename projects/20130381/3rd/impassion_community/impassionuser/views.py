@@ -60,5 +60,5 @@ def register(request):
             impassionuser.save()
 
 
-        return render(request, 'register.html', res_data)
+        return render(request, 'home.html', res_data)
     
