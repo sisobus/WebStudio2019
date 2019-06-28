@@ -8,6 +8,13 @@
   height: 50px;
   margin: 0 auto;
 }
+
+.navbar-container #title{
+  margin: 0 auto;
+  padding: 12px;
+  text-align: center;
+  font-size: 5vw;
+}
 #logo {
   font-size: 20pt;
   padding-top: 10px;
@@ -15,6 +22,6 @@
 
 #components-layout-demo-side .logo {
   height: 32px;
-  background: rgba(255, 255, 255, 0.2);
+  background:#24292e;
   margin: 16px;
 }
