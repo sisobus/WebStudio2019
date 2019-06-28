@@ -31,15 +31,12 @@ class SideMenu extends React.Component {
             <br/><Link to="/" style={{color:'#00FFFF'}} activeStyle={{color: '#fff'}}>*Hello Quokka!*</Link></span>
             </Menu.Item>
             <Menu.Item key="2">
-            <span className="nav-text"><Link to="/watched" style={{color:'#fff'}} activeStyle={{color: '#00FFFF'}}>Watched Movie</Link></span>
+            <span className="nav-text"><Link to="/watched" style={{color:'#fff'}} activeStyle={{color: '#00FFFF'}}>Reviews</Link></span>
             </Menu.Item>
             <Menu.Item key="3">
-            <span className="nav-text"><Link to="/fav" style={{color:'#fff'}} activeStyle={{color: '#00FFFF'}}>Favorites</Link></span>
+            <span className="nav-text"><Link to="/marked" style={{color:'#fff'}} activeStyle={{color: '#00FFFF'}}>Check List</Link></span>
             </Menu.Item>
             <Menu.Item key="4">
-            <span className="nav-text"><Link to="/marked" style={{color:'#fff'}} activeStyle={{color: '#00FFFF'}}>Bookmark</Link></span>
-            </Menu.Item>
-            <Menu.Item key="5">
             <span className="nav-text">Log Out</span>
             </Menu.Item>
           </Menu>

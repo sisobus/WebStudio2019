@@ -16,7 +16,7 @@ class MarkedPage extends React.Component {
       <Layout style={{ marginLeft: 200 }}>
         <Nav />
         <Content>
-          <h1>Blank Page!!</h1>
+          <h1>Hello! Time to cross off the list!</h1>
         </Content>
         <Foot/>
         </Layout>
