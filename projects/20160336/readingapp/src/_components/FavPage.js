@@ -17,15 +17,6 @@ class FavPage extends React.Component {
         <Nav />
         <Content>
           <h1>Blank Page!!</h1>
-          <Link to="/">
-            <Button>Go to MainPage</Button>
-          </Link>
-          <Button>
-          <Link to="/blank">Go to Blank</Link>
-          </Button>
-          <Button type="error" onClick={() => history.push('/blank')}>
-            Go to Blank
-          </Button>
           </Content>
           <Foot/>
         </Layout>

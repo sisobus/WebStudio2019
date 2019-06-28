@@ -4,11 +4,11 @@ import { Link } from "react-router-dom"
 import { history } from './history'
 import Nav from './Nav'
 import SideMenu from './SideMenu'
-import Foot from './Foot'
+import Foot from './Foot.jsx'
 
 const { Header, Content, Footer, Sider } = Layout;
 
-class BlankPage extends React.Component {
+class MarkedPage extends React.Component {
   render() {
     return (
     <Layout>
@@ -17,21 +17,12 @@ class BlankPage extends React.Component {
         <Nav />
         <Content>
           <h1>Blank Page!!</h1>
-          <Link to="/">
-            <Button>Go to MainPage</Button>
-          </Link>
-          <Button>
-          <Link to="/blank">Go to Blank</Link>
-          </Button>
-          <Button type="error" onClick={() => history.push('/blank')}>
-            Go to Blank
-          </Button>
-          </Content>
-          <Foot/>
+        </Content>
+        <Foot/>
         </Layout>
     </Layout>
-    )
+    );
   }
 }
 
-export default BlankPage
+export default MarkedPage;
