@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button } from 'antd';
+import { Icon, Button } from 'antd';
 
 class Form extends Component {
   state = {
@@ -15,12 +15,14 @@ class Form extends Component {
     return (
       <form>
           <input
-            placeholder="id"
+            Icon type="user"
+            placeholder="username"
             value={this.state.name}
             onChange={this.handleChange}
           />
           <input
-            placeholder="pw"
+            Icon type="lock"
+            placeholder="password"
             value={this.state.Password}
             onChange={this.handleChange}
           />
