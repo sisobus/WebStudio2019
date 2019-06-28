@@ -1,0 +1,145 @@
+@import '~antd/dist/antd.css';
+
+#root {
+	width:100%;
+	height:100%;
+}
+
+#App{
+	width:100%;
+	height:100%;
+	display:flex;
+    flex-direction: column;
+}
+
+.ant-layout-header{
+    display: flex;
+    justify-content: center;
+    padding: 10px 40px 0px 40px;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+}
+
+.anticon-smile {
+    line-height: 64px;
+}
+
+.ant-menu-horizontal{ 
+    display: flex;
+    justify-content: center;
+    width:100%;
+}
+
+
+.UpperMenu{
+    widows: 100%;
+    display: flex;
+}
+
+.FrontMessage{
+    margin: 10px 10px 40px 10px;
+}
+.text{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto Oxygen-Sans", Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    letter-spacing: -0.4px;
+    font-size: 24px;
+    color: rgb(51, 51, 51);
+    font-weight: 600;
+    font-style: normal;
+}
+
+.subtext{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto Oxygen-Sans", Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    letter-spacing: -0.4px;
+    font-size: 14px;
+    color: rgb(51, 51, 51);
+    font-weight: 600;
+    font-style: normal;
+    text-align: left;
+}
+
+.center{
+    text-align: center;
+}
+
+.uppercase{
+    text-transform: uppercase;
+}
+
+.capitalize{
+    text-transform: capitalize;
+}
+
+
+h1.introduction {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto Oxygen-Sans", Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    letter-spacing: -0.4px;
+    font-size: 32px;
+    color: rgb(51, 51, 51);
+    font-weight: 600;
+    font-style: normal;;
+}
+
+.Pictures{
+    background: white; 
+    padding: 24px;
+    min-height: auto;
+}
+
+
+.picture-blocks{
+    display: inline-flex;
+    height:900px;
+}
+
+.picture-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin:0; 
+}
+
+.ant-menu-horizontal {
+    border-bottom: 0;
+}
+
+.ant-layout-header {
+    z-index: 1000;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.Request{
+    display: flex;
+}
+.ant-form-horizontal{
+    width: 100%;
+}
+
+.ant-col-sm-offset-8{
+    width:100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.ant-col-sm-8{
+    margin-right: 10px;
+}
+
+.Request
+.ant-form-horizontal
+.ant-form-item
+.ant-col-sm-16{
+    width: 33.3%;
+}
+
+.Request
+.ant-form-horizontal
+.ant-form-item
+.ant-col-sm-offset-8{
+    width:100%;
+}
+
+.ant-btn-link{
+    color:rgba(0, 0, 0, 0.65);
+}
