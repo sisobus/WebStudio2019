@@ -1,0 +1,22 @@
+.card-container{
+    max-width: 100%;
+    max-height: auto;
+    border: 1.5px solid black;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px;
+    margin: auto;
+    margin-bottom: 30px;
+    transition: all 0.5s;
+}
+
+
+.card-container img{
+    max-width: 300px;
+    max-height: auto;
+    border-radius: 15px;
+}
+
+.card-container:hover{
+    cursor: pointer;
+    background-color: #b4c1ce;
+}

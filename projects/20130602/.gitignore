@@ -1,6 +1,5 @@
 
-*.json
-*.db
+.idea/
 
 # Created by https://www.gitignore.io/api/linux,flask,python,pycharm,reactnative,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=linux,flask,python,pycharm,reactnative,visualstudiocode

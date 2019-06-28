@@ -1,6 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship, backref
 import json
+from werkzeug.security import generate_password_hash, check_password_hash
 
 db = SQLAlchemy()
 
@@ -15,8 +16,13 @@ class User(db.Model):
 
     def __init__(self, name, password):
         self.name = name
-        self.password = password
+        self.set_password(password)
 
+    def set_password(self, password):
+        self.password = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password, password)
 
     def serialize(self):
         return json.dumps({
@@ -31,17 +37,23 @@ class Daily(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     weather_id = db.Column(db.Integer, db.ForeignKey('weather.id'))
-    img_name = db.Column(db.String)
+    img_path = db.Column(db.String)
     satis = db.Column(db.Integer)
 
     weather = relationship('Weather', backref=backref('daily', order_by=id))
 
-    def __init__(self, weather_id, img_name, satis):
+    def __init__(self, weather_id, img_path, satis):
         self.weather_id = weather_id
-        self.img_name = img_name
+        self.img_path = img_path
         self.satis = satis
 
-
+    def serialize(self):
+        return json.dumps({
+            'id': self.id,
+            'weather_id': self.weather_id,
+            'img_path': self.img_path,
+            'satis': self.satis
+        })
 
 
 class Weather(db.Model):
@@ -49,23 +61,23 @@ class Weather(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     city = db.Column(db.String)
-    date = db.Column(db.DATE)
-    time = db.Column(db.Integer)
+    datetime = db.Column(db.String)
     cluster = db.Column(db.Integer)
+    is_rain = db.Column(db.Boolean)
 
-    def __init__(self, city, date, time, cluster):
+    def __init__(self, city, datetime, cluster, is_rain):
         self.city = city
-        self.date = date
-        self.time = time
         self.cluster = cluster
+        self.datetime = datetime
+        self.is_rain = is_rain
 
     def serialize(self):
         return json.dumps({
             'id': self.id,
             'city': self.city,
-            'date': self.date,
-            'time': self.time,
-            'cluster': self.cluster
+            'datetime': self.datetime,
+            'cluster': self.cluster,
+            'is_rain': self.is_rain
         })
 
 
@@ -78,6 +90,17 @@ class MyDaily(db.Model):
 
     user = relationship('User', backref=backref('mydaily', order_by=id))
     daily = relationship('Daily', backref=backref('mydaily', order_by=id))
+
+    def __init__(self, user_id, daily_id):
+        self.user_id = user_id
+        self.daily_id = daily_id
+
+    def serialize(self):
+        return json.dumps({
+            'id': self.id,
+            'user_id': self.user_id,
+            'daily_id': self.daily_id,
+        })
 
 
 class MyScrap(db.Model):
@@ -93,3 +116,25 @@ class MyScrap(db.Model):
     def __init__(self, user_id, daily_id):
         self.user_id = user_id
         self.daily_id = daily_id
+
+    def serialize(self):
+        return json.dumps({
+            'id': self.id,
+            'user_id': self.user_id,
+            'daily_id': self.daily_id,
+        })
+
+
+class LoginSession(db.Model):
+    __tablename_ = 'login_session'
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    jti = db.Column(db.Text)
+
+    user = relationship('User')
+
+    def __init__(self, user_id, jti):
+        self.user_id = user_id
+        self.jti = jti
+
