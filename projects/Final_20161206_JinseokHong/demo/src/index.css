@@ -1,0 +1,164 @@
+html,
+body {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.title {
+  margin: 20px auto 0;
+  text-align: center;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  height: 100%;
+  text-align: center;
+  /* top: 50%; */
+  /* width: 100%; */
+}
+
+.link a {
+  font-size: 18px;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.component {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+.component.first-component {
+  background-color: white;
+  position: relative;
+}
+
+/* .first-component--inside-scroller {
+  position: absolute;
+  right: 20px;
+  top: 100px;
+} */
+
+.component.second-component {
+  position: relative;
+  background-color: white;
+}
+
+.component.third-component {
+  background-color: blue;
+}
+
+.component.fourth-component {
+  background-color: yellow;
+}
+
+.component.fifth-component {
+  position: relative;
+  background-color: green;
+}
+
+.component.nineth-component {
+  position: relative;
+  background-color: white;
+}
+
+.VideoContainer {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  margin: auto;
+}
+
+h2 {
+  margin: auto;
+  text-align: center;
+}
+
+.pagination-additional-class {
+  margin: 0;
+  position: fixed;
+  top: 20px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.pagination-additional-class > li:not(:last-of-type) > a,
+.pagination-additional-class > li:not(:last-of-type) > span {
+  margin-right: 50px;
+}
+
+.demo-page-contain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.demo-page-contain__hint {
+  margin-bottom: 20px;
+}
+
+.componentTitle {
+  margin-left: 10.2%;
+  margin-top: 54px;
+  width: 100%;
+  height: 36px;
+  font-weight: 400;
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.5);
+  font-style: normal;
+}
+
+.paragraph {
+  margin-right: 1vmin;
+  text-align: left;
+  width: 20%;
+  height: 30%;
+  font-size: 14px;
+}
+
+.paragraphs {
+  margin: 0;
+  width: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+}
+
+.photocontainer {
+  margin: 0;
+  width: 80%;
+  height: 45%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.photo {
+  padding: 1vmin;
+  text-align: left;
+  width: 25%;
+  height: auto;
+}
+
+.paragraphs .paragraph {
+  margin-top: 1vmin;
+}

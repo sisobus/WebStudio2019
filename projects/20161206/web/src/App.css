@@ -1,4 +1,4 @@
-@import '~antd/dist/antd.css';
+@import "~antd/dist/antd.css";
 
 .App {
   text-align: center;
@@ -10,6 +10,21 @@
   pointer-events: none;
 }
 
+.illust {
+  width: 30vmin;
+  display: inline-block;
+}
+@media screen and (max-width: 960px) {
+  .image-container {
+    width: 30vmin;
+  }
+}
+
+.articlesholder {
+  text-align: center;
+  width: 90vmin;
+}
+
 .App-header {
   background-color: white;
   min-height: 100vh;
@@ -19,6 +34,23 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: grey;
+}
+.image-container {
+  width: 30vmin;
+  position: relative;
+  display: inline-block;
+}
+.image-container p {
+  position: absolute;
+  height: 100%;
+  top: 0px;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 50);
+  display: none;
+}
+.image-container:hover p {
+  display: block;
 }
 
 .App-link {
