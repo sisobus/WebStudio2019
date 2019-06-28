@@ -1,12 +1,10 @@
 import React from 'react'
-import { Layout, Button } from 'antd'
-import { Link } from "react-router-dom"
-import { history } from './history'
+import { Layout } from 'antd'
 import Nav from './Nav'
 import SideMenu from './SideMenu'
-import Foot from './Foot.jsx'
+import Foot from './Foot'
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Content } = Layout;
 
 class WatchedPage extends React.Component {
   render() {
@@ -16,7 +14,6 @@ class WatchedPage extends React.Component {
       <Layout style={{ marginLeft: 200 }}>
         <Nav />
         <Content>
-          <h1>Blank Page!!</h1>
         </Content>
         <Foot/>
         </Layout>
