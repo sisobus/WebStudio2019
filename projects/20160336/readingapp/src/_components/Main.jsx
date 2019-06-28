@@ -7,7 +7,7 @@ import SideMenu from './SideMenu'
 import { Layout } from 'antd';
 import Foot from './Foot'
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Content } = Layout;
 
 class MainPage extends React.Component {
   render() {

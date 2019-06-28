@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Icon, Button } from 'antd';
+import {  Button } from 'antd';
 
 class Form extends Component {
   state = {
