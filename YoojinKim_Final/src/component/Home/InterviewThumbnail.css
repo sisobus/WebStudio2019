@@ -1,0 +1,30 @@
+.content-container {
+  width: 50%;
+  height: 50%;
+  padding: 5%;
+  background: #ffffff;
+  text-align: left;
+}
+
+.all{
+	border-top: 1px solid gray;
+}
+
+.Title1{
+	font-size: 20pt;
+	color: gray;
+}
+
+.image{
+	padding: 5px;
+	width: 30%;
+	margin: auto;
+	display: inline-block;
+}
+
+.text{
+	padding: 5px;
+	width: 70%;
+	margin: auto;
+	display: inline-block;
+}

@@ -1,0 +1,31 @@
+.ant-menu.ant-menu-dark .ant-menu-item-selected{
+	background: #0b6623;
+}
+
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{
+	background: #aae1bf;
+	}
+
+.ant-menu-vertical .ant-menu-item::after, .ant-menu-vertical-left .ant-menu-item::after, .ant-menu-vertical-right .ant-menu-item::after, .ant-menu-inline .ant-menu-item::after{
+	border-right: 2px solid #0b6623;
+}
+
+.ant-menu-item-selected{
+	color: #0b6623;
+}
+
+.ant-menu-item.ant-menu-item-active{
+	color: black;
+	font-weight: bold;
+	background:#aae1bf ;
+}
+
+.ant-menu-sub.ant-menu-inline.ant-menu-item{
+	color: #0b6623;
+}
+
+.ant-layout.ant-layout-has-sider{
+	border: 0px solid #0b6623;
+}
+
+

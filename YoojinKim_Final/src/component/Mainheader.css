@@ -1,0 +1,20 @@
+
+.header{
+	margin-top: 0px;
+	padding: 0;
+}
+
+.header.ant-layout-header{
+background: #ff6d70;
+}
+.ant-menu.ant-menu-dark.ant-menu-root.ant-menu-horizontal{
+background: #ff6d70;
+}
+
+.ant-menu.ant-menu-dark .ant-menu-item-selected, .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected{
+	background: #ff6d70;
+}
+
+.ant-menu-dark.ant-menu-horizontal > .ant-menu-item, .ant-menu-dark.ant-menu-horizontal > .ant-menu-submenu{
+	width: 33.3333%;
+}

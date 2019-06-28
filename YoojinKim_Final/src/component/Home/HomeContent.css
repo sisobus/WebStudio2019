@@ -1,0 +1,11 @@
+.home-container{
+  width: 80%;
+  margin: auto auto;
+  overflow: hidden;
+}
+
+.openimage-container{
+	padding: 2%;
+	width: 80%;
+	margin: auto;
+}

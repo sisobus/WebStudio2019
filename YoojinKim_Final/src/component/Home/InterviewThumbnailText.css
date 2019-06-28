@@ -1,0 +1,25 @@
+.article {
+  margin-top: 10px;
+  padding: 0px;
+  width: 100%;
+  background: #ffffff;
+  color: black ;
+  margin: auto auto;
+  border: 0px;
+}
+
+.title {
+    padding: 10px;
+    font-size: 15pt;
+    border: 0px;
+}
+
+.author {
+  color: gray;
+  font-size: 5pt;
+  padding: 10px;
+}
+
+.content {
+  padding: 10px;
+}
