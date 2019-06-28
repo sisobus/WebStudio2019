@@ -4,11 +4,11 @@ import { Link } from "react-router-dom"
 import { history } from './history'
 import Nav from './Nav'
 import SideMenu from './SideMenu'
-import Foot from './Foot'
+import Foot from './Foot.jsx'
 
 const { Header, Content, Footer, Sider } = Layout;
 
-class BlankPage extends React.Component {
+class FavPage extends React.Component {
   render() {
     return (
     <Layout>
@@ -34,4 +34,4 @@ class BlankPage extends React.Component {
   }
 }
 
-export default BlankPage
+export default FavPage
