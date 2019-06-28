@@ -1,7 +1,5 @@
-.main-wrapper {
-  width: 100%;
-}
-.main-container {
-  width: 70%;
-  margin: 0 auto;
+#components-layout-demo-fixed-sider .logo {
+  height: 50px;
+  background: rgba(146, 9, 9, 0.2);
+  margin: 16px;
 }
