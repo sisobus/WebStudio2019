@@ -27,11 +27,9 @@ class Sidebar extends Component {
   onClick = ({ key }) => {
     if (key === '1') {
       console.log(1)
-      //window.location.assign('/movielist/date');
       history.push('/movielist/date')
     } else if (key === '2') {
       history.push('/movielist/star')
-      //window.location.assign('/movielist/star');
       console.log(2)
     } else if (key === '5') {
       console.log(3)
@@ -46,7 +44,6 @@ class Sidebar extends Component {
         openKeys={this.state.openKeys}
         onOpenChange={this.onOpenChange}
         onClick={this.onClick}
-      //style={{ width: 256 }}
       >
         <SubMenu
           key="sub1"

@@ -36,24 +36,7 @@ class AddMovieForm extends Component {
                             )
 
                     })
-                /*
-                                const jsons = {
-                                    'name': values.title,
-                                    'photo': values.image.file
-                                }
-                                const requestOptions = {
-                                    method: 'POST',
-                                    headers: { 'Content-Type': 'application/json' },
-                                    body: JSON.stringify(jsons)
-                                }
-                                fetch('http://localhost:5000/api/movies', requestOptions)
-                                    .then(response => response.json())
-                                    .then(rsp => {
-                                        console.log(rsp)
-                                        history.push('/page/' + rsp)
-                                    }
-                                    )
-                */
+
             }
         });
     };

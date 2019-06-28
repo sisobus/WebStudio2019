@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Form, Icon, Input, Button } from 'antd';
-import { Redirect } from "react-router-dom";
 
 
 function hasErrors(fieldsError) {
@@ -9,7 +8,6 @@ function hasErrors(fieldsError) {
 
 class Login extends Component {
     componentDidMount() {
-        // To disabled submit button at the beginning.
         this.props.form.validateFields();
     }
 
@@ -28,12 +26,6 @@ class Login extends Component {
                 .then(res => {
                     const result = JSON.parse(res)
                     console.log(result)
-                    if (result === 'fail'){
-                        console.log('틀림')
-                    } else {
-                        console.log('맞음')
-                        // '/'으로 이동
-                    }
                 })
             }
         });

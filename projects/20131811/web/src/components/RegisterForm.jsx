@@ -75,7 +75,7 @@ class RegisterForm extends React.Component {
                 .then(response => response.json())
                 .then(rsp => {
                   console.log(rsp)
-                  if (rsp == 'success') {
+                  if (rsp === 'success') {
                     this.changePage();
                     history.push('/login')
                   } else {
@@ -148,24 +148,6 @@ class RegisterForm extends React.Component {
             />
           )}
         </Form.Item>
-        {/*
-        <Form.Item style={{ margin: "0 0 10px 0" }}>
-          {getFieldDecorator("secretKey", {
-            rules: [{ required: true, message: "Please input Secret Key!" }]
-          })(
-            <Input
-              name="secretKey"
-              prefix={<Icon type="lock" />}
-              type="password"
-              placeholder="Secret Key"
-              ref={node => {
-                this.secretKey = node.input
-              }}
-            />
-          )}
-        </Form.Item>
-            */
-        }
         <Form.Item style={{ margin: "0 0 12px 0" }}>
           <Button
             type="primary"

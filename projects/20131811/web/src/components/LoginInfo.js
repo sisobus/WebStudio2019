@@ -16,8 +16,8 @@ class LoginInfo extends Component {
 
         return (
             <div className='info'>
-                {user_info.account} 님 환영합니다!
-                <Button type="danger" onClick={this.click}>Logout</Button>
+                {user_info.account} 님 환영합니다! &nbsp;
+                <Button type="danger" onClick={this.click}>Logout</Button> &nbsp;
                 <br />
                 <br/>
             </div>
