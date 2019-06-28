@@ -1,14 +1,45 @@
 import React from 'react';
-import { Comment, Tooltip } from 'antd';
+import { Comment, Tooltip, Form, Button, Input } from 'antd';
 import moment from 'moment';
 import './EssayForm.css'
+
+const { TextArea } = Input;
+
+const Editor = ({ onChange, onSubmit, submitting, value }) => (
+    <div>
+      <Form.Item>
+        <TextArea rows={20} onChange={onChange} value={value} />
+      </Form.Item>
+      <Form.Item>
+        <Button htmlType="submit" loading={submitting} onClick={onSubmit} type="primary">
+          Add Comment
+        </Button>
+      </Form.Item>
+    </div>
+  );
+
 class EssayForm extends React.Component {
-  state = {};
+  state = {
+    comments: [],
+    submitting: false,
+    value: ' ',
+  };
 
   render() {
+    const { comments, submitting, value } = this.state;
 
     return (
-    <div id="commentary">
+        <div id="commentary">
+        <Comment
+        content={
+            <Editor
+              onChange={this.handleChange}
+              onSubmit={this.handleSubmit}
+              submitting={submitting}
+              value={value}
+            />
+          }/>
+    
       <Comment
         content={
           <p>The look Crowley gives Aziraphale when he finds out he gave away his sword.
