@@ -1,0 +1,17 @@
+#commentary{
+    padding:40px;
+    text-align:left;
+}
+
+#commentary .ant-comment{
+    padding:10px;
+}
+
+#commentary .ant-comment .ant-comment-inner .ant-comment-content{
+    float:center;
+    width:100%;
+}
+.ant-comment-content-detail p {
+    text-indent: 50px;
+    line-height:1.3
+  }
