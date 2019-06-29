@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="./style.css">
+	</head>
+	<body>
+		<div class="navbar-wrapper">
+			<div class="navbar-container">
+				<p id="logo">LOGO</p>
+			</div>
+		</div>
+		<div class="main-wrapper">
+			<div class="main-container">
+				<div class="article-container">
+				<div class="article">
+					<h1 class="title">
+						updated title[1]
+					</h1>
+					<p class="author">
+						geronimo03
+					</p>
+					<p class="content">
+				Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice 
+			</p>
+			</div>
+		</div>
+		<div class="article-container">
+					<div class="article">
+					<h1 class="title">
+						updated title[2]
+					</h1>
+					<p class="author">
+						geronimo03
+					</p>
+					<p class="content">
+				Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice 
+			</p>
+			</div>
+		</div>
+		<div class="article-container">
+					<div class="article">
+					<h1 class="title">
+						updated title[3]
+					</h1>
+					<p class="author">
+						geronimo03
+					</p>
+					<p class="content">
+				Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice Practice 
+			</p>
+			</div>
+		</div>
+	</div>
+	</body>
+	<script>
+		const logoElement=document.getElementById('logo');
+		const f=(e)=>{
+			console.log(e);
+			alert('You clicked the logo');
+			if (confirm('If you click ok button, then this page will be refreshed')){
+				window.location.reload();
+			}else{
+				alert('You clicked no! button :)');
+			}
+		}
+		logoElement.addEventListener('click',f);
+
+		const elements = document.getElementsByClassName('title');
+		for (let i=0; i<elements.length; i++){
+			elements[i].addEventListener('click',(e)=>{
+				alert(e.target.innerText);
+			});
+		}
+
+
+		let requestOptions={
+			method:'GET',
+			headers: {'Content-Type':'application/json'}
+			body:JSON.stringify({
+				email:"mytest@test.com",
+				password:"mytest"
+			})
+		}
+		const handleResponse=response =>{
+			return response.text().then(text=> {
+				const data=text&&JSON.parse(text)
+				if (!response.ok){
+					if (response.status===401){
+						//auto logout if 401 response returned from api
+						return Promise.reject(response)
+					}
+					const error = (data && data.message)||response.statusText
+					return Promise.reject(error)
+					}
+				return data
+			})
+		}
+		fetch('http://0.0.0.0:5000/api/users', requestOptions)
+		.then(handleResponse)
+		.then(response => {
+			console.log(response);
+			let html = "";
+			for (let i=0; i<response.length;i++){
+				html += '<div class="article" id="article-${response[i].id}">';
+				html += '<h1 class="title"> ${response[i].title}</h1>';
+				html += '<p class="author"> ${response[i].author}</p>';
+				html += '<p class="content"> ${response[i].content}</p>';
+				html += '</div>';
+			}
+			const articleContainer = document.getElementById('article-container');
+			articleContainer.insertAdjacentHTML('beforeEnd', html);
+		})
+		.catch(error => {
+			console.log(error);
+		});
+	</script>
+	</html>

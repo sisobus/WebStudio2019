@@ -1,0 +1,9 @@
+#components-layout{
+  background:#24292e;
+}
+#components-layout-demo-fixed-sider .logo{
+  margin:auto;
+  height: 60px;
+  background: rgba(146, 9, 9, 0.2);
+  border-radius: 25px;
+}
