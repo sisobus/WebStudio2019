@@ -10,5 +10,4 @@ __pycache__/*
 *.pyc
 data/*
 **/data/*
-*.xml
-*.iml
+app.db

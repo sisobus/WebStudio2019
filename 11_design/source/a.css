@@ -1,0 +1,24 @@
+.button {
+  width: 200px;
+  height: 50px;
+}
+.blue-button {
+  background: blue !important;
+  color: white;
+}
+.red-button {
+  background: red;
+  color: white;
+}
+.another-parent .blue-button {
+  background: #6473FF;
+}
+.another-parent .red-button {
+  background: #FF6473;
+}
+.another-parent > .blue-button {
+  background: #AAAAFF;
+}
+.another-parent > .red-button {
+  background: #FFAAAA;
+}
