@@ -1,0 +1,31 @@
+type User {
+  id: ID! @id
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  name: String!
+  avatar: String!
+  courses: [Course!]!
+}
+
+type Course {
+  id: ID! @id
+  name: String!
+  owner: User! @relation(link: INLINE)
+  lectures: [Lecture!]!
+}
+
+type Lecture {
+  id: ID! @id
+  title: String!
+  content: String!
+  course: Course! @relation(link: INLINE)
+  comments: [Comment!]!
+}
+
+type Comment {
+  id: ID! @id
+  lecture: Lecture! @relation(link: INLINE)
+  user: User! @relation(link: INLINE)
+  page: Int!
+  content: String!
+}
