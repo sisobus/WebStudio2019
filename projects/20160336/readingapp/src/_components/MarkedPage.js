@@ -1,20 +1,60 @@
 import React from 'react'
-import { Layout, Button } from 'antd'
-import { Link } from "react-router-dom"
-import { history } from './history'
+import { Layout } from 'antd'
 import Nav from './Nav'
 import SideMenu from './SideMenu'
 import Foot from './Foot.jsx'
-import { List, Typography, Checkbox } from 'antd';
+import { Table } from 'antd';
+
+const columns = [
+  {
+    title: 'Title',
+    dataIndex: 'name',
+    key: 'name',
+  },
+  {
+    title: 'Rating',
+    dataIndex: 'age',
+    key: 'age',
+    width: '12%',
+  },
+  {
+    title: 'genre',
+    dataIndex: 'address',
+    width: '30%',
+    key: 'address',
+  },
+];
 
 const data = [
-  ' Davinci Code ',
-  ' Juno ',
-  ' My Fair Lady ',
-  ' the Matrix Series ',
-  ' Happy Death Day ',
+  {
+    key: 1,
+    name: 'Annabelle',
+    age: '60%',
+    address: 'Horror',
+  },
+  {
+    key: 2,
+    name: 'Conjuring',
+    age: '76%',
+    address: 'Horror',
+  },
 ];
-const { Header, Content, Footer, Sider } = Layout;
+
+// rowSelection objects indicates the need for row selection
+const rowSelection = {
+  onChange: (selectedRowKeys, selectedRows) => {
+    console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+  },
+  onSelect: (record, selected, selectedRows) => {
+    console.log(record, selected, selectedRows);
+  },
+  onSelectAll: (selected, selectedRows, changeRows) => {
+    console.log(selected, selectedRows, changeRows);
+  },
+};
+
+const { Content } = Layout;
+
 
 class MarkedPage extends React.Component {
   render() {
@@ -26,18 +66,11 @@ class MarkedPage extends React.Component {
         <Content>
           <h2>Hello! Time to cross off the list!<br/><br/></h2>
           <h4>This is your movie Wish List</h4>
-          <List style={{
-          }}
-            bordered
-            dataSource={data}
-            renderItem={item => (
-            <List.Item style={{listStyleType: "none"}}>
-              <Typography.Text mark>          
-                <Checkbox>
-                </Checkbox></Typography.Text> {item}
-            </List.Item>
-            )}
-          />
+          <p><Table columns={columns} rowSelection={rowSelection} dataSource={data} 
+          style={{
+            float:'left',
+            width:'100%'
+          }}/></p>
         </Content>
         <Foot/>
         </Layout>
