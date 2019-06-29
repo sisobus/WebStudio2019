@@ -1,0 +1,81 @@
+@import '~antd/dist/antd.css';
+
+.App {
+  text-align: center;
+}
+
+.Avater-container{
+  float: right;
+}
+
+.weather-wrapper{
+  width:100%;
+}
+
+.city-selector{
+  float: left;
+}
+
+.btn-register{
+  float: right;
+  margin-left: 5px;
+}
+
+.btn-login{
+  float: right;
+}
+
+.btn-upload{
+  float: right;
+}
+
+.btn-looknow{
+  width: 80%;
+}
+
+
+.cw-wrapper {
+  background-color: gainsboro;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cw-main {
+  height: auto;
+  background: #fff;
+  box-shadow: 0px 13px 40px -13px rgba(0,0,0,0.75);
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* .weather__info {
+  width: 60%;
+  font-size: 20px;
+  font-weight: 200;
+  letter-spacing: 2px;
+}
+
+.weather__key {
+  color: #f16051;
+  border-bottom: solid 2px rgba(255,255,255,0.06);
+  padding: 20px 0 20px 0;
+  font-weight: 400;
+}
+
+.weather__key:last-child {
+  border: 0;
+}
+
+.weather__value {
+  color: #fff;
+  font-weight: 200;
+}
+
+.weather__error {
+  color: #f16051;
+  font-size: 20px;
+  letter-spacing: 1px;
+  font-weight: 200;
+} */

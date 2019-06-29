@@ -1,0 +1,39 @@
+/* .weather-wrapper{
+  width: 100%;
+}
+.weather-container {
+  flex-wrap: wrap;
+  width: 80%;
+  margin: 0 auto;
+} */
+
+.daily-wrapper {
+  width: 100%;
+  background-color: gainsboro;
+}
+.myDaily-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 80%;
+  margin: 0 auto;
+
+}
+.myScrap-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.more-daily-wrapper{
+  width: 100%;
+}
+.otherDaily-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 80%;
+  margin: 0 auto;
+}
