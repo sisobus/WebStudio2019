@@ -1,0 +1,18 @@
+.work {
+	width: 50%;
+	align-items: center;
+	margin: auto;
+}
+
+.article-container {
+	margin: auto 0;
+	text-align: left;
+}
+
+.back {
+	text-align: center;
+}
+
+.home {
+	font-size: 50px ;
+}
