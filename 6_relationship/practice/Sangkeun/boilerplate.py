@@ -1,7 +1,5 @@
 from flask import Flask, request
 from flask_restful import Api, Resource
-from flask_cors import CORS
-
 import json
 import os
 from models import db, User, Article, Comment, Like
@@ -13,7 +11,6 @@ app.config.update({
     'SQLALCHEMY_TRACK_MODIFICATIONS': True,
     "SQLALCHEMY_DATABASE_URI": SQLALCHEMY_DATABASE_URI,
 })
-cors=CORS(app)
 api = Api(app)
 db.init_app(app)
 
