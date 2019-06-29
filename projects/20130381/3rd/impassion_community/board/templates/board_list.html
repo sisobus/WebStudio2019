@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block contents %}
+<div class="row mt-5">
+    <div class="col-12">
+        <table class="table table-light">
+            <thread class="thread-light">
+                <tr>
+                    <th>#</th>
+                    <th>제목</th>
+                    <th>아이디</th>
+                    <th>일시</th>
+                </tr>
+            </thread>
+            
+            <tbody class="text-dark">
+                {% for board in boards %}
+                <tr onclick="location.href='/regular_session/detail/{{ board.id }}'">
+                        <th>{{board.id}}</th>
+                        <td>{{board.title}}</td>
+                        <td>{{board.writer}}</td>
+                        <td>{{board.registered_dttm}}</td>
+                    </tr>
+                {% endfor %}
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row mt-2">
+    <div class="col-12">
+        <nav>
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    {% if boards.has_previous %}
+                        <a class="page-link" href="?p={{ boards.previous_page_number }}">이전으로</a>
+                    {% else %}
+                        <a class="page-link disabled" href="#">이전으로</a>
+                    {% endif %}
+                </li>
+                <li class="page-item active">
+                    <a class="page-link" href="#">{{ boards.number}} / {{ boards.paginator.num_pages }}</a>
+                </li>
+                <li class="page-item">
+                    {% if boards.has_next %}
+                        <a class="page-link" href="?p={{ boards.next_page_number }}">다음으로</a>
+                    {% else %}
+                        <a class="page-link disabled" href="#">다음으로</a>
+                    {% endif %}
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <button class="btn btn-primary" onclick="location.href='/regular_session/write/'">글쓰기</button>
+    </div>
+</div>
+
+{% endblock %}
