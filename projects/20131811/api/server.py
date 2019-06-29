@@ -161,8 +161,8 @@ class ReviewList(Resource):
         db.session.delete(review)
         db.session.commit()
         return '{} deleted successfully'.format(_id)
-    
 
+      
 class UserList(Resource):
     def get_users(self):
         users = User.query.all()
@@ -294,7 +294,6 @@ api.add_resource(PrivateRoute, '/api/private/routes')
 api.add_resource(UserRefresh, '/api/auth/refresh')
 api.add_resource(UploadFile, '/api/upload')
 api.add_resource(DownloadFile, '/api/download')
-
 
 
 if __name__ == '__main__':

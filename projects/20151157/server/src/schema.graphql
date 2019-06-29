@@ -1,0 +1,45 @@
+type Query {
+  courses: [Course!]!
+  course(id: ID!): Course
+  lecture(courseId: ID!, lectureId: ID!): Lecture
+}
+
+type Mutation {
+  createCourse(name: String!): Course
+  createLecture(courseId: ID!, title: String!, content: String!): Lecture
+  createComment(lectureId: ID!, content: String!): Comment
+}
+
+type Subscription {
+  commentAdded(lectureId: ID!): Comment
+}
+
+type User {
+  id: ID!
+  name: String!
+  avatar: String!
+  courses: [Course!]!
+}
+
+type Course {
+  id: ID!
+  name: String!
+  owner: User!
+  lectures: [Lecture!]!
+}
+
+type Lecture {
+  id: ID!
+  title: String!
+  content: String!
+  course: Course!
+  comments: [Comment!]!
+}
+
+type Comment {
+  id: ID!
+  lecture: Lecture!
+  user: User!
+  page: Int!
+  content: String!
+}

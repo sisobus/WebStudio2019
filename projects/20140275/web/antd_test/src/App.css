@@ -1,0 +1,133 @@
+@import '~antd/dist/antd.css';
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #b3b3b3;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+body {
+  background-color: #b3b3b3;
+}
+
+.ant-layout-header {
+  height: 64px;
+  padding: 0 50px;
+  line-height: 64px;
+  background: #b3b3b3;
+  font-size: 24px;
+  color: rgb(0,0,0);
+  font: 'Gil Sans'
+}
+
+.ant-layout {
+  background: #b3b3b3;
+}
+
+.ant-menu {
+  background: #b3b3b3;
+  color: #0000ff;
+  font-size: 24px
+}
+
+ant-menu-horizontal > .ant-menu-item:hover, .ant-menu-horizontal > .ant-menu-submenu:hover, .ant-menu-horizontal > .ant-menu-item-active, .ant-menu-horizontal > .ant-menu-submenu-active, .ant-menu-horizontal > .ant-menu-item-open, .ant-menu-horizontal > .ant-menu-submenu-open, .ant-menu-horizontal > .ant-menu-item-selected, .ant-menu-horizontal > .ant-menu-submenu-selected {
+  color: #0000ff;
+  border-bottom: 3px solid #0000ff;
+}
+
+.ant-menu-horizontal {
+  border-bottom: none;
+}
+
+.ant-menu-item .anticon, .ant-menu-submenu-title .anticon {
+  min-width: 14px;
+  margin-right: 4px;
+  margin-left: 4px;
+  font-size: 20px
+}
+
+.ant-card-body {
+  padding: 0px;
+  display: inline-flex;
+  background-color: #b3b3b3;
+}
+
+.ant-card-body {
+  padding: 0px;
+}
+
+.ant-layout-content {
+  display: inline-flex;
+}
+
+.ant-card-bordered {
+  border: 2px solid #b3b3b3;
+  background-color: #b3b3b3;
+}
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ant-menu-vertical > .ant-menu-item, .ant-menu-vertical-left > .ant-menu-item, .ant-menu-vertical-right > .ant-menu-item, .ant-menu-inline > .ant-menu-item, .ant-menu-vertical > .ant-menu-submenu > .ant-menu-submenu-title, .ant-menu-vertical-left > .ant-menu-submenu > .ant-menu-submenu-title, .ant-menu-vertical-right > .ant-menu-submenu > .ant-menu-submenu-title, .ant-menu-inline > .ant-menu-submenu > .ant-menu-submenu-title {
+  height: 40px;
+  line-height: 40px;
+  background-color: #b3b3b3;
+  color: #0000ff
+}
+
+ant-menu-vertical .ant-menu-item::after, .ant-menu-vertical-left .ant-menu-item::after, .ant-menu-vertical-right .ant-menu-item::after, .ant-menu-inline .ant-menu-item::after {
+  position: absolute;
+  border-right: 3px solid #0000ff;
+}
+
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background-color: #b3b3b3;
+}
+
+.ant-menu-submenu > .ant-menu {
+  background-color: #b3b3b3;
+}
+
+.ant-menu-vertical .ant-menu-item, .ant-menu-vertical-left .ant-menu-item, .ant-menu-vertical-right .ant-menu-item, .ant-menu-inline .ant-menu-item, .ant-menu-vertical .ant-menu-submenu-title, .ant-menu-vertical-left .ant-menu-submenu-title, .ant-menu-vertical-right .ant-menu-submenu-title, .ant-menu-inline .ant-menu-submenu-title {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

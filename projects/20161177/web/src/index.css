@@ -1,0 +1,84 @@
+@import '~antd/dist/antd.css';
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+  font-family: 'B612 Mono', monospace;
+  font-family: 'Sunflower', sans-serif;
+}
+
+.ant-layout-footer {
+  padding : 40px;
+  height  : 110px;
+  text-align: right;
+}
+.ant-form.ant-form-horizontal {
+  padding : 0px;
+}
+
+.login-form { 
+  padding : 100px 450px !important;
+  width: 100%;
+  height: 100%;
+}
+
+.mainpage {
+  text-align : left;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+
+.ant-layout-has-sider {
+  background: black;
+}
+
+.ant-layout-content {
+  margin : 5px;
+  padding : 10px;
+  border : 1px solid black;
+  background : white;
+}
+
+.ant-layout-sider-children {
+  margin : 5px 5px 0px 5px;
+  padding : 10px;
+  border : 1px solid black;
+  height : 98%;
+  background: white;
+}
+
+.ant-layout-header {
+  background: linear-gradient( to right, white,white,black );
+}
+#align-left {
+  text-align: left;
+}
+
+#logo-in-login {
+  width: 95%;
+  height: auto;
+}
+
+#logo-in-main {
+  height: 100%;
+  width: auto;
+}
+
+.resisterForm {
+  margin : 120px 370px 0px 200px;
+}
+
+.chatForm {
+  width : 70%;
+  float : left;
+}

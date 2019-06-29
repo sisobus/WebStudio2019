@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+  </head>
+  <body>
+    <div class="navbar-wrapper">
+      <div class="navbar-container">
+        <p id="logo">LOGO</p>
+      </div>
+    </div>
+    <div class="main-wrapper">
+      <div class="main-container">
+        <div class="article-container">
+          <div class="article">
+            <h1 class="title">
+              updated title [1]
+            </h1>
+            <p class="author">
+              Sangkeun Kim
+            </p>
+            <p class="content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu ipsum elit. Sed at fermentum purus. Mauris at magna placerat, porttitor augue at, dictum sem. Donec sodales neque nisl. Aenean ipsum ipsum, euismod a turpis id, imperdiet luctus elit. Donec eleifend lacus vel eros sagittis facilisis. Praesent at porttitor erat. Nulla facilisi. Aenean et hendrerit nisi, ac egestas elit. Suspendisse ultricies scelerisque ipsum, vestibulum cursus sem viverra sit amet. Praesent dapibus eleifend nisl non consequat.
+            </p>
+          </div>
+          <div class="article">
+            <h1 class="title">
+              updated title [2]
+            </h1>
+            <p class="author">
+              Sangkeun Kim
+            </p>
+            <p class="content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu ipsum elit. Sed at fermentum purus. Mauris at magna placerat, porttitor augue at, dictum sem. Donec sodales neque nisl. Aenean ipsum ipsum, euismod a turpis id, imperdiet luctus elit. Donec eleifend lacus vel eros sagittis facilisis. Praesent at porttitor erat. Nulla facilisi. Aenean et hendrerit nisi, ac egestas elit. Suspendisse ultricies scelerisque ipsum, vestibulum cursus sem viverra sit amet. Praesent dapibus eleifend nisl non consequat.
+            </p>
+          </div>
+          <div class="article">
+            <h1 class="title">
+              updated title [3]
+            </h1>
+            <p class="author">
+              Sangkeun Kim
+            </p>
+            <p class="content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu ipsum elit. Sed at fermentum purus. Mauris at magna placerat, porttitor augue at, dictum sem. Donec sodales neque nisl. Aenean ipsum ipsum, euismod a turpis id, imperdiet luctus elit. Donec eleifend lacus vel eros sagittis facilisis. Praesent at porttitor erat. Nulla facilisi. Aenean et hendrerit nisi, ac egestas elit. Suspendisse ultricies scelerisque ipsum, vestibulum cursus sem viverra sit amet. Praesent dapibus eleifend nisl non consequat.
+            </p>
+          </div>
+          <div class="article">
+            <h1 class="title">
+              updated title [4]
+            </h1>
+            <p class="author">
+              Sangkeun Kim
+            </p>
+            <p class="content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu ipsum elit. Sed at fermentum purus. Mauris at magna placerat, porttitor augue at, dictum sem. Donec sodales neque nisl. Aenean ipsum ipsum, euismod a turpis id, imperdiet luctus elit. Donec eleifend lacus vel eros sagittis facilisis. Praesent at porttitor erat. Nulla facilisi. Aenean et hendrerit nisi, ac egestas elit. Suspendisse ultricies scelerisque ipsum, vestibulum cursus sem viverra sit amet. Praesent dapibus eleifend nisl non consequat.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    /*
+    const logoElement = document.getElementById('logo');
+    const f = (e) => {
+      console.log(e);
+      alert('You clicked the logo');
+      if (confirm('If you click ok button, then this page will be refreshed')) {
+        window.location.reload();
+      } else {
+        alert('You clicked no! button :)');
+      }
+    }
+    logoElement.addEventListener('click', f);
+
+    const elements = document.getElementsByClassName('title');
+    for (let i = 0; i < elements.length; i++) {
+      elements[i].addEventListener('click', (e) => {
+        alert(e.target.innerText);
+      });
+    }
+    var a = 5;
+    var a = 'test';
+    let b = 6;
+    // let b = 7; // this statement is error
+    const c = 5;
+    // c = 7; // this statement is error (c is immutable)
+    let l1 = [1, 2, 3, 4, 5];
+    const l2 = Array(1, 2, 3, 4, 5);
+    console.log(l2.length);
+    console.log(l2);
+    const d1 = {
+      name: "Sangkeun Kim",
+      email: "sisobus1@gmail.com"
+    };
+    console.log(d1);
+    const pi = 3.1415927584;
+    if (pi > 3 && pi < 4) {
+      console.log(`pi is is range(${3}, ${4})`);
+    } else if (pi <= 3 || pi >= 4) {
+      console.log('pi is not in range(3, 4)');
+    } else {
+      console.log('It is impossible');
+    }
+    let l = [1, 2, 3, 4, 5];
+    for (let i = 0; i < l.length; i++) {
+      console.log(l[i]);
+    }
+    for (let i = 0; i < 10; i++) {
+      l.push(i);
+    }
+    */
+    function f(a, b, c) {
+      a = a + 1;
+      b.push(5);
+      c['test'] = "T_T";
+    }
+    let _a = 5;
+    let b = [4, 3];
+    let c = {};
+    f(_a, b, c);
+    console.log(_a, b, c); // 5 [4, 3, 5] {test: "T_T"}
+
+    const ff = (a, b, c) => {
+      a = a + 1;
+      b.push(5);
+      c['test'] = "T_T";
+    }
+    let _A = 5;
+    let B = [4, 3];
+    let C = {};
+    ff(_A, B, C);
+    console.log(_A, B, C); // 5 [4, 3, 5] {test: "T_T"}
+    class Wine {
+      constructor() {
+        this.isAlcohol = true;
+        console.log("This is constructor");
+      }
+      color() {
+        return 'Red or white or Sparkling';
+      }
+    }
+    class RedWine extends Wine {
+      color() {
+        return 'Red';
+      }
+    }
+    wine = new Wine();
+    console.log(wine.isAlcohol, wine.color());
+    redWine = new RedWine();
+    console.log(redWine.isAlcohol, redWine.color());
+    /*
+     * This is constructor
+     * true "Red or white or Sparkling"
+     * This is constructor
+     * true "Red"
+     */
+  </script>
+</html>
+
