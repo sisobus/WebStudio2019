@@ -1,0 +1,5 @@
+curl -X POST -H "Content-Type: application/json" -d '{"name": "dummy1", "photo": "first_image.jpg"}' "0.0.0.0:5000/api/movies"
+curl -X POST -H "Content-Type: application/json" -d '{"name": "dummy2", "photo": "second_image.jpg"}' "0.0.0.0:5000/api/movies"
+curl -X POST -H "Content-Type: application/json" -d '{"name": "dummy3", "photo": "second_image.jpg"}' "0.0.0.0:5000/api/movies"
+curl -X POST -H "Content-Type: application/json" -d '{"name": "dummy4", "photo": "second_image.jpg"}' "0.0.0.0:5000/api/movies"
+curl -X POST -H "Content-Type: application/json" -d '{"name": "dummy5", "photo": "second_image.jpg"}' "0.0.0.0:5000/api/movies"
