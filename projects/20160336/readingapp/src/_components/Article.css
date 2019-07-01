@@ -1,0 +1,28 @@
+.article {
+  margin-top: 20px;
+  border: 1px solid #d1d5da;
+  padding: 10px;
+  width: 100%;
+}
+.article.title {
+  text-shadow: 3px 2px black;
+}
+
+.article img{
+  right:auto;
+  left:auto;
+  width:70%;
+}
+
+.article.author {
+  color: gray;
+  font-size: 10pt;
+}
+.article .content {
+  text-align:left;
+  letter-spacing:1px;
+  margin-top: 10px;
+  padding:10px;
+  text-overflow:ellipsis;
+}
+

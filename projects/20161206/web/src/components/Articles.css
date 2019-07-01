@@ -1,0 +1,11 @@
+.article-container {
+  width: 90%;
+  padding-top: 20px;
+  margin: auto;
+  text-align: center;
+}
+
+.article {
+  width: 33%;
+  display: inline-block;
+}

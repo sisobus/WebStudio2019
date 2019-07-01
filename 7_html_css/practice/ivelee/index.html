@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>test</title>
+<style>
+  h1 {
+    font-size: 10em;
+    color: black;
+    margin-left: 30%;
+    margin-bottome: 5%;
+  }
+  p {
+    color: #123456;
+    font-size: 12pt;
+    margin: 0;
+    margin-left: 20%;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    margin: 10px;
+  }
+  input {
+    height: 20px;
+    margin-left:45%;
+  }
+  #submit-button {
+    background: blue;
+    color : white;
+    margin-left: 60%;
+  }
+  .description {
+    font-size: 20pt;
+  }
+</style>
+  </head>
+  <body>
+    <div class="my-information">
+      <h1 class="my-id">IVE LEE</h1>
+      <p class="description">I am a junior designer at <a href="http://www.sogang.ac.kr/index.do">Sogang Univ.</a> A&T </p>
+      <p class="description">i study on layouts, visuals, identities, aesthetics.</p>
+    </div>
+    <img id="image" src="identities.png">
+    <form action="/api/login" type="post">
+      <input class="input-text" id="input-email" type="text" name="email">
+      <input class="input-text" id="input-password" type="password" name="password">
+      <input id="submit-button" type="submit" value="login">
+    </form>
+  </body>
+</html>
+

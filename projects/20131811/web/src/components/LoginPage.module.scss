@@ -1,0 +1,33 @@
+body{
+  background-color: #221F1F;
+}
+
+.login {
+  max-width: 480px;
+  padding: 50px 85px;
+  margin: 0 auto;
+  border-radius: 20px;
+  box-shadow: 2px 2px #221F1F;
+  background: #221F1F;
+  img {
+    height: 39px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+  h1 {
+    color: white;
+    margin: 0;
+    font-size: 30pt;
+    font-weight: 600;
+  }
+  h2 {
+    color: white;
+    font-size: 18pt;
+    font-weight: 400;
+    margin-bottom: 0;
+  }
+}
+:global .ant-divider {
+  background: #221F1F !important;
+}
+
