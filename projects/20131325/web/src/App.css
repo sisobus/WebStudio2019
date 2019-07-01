@@ -1,0 +1,469 @@
+@import '~antd/dist/antd.css';
+@import url('https://fonts.googleapis.com/css?family=Italianno&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Archivo+Black|Fahkwang:700|Herr+Von+Muellerhoff|Major+Mono+Display|Michroma|Pinyon+Script|Prompt:400,700,800,900|Rubik+Mono+One|VT323&display=swap');
+
+.logo {
+  width: 10%;
+  height: 20px;
+  background: none !important;
+  margin: 10px 24px 10px 0;
+  float: left;
+}
+
+.ant-menu-item, .ant-menu-submenu-title {
+  padding: 0px 18px;
+  float : left;
+}
+
+
+
+/* 헤더 메뉴 : 전체 박스 크기 및 폰트 조절 */
+
+.ant-layout-header {
+  height: 0px;
+}
+
+.menubox {
+  border-bottom: 1px black;
+}
+
+/* 헤더 메뉴 : 폰트 타입 */
+.menu {
+  background: none; 
+  line-height: 40px; 
+  font-size: 24px; 
+  font-family: 'Fahkwang', sans-serif;
+  margin-top: 3rem;
+  padding-left: 3%; 
+  letter-spacing: 2px;
+}
+
+
+
+/* 헤더의 메뉴 버튼 호버시 색깔 변화 없애기 */
+
+element.style {
+  line-height: 70px !important;
+}
+.ant-menu-horizontal {
+  border-bottom: 0px #e8e8e8 !important;
+}
+.ant-menu-horizontal > .ant-menu-item-selected > a {
+  color: #000 !important;
+}
+
+.ant-menu-item-active {
+  color: #000 !important;
+}
+
+.ant-menu-horizontal,
+.ant-menu-item-selected {
+  color: #000 !important;
+}
+.ant-menu-horizontal > .ant-menu-item:hover, 
+.ant-menu-horizontal > .ant-menu-submenu:hover, 
+.ant-menu-horizontal > .ant-menu-item-active, 
+.ant-menu-horizontal > .ant-menu-submenu-active, 
+.ant-menu-horizontal > .ant-menu-item-open, 
+.ant-menu-horizontal > .ant-menu-submenu-open, 
+.ant-menu-horizontal > .ant-menu-item-selected, 
+.ant-menu-horizontal > .ant-menu-submenu-selected {
+  color: grey !important;
+  border-bottom: 0px solid black;
+}
+.ant-menu-horizontal > .ant-menu-item> a:hover {
+  border-bottom: 0px solid grey;
+}
+.ant-menu-horizontal > .ant-menu-item, .ant-menu-horizontal > .ant-menu-submenu {
+  border-bottom: 0px solid transparent;
+}
+
+
+
+
+
+/* 푸터  */
+.footer {
+  font-size: 20px; 
+  text-align: right;
+  float : right;
+  font-family: 'Fahkwang', sans-serif;
+}
+.ant-layout-footer {
+  padding: 24px 50px;
+  color: rgba(0, 0, 0, 0.65);
+
+  background: #fff;
+}
+
+
+/* breadcrub 메뉴 없애기 */
+
+.bread {
+  color : white ;
+}
+.ant-breadcrumb > span:last-child {
+  color: rgba(0, 0, 0, 0.0);
+}
+.ant-breadcrumb-separator {
+  color: rgba(0, 0, 0, 0.0);
+}
+
+
+
+
+/* 카드 : title 텍스트 */
+.ant-card-meta-title {
+  overflow: hidden;
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 700;
+  font-size: 1.1rem !important;
+  text-align: right;
+  /* font-family: 'Major Mono Display', monospace; */
+  font-family: 'Michroma', sans-serif;
+  letter-spacing: 2px;
+}
+
+/* 카드 : desc 텍스트 */
+.ant-card-meta-description {
+  text-align: right;
+  font-size: 1rem !important;
+  color: rgba(0, 0, 0, 0.8);
+  /* font-family: 'Italianno', cursive; */
+  font-family: 'Pinyon Script', cursive;
+}
+
+/* 카드 : title-desc 사이 간격 */
+.ant-card-meta-detail > div:not(:last-child) {
+  margin-bottom: 0px !important;
+  padding-right: 20px;
+}
+
+ 
+
+
+
+
+.ant-card-bordered {
+  border: 0px solid #e8e8e8 !important; 
+  /*border-bottom: 1px solid grey !important;*/
+  /*border-top: 3px solid black !important;*/
+  /*border-left: 2px solid black !important;*/
+  /*border-right: 1px solid grey !important;*/
+}
+
+.ant-card-cover{
+border: 0.4px solid #000 !important;
+padding: 1px;
+background: #ffffff;
+/* margin: 9px; */
+}
+
+
+
+
+/* 컨택트 페이지 : 내부 내용 */
+.contactinfo{
+  margin-top: 0;
+  margin-bottom: 0rem;
+  padding-top: 150px !important;
+  padding-bottom: 150px !important;
+  padding-left: 0rem;
+  font-family: 'Fahkwang', sans-serif;
+  font-size: 1.3rem;
+}
+
+
+/* 개별 컨텐츠 페이지 : 세부 내용 박스 조절 */
+.contentpage {
+  padding: 150px 10% 250px 10% !important;
+  background: #fff;
+}
+
+.contentdiv {
+  
+}
+
+
+
+
+
+/* 컨택트 페이지 내용 레이아웃 정리  */
+
+.ultag1{
+  margin-left: 10%;
+}
+
+
+.ultag2{
+  margin-left: 12%;
+}
+
+.ultag3{
+  margin-left: 30%;
+}
+
+.ultag4{
+  margin-left: 30%;
+}
+
+.ultag5{
+  margin-left: 22%;
+}
+
+
+
+
+
+/*미디어 쿼리 = 반응형 만들기*/
+
+.jb {
+  columns: 1;
+  padding-top: 150px !important;
+}
+
+@media (min-width: 1200px) {
+  .jb {
+    columns: 2;
+  }
+  .card_component {
+    width: 470px !important;
+  }
+
+
+  /* 카드 : title 텍스트 */
+  .ant-card-meta-title {
+    font-size: 1rem !important;
+    letter-spacing: 2px;
+  }
+
+  /* 카드 : desc 텍스트 */
+  .ant-card-meta-description {
+    font-size: 0.9rem !important;
+  }
+
+}
+@media (100px <= width <= 1200px ) {
+  .jb {
+    columns: 2;
+  }
+  .card_component {
+    width: 390px !important;
+  }
+
+
+  /* 카드 : title 텍스트 */
+  .ant-card-meta-title {
+    font-size: 1rem !important;
+    letter-spacing: 2px;
+  }
+
+  /* 카드 : desc 텍스트 */
+  .ant-card-meta-description {
+    font-size: 0.9rem !important;
+  }
+
+}
+
+@media (900px <= width <= 1000px ) {
+  .jb {
+    columns: 2;
+  }
+  .card_component {
+    width: 350px !important;
+  }
+
+  /* 카드 : title 텍스트 */
+  .ant-card-meta-title {
+    font-size: 0.9rem !important;
+    letter-spacing: 2px;
+  }
+
+  /* 카드 : desc 텍스트 */
+  .ant-card-meta-description {
+    font-size: 0.9rem !important;
+  }
+
+
+  .contentpage {
+    padding: 150px 5% 250px 5% !important;
+  }
+    
+}
+
+@media (700px <= width <= 900px ) {
+  .jb {
+    columns: 2;
+  }
+  .card_component {
+    width: 320px !important;
+  }
+
+  /* 카드 : title 텍스트 */
+  .ant-card-meta-title {
+    font-size: 0.8rem !important;
+    letter-spacing: 2px;
+  }
+
+  /* 카드 : desc 텍스트 */
+  .ant-card-meta-description {
+    font-size: 0.9rem !important;
+  }
+
+  .contentpage {
+    padding: 150px 3% 250px 3% !important;
+    font-size: 0.8rem; 
+  }
+    
+}
+
+@media (700px <= width <= 800px ) {
+  .jb {
+    columns: 2;
+  }
+  .card_component {
+    width: 280px !important;
+  }
+  .footer {
+    font-size: 17px; 
+  }
+  
+  /* 카드 : title 텍스트 */
+  .ant-card-meta-title {
+    font-size: 0.8rem !important;
+    letter-spacing: 2px;
+  }
+
+  /* 카드 : desc 텍스트 */
+  .ant-card-meta-description {
+    font-size: 0.9rem !important;
+  }
+  .contentpage {
+    padding: 150px 2% 250px 2% !important;
+    font-size: 0.7rem; 
+  }
+    
+}
+
+
+@media (550px <= width <= 700px ) {
+  .jb {
+    columns: 1;
+  }
+  .card_component {
+    width: 420px !important;
+  }
+  /* 헤더 메뉴 : 폰트 타입 */
+  .menu {
+    padding-left: 0%;
+  }
+
+  .footer {
+    font-size: 17px; 
+  }
+
+  .contentpage {
+    padding: 120px 0% 250px 0% !important;
+    font-size: 0.4rem; 
+  }
+    
+}
+
+
+
+
+
+
+
+
+@media (440px <= width <= 550px ) {
+  .jb {
+    columns: 1;
+  }
+  .card_component {
+    width: 340px !important;
+  }
+  .ant-menu-item, .ant-menu-submenu-title {
+
+  }
+
+  /* 헤더 메뉴 : 폰트 타입 */
+  .menu {
+     padding-left: 0%;
+  }
+  
+  .ultag3{
+    margin-left: 25% !important;
+    font-size: 1rem;
+  }
+  .ultag4{
+    margin-left: 25% !important;
+    font-size: 1rem;
+  }
+
+  .footer {
+    font-size: 15px; 
+  }
+
+  /* 카드 : title 텍스트 */
+  .ant-card-meta-title {
+    font-size: 0.8rem !important;
+    letter-spacing: 2px;
+  }
+
+  .contentpage {
+    padding: 120px 0% 250px 0% !important;
+    font-size: 0.3rem; 
+  }
+}
+
+@media (410px <= width <= 440px ) {
+  .jb {
+    columns: 1;
+  }
+  .card_component {
+    width: 320px !important;
+  }
+  .ant-menu-item, .ant-menu-submenu-title {
+  }
+
+  /* 헤더 메뉴 : 폰트 타입 */
+  .menu {
+    padding-left: 0%;
+  }
+
+  .ultag3{
+    margin-left: 5% !important;
+  }
+  .ultag4{
+    margin-left: 5% !important;
+  }
+}
+
+
+@media (max-width: 410px) {
+
+   .card_component {
+    width: 300px !important;
+  }
+  .ant-menu-item, .ant-menu-submenu-title {
+    padding: 0px 3%;
+  }
+
+  /* 헤더 메뉴 : 폰트 타입 */
+  .menu {
+    padding-left: 0%;
+  }
+
+  .ultag3{
+    margin-left: 5% !important;
+  }
+  .ultag4{
+    margin-left: 5% !important;
+  }
+}
+
+
+
+
+
