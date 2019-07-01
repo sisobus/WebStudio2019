@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>hyunjoonho</title>
+<style>
+  h1 {
+    font-size: 40pt;
+    color: gray;
+  }
+  p {
+    color: #123456;
+    font-size: 24pt;
+    margin: 4;
+  }
+  img {
+    width: 400px;
+    height: 500px;
+    margin: 10px;
+  }
+  input {
+    height: 30px;
+    width: 150px;
+  }
+  #submit-button {
+    height: 30px;
+    width: 100px;
+    background: #f08080;
+  }
+  .description {
+    font-size: 22pt;
+  }
+</style>
+  </head>
+  <body>
+    <div class="my-information">
+      <h1 class="my-id">hyunjoonho</h1>
+      <p class="description">I am a student of <a href="http://creative.sogang.ac.kr">Art&Technology, Sogang univ.</a></p>
+      <p class="description">I want to do coding well :)</p>
+    </div>
+    <img id="image" src="http://2runzzal.com/media/b1Nlb21HSjV6cTBEUS9IUitpRFFqZz09/zzal.jpg">
+    <form action="/api/login" type="post">
+      <input class="input-text" id="input-email" type="text" name="email">
+      <input class="input-text" id="input-password" type="password" name="password">
+      <input id="submit-button" type="submit" value="login">
+    </form>
+  </body>
+</html>
+

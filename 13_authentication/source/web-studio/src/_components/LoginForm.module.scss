@@ -1,0 +1,40 @@
+$primary_color: "#5165FF";
+.login-form {
+  margin: 0 auto;
+  svg {
+    color: #acacac;
+  }
+  input {
+    background: #2c2d31;
+    border: 1px solid #2c2d31;
+    color: white;
+    height: 40px;
+    &::placeholder {
+      color: #acacac;
+    }
+    &:not(:first-child) {
+      padding-left: 40px !important;
+    }
+    &:hover {
+      border: 1px solid $primary-color;
+    }
+    &:focus {
+      border: 1px solid $primary-color;
+    }
+  }
+  .forgot-button {
+    float: right;
+  }
+  .login-button {
+    width: 100%;
+    height: 40px;
+    margin-top: 10px;
+  }
+  .signup-button {
+    float: left;
+  }
+  .remember {
+    float: left;
+    color: white;
+  }
+}

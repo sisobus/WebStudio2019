@@ -1,0 +1,4 @@
+{
+    "python.pythonPath": "/usr/local/var/pyenv/shims/python",
+    "git.ignoreLimitWarning": true
+}

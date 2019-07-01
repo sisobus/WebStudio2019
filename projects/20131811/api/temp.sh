@@ -1,0 +1,25 @@
+curl -X POST -H "Content-Type: application/json" -d '{"movie_id":2, "user_id" : 3, "content":"dummy", "star":1}' "0.0.0.0:5000/api/reviews"
+curl -X POST -H "Content-Type: application/json" -d '{"movie_id":3, "user_id" : 3, "content":"dummy", "star":2}' "0.0.0.0:5000/api/reviews"
+curl -X POST -H "Content-Type: application/json" -d '{"movie_id":4, "user_id" : 3, "content":"dummy", "star":3}' "0.0.0.0:5000/api/reviews"
+curl -X POST -H "Content-Type: application/json" -d '{"movie_id":5, "user_id" : 3, "content":"dummy", "star":2}' "0.0.0.0:5000/api/reviews"
+curl -X POST -H "Content-Type: application/json" -d '{"movie_id":6, "user_id" : 3, "content":"dummy", "star":1}' "0.0.0.0:5000/api/reviews"
+curl -X POST -H "Content-Type: application/json" -d '{"movie_id":7, "user_id" : 3, "content":"dummy", "star":2}' "0.0.0.0:5000/api/reviews"
+curl -X POST -H "Content-Type: application/json" -d '{"movie_id":8, "user_id" : 3, "content":"dummy", "star":3}' "0.0.0.0:5000/api/reviews"
+
+curl -X POST -H "Content-Type: application/json" -d '{"movie_id":2, "user_id" : 4, "content":"dummy", "star":5}' "0.0.0.0:5000/api/reviews"
+curl -X POST -H "Content-Type: application/json" -d '{"movie_id":3, "user_id" : 4, "content":"dummy", "star":1}' "0.0.0.0:5000/api/reviews"
+curl -X POST -H "Content-Type: application/json" -d '{"movie_id":4, "user_id" : 4, "content":"dummy", "star":2}' "0.0.0.0:5000/api/reviews"
+curl -X POST -H "Content-Type: application/json" -d '{"movie_id":5, "user_id" : 4, "content":"dummy", "star":1}' "0.0.0.0:5000/api/reviews"
+curl -X POST -H "Content-Type: application/json" -d '{"movie_id":6, "user_id" : 4, "content":"dummy", "star":5}' "0.0.0.0:5000/api/reviews"
+curl -X POST -H "Content-Type: application/json" -d '{"movie_id":7, "user_id" : 4, "content":"dummy", "star":4}' "0.0.0.0:5000/api/reviews"
+curl -X POST -H "Content-Type: application/json" -d '{"movie_id":8, "user_id" : 4, "content":"dummy", "star":4}' "0.0.0.0:5000/api/reviews"
+
+
+curl -X POST -H "Content-Type: application/json" -d '{"movie_id":2, "user_id" : 5, "content":"dummy", "star":0}' "0.0.0.0:5000/api/reviews"
+curl -X POST -H "Content-Type: application/json" -d '{"movie_id":3, "user_id" : 5, "content":"dummy", "star":1}' "0.0.0.0:5000/api/reviews"
+curl -X POST -H "Content-Type: application/json" -d '{"movie_id":4, "user_id" : 5, "content":"dummy", "star":2}' "0.0.0.0:5000/api/reviews"
+curl -X POST -H "Content-Type: application/json" -d '{"movie_id":5, "user_id" : 5, "content":"dummy", "star":2}' "0.0.0.0:5000/api/reviews"
+curl -X POST -H "Content-Type: application/json" -d '{"movie_id":6, "user_id" : 5, "content":"dummy", "star":3}' "0.0.0.0:5000/api/reviews"
+curl -X POST -H "Content-Type: application/json" -d '{"movie_id":7, "user_id" : 5, "content":"dummy", "star":4}' "0.0.0.0:5000/api/reviews"
+curl -X POST -H "Content-Type: application/json" -d '{"movie_id":8, "user_id" : 5, "content":"dummy", "star":1}' "0.0.0.0:5000/api/reviews"
+
