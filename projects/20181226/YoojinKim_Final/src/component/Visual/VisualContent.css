@@ -1,0 +1,24 @@
+.visual-container{
+  width: 80%;
+  margin: auto auto;
+  overflow: hidden;
+  background: white;
+}
+
+.visual-image-container{
+	width: 100%;
+	margin: auto;
+	overflow: hidden;
+}
+
+.visual-image{
+	display: inline-block;
+	margin: auto 2%;
+	width: 10%;
+}
+
+.pop-image{
+    /* width: 40%;
+    padding: 2%; */
+    display: inline-block;
+}

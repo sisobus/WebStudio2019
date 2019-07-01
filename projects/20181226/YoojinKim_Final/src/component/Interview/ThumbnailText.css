@@ -1,0 +1,21 @@
+.article {
+  margin-top: 0px;
+  padding: 0px;
+  width: 100%;
+  background: #ffffff;
+  border-top: 1px solid gray;
+  color: black ;
+  margin: auto auto;
+}
+
+.article .title {
+    padding: 10px;
+}
+.article .author {
+  color: gray;
+  font-size: 10pt;
+    padding: 10px;
+}
+.article .content {
+  padding: 10px;
+}

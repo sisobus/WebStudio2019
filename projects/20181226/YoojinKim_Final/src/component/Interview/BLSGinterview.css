@@ -1,0 +1,22 @@
+.ant-carousel .slick-slide {
+    align: center;
+    width: 100%;
+    height: 100%;
+    /* line-height: 160px; */
+    background: #364d79;
+    overflow: hidden;
+  }
+
+  .ant-carousel .slick-slide h1 {
+    padding: 5%;
+    color:#ff6d70;
+    font-size: 15pt;
+    text-align: center;
+  }
+
+  .ant-carousel .slick-slide h2 {
+      padding: 5%;
+    color: gray;
+    font-size: 10pt;
+    text-align: left;
+  }

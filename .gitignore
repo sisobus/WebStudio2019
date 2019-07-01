@@ -13,3 +13,5 @@ data/*
 *.xml
 *.iml
 *.db
+*.swm
+*.swn

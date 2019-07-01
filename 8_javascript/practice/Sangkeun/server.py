@@ -73,6 +73,10 @@ class ArticleList(Resource):
 
     def get(self):
         articles = self.get_articles()
+        for article in articles:
+            print(article.comments)
+        print(articles[0].comments[0].content)
+        print(articles[0].comments[0].user.email)
         return serializer(articles)
 
     def post(self):

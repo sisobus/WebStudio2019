@@ -1,0 +1,37 @@
+.write-container{
+  width: 80%;
+  height: 50%;
+  margin: auto auto;
+  overflow: hidden;
+  background: white;
+}
+.email{
+	padding: 20px;
+	width: 50%;
+	padding-left: 70px
+
+}
+.password{
+	padding: 20px;
+	width: 50%;
+	padding-left: 70px
+
+}
+.title{
+	padding: 20px;
+	width: 80%;
+	margin: auto auto;
+
+}
+.thumbnail{
+	padding: 20px;
+	width: 80%;
+	margin: auto auto;
+
+}
+.text{
+	padding: 20px;
+	width: 80%;
+	margin: auto auto;
+
+}

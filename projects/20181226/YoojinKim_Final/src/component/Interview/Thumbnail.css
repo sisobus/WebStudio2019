@@ -1,0 +1,20 @@
+.content-container {
+  width: 100%;
+  margin-top: 0px;
+  background: #ffffff;
+  height: 100%;
+  overflow: hidden;
+}
+
+.image-container{
+	padding: 10px;
+	float: left;
+	width:30%;
+	margin: auto auto;
+}
+
+.text-container{
+	float: left;
+	width: 70%;
+	padding: 10px;
+}
