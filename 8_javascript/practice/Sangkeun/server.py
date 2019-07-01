@@ -73,6 +73,10 @@ class ArticleList(Resource):
 
     def get(self):
         articles = self.get_articles()
+        for article in articles:
+            print(article.comments)
+        print(articles[0].comments[0].content)
+        print(articles[0].comments[0].user.email)
         return serializer(articles)
 
     def post(self):
@@ -196,4 +200,4 @@ api.add_resource(LikeList, '/api/likes')
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-    app.run(host='0.0.0.0', port=5012, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)

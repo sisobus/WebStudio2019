@@ -1,5 +1,4 @@
 from flask import Flask
-
 import os
 from datetime import datetime
 
@@ -35,4 +34,4 @@ def current_date():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5012 ,debug=True)
+    app.run(debug=True)
