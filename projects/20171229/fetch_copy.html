@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+  </head>
+
+  <script>
+    let requestOptions = {
+      method: 'GET',
+      headers: { 'content-Type': 'application/json' }
+    }
+    const handleResponse = response => {
+      return response.text().then(text => {
+        const data = text && JSON.parse(text)
+        if (!response.ok) {
+          if (response.status === 401) {
+            // auto logout if 401 response returned from api
+            return Promise.reject(response)
+          }
+          const error = (data && data.message) || response.statusText
+          return Promise.reject(error)
+        }
+
+        return data
+      })
+    }
+
+    fetch('http://127.0.0.1:5000/api/articles', requestOptions)
+      .then(handleResponse)
+      .then(response => {
+
+        console.log(response);
+
+        let html = "";
+        for (let i = 0; i < 9; i++) {
+          let img = "img src="+response[i].img +response[i].width +response[i].height;
+          console.log(img);
+
+          //<img src="img/grap1-1.jpg" width="300" height="300" HSPACE=50 >
+          html += '<div class="article"><img src= response[i].img width="300" height="300" HSPACE=50 ></div>';
+          console.log(html);
+
+
+
+
+          html += `<div class="article">${response[i].title}</div>`;
+          html += `<h1 class="title">${response[i].img}</h1>`;
+          html += `<p class="author">${response[i].width}</p>`;
+          html += `<p class="content">${response[i].height}</p>`;
+          html += `</div>`;
+        }
+        const articleContainer = document.getElementById('article-container');
+        articleContainer.insertAdjacentHTML('beforeEnd', html);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
+
+  </script>
+  <body>
+    <div class="main-wrapper">
+      <div class="main-container">
+        <div class="article-container" id="article-container">
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
